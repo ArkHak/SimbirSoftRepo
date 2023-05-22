@@ -20,8 +20,7 @@ public class ElementaryTraining {
      * @return среднее значение для введенных чисел
      */
     public double averageValue(int firstValue, int secondValue) {
-        //TODO: implement it
-        return 0;
+        return (firstValue + secondValue) / 2.0;
     }
 
     /**
@@ -34,8 +33,9 @@ public class ElementaryTraining {
      * @return сумма новых трех чисел
      */
     public double complicatedAmount(int firstValue, int secondValue, int thirdValue) {
-        //TODO: implement it
-        return 0;
+        return firstValue * 2 +
+                (secondValue - 3) +
+                Math.pow(thirdValue, 2);
     }
 
     /**
@@ -47,8 +47,11 @@ public class ElementaryTraining {
      * @return новое значение
      */
     public int changeValue(int value) {
-        //TODO: implement it
-        return value;
+        if (value > 3) {
+            return value + 10;
+        } else {
+            return value - 10;
+        }
     }
 
     /**
@@ -62,8 +65,19 @@ public class ElementaryTraining {
      * @return новое число
      */
     public int swapNumbers(int value) {
-        //TODO: implement it
-        return 0;
+        if (value < 10) {
+            return value;
+        } else {
+            String strValue = Integer.toString(value);
+            char firstNumber = strValue.charAt(0);
+            char lastNumber = strValue.charAt(strValue.length() - 1);
+
+            StringBuilder newStrValue = new StringBuilder(strValue);
+            newStrValue.setCharAt(0, lastNumber);
+            newStrValue.setCharAt(strValue.length() - 1, firstNumber);
+
+            return Integer.parseInt(newStrValue.toString());
+        }
     }
 
     /**
@@ -77,7 +91,15 @@ public class ElementaryTraining {
      * @return новое число
      */
     public int zeroEvenNumber(int value) {
-        //TODO: implement it
-        return 0;
+        if (value < 10) {
+            return value;
+        } else {
+            String strValue = Integer.toString(value);
+            StringBuilder newStrValue = new StringBuilder(strValue);
+            for (int i = 0; i < strValue.length(); i++) {
+                if (newStrValue.charAt(i) % 2 == 0) newStrValue.setCharAt(i, '0');
+            }
+            return Integer.parseInt(newStrValue.toString());
+        }
     }
 }
