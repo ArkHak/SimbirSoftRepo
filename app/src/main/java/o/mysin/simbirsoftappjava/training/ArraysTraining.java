@@ -1,6 +1,9 @@
 package o.mysin.simbirsoftappjava.training;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Набор тренингов по работе с массивами в java.
@@ -58,11 +61,15 @@ public class ArraysTraining {
      * @return входящий массив в обратном порядке
      */
     public int[] reverse(int[] array) {
-        int reverseArray[] = new int[array.length];
-        for (int i = array.length - 1, j = 0; i >= 0; i--, j++) {
-            reverseArray[j] = array[i];
+        int tempLastElement;
+
+        for (int i = 0; i < array.length / 2; i++) {
+            tempLastElement = array[array.length - i - 1];
+            array[array.length - i - 1] = array[i];
+            array[i] = tempLastElement;
         }
-        return reverseArray;
+
+        return array;
     }
 
     /**
@@ -98,27 +105,21 @@ public class ArraysTraining {
      * элементов
      */
     public int maxCountSymbol(int[] array) {
-        int currentCount = 0;
-        int currentCountIndex = 0;
-        int maxCount = 0;
-        int currentNumber;
-
-        if (array.length != 0) {
-            while (true) {
-                currentNumber = array[currentCountIndex];
-
-                for (int j : array) {
-                    if (currentNumber == j) currentCount++;
-                }
-                if (maxCount < currentCount) maxCount = currentCount;
-
-                if (currentCountIndex == array.length - 1) break;
-
-                currentCountIndex++;
-                currentCount = 0;
-            }
+        if (array.length == 0) {
+            return 0;
         }
-        return maxCount;
+        {
+            Map<Integer, Integer> map = new HashMap<>();
+
+            for (int j : array) {
+                if (map.containsKey(j)) {
+                    map.put(j, map.get(j) + 1);
+                } else {
+                    map.put(j, 1);
+                }
+            }
+
+            return Collections.max(map.values());
+        }
     }
 }
-
