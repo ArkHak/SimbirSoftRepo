@@ -107,15 +107,14 @@ public class ArraysTraining {
     public int maxCountSymbol(int[] array) {
         if (array.length == 0) {
             return 0;
-        }
-        {
+        } else {
             Map<Integer, Integer> map = new HashMap<>();
 
-            for (int j : array) {
-                if (map.containsKey(j)) {
-                    map.put(j, map.get(j) + 1);
+            for (int i : array) {
+                if (map.containsKey(i)) {
+                    map.put(i, map.get(i) + 1);
                 } else {
-                    map.put(j, 1);
+                    map.put(i, 1);
                 }
             }
 
