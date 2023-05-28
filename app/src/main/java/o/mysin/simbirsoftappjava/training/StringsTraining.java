@@ -1,5 +1,9 @@
 package o.mysin.simbirsoftappjava.training;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Набор тренингов по работе со строками в java.
  * <p>
@@ -22,8 +26,12 @@ public class StringsTraining {
      * элементов строки text
      */
     public String getOddCharacterString(String text) {
-        //TODO: implement it
-        return "";
+        StringBuilder resultStr = new StringBuilder();
+        char[] chars = text.toCharArray();
+        for (int i = 1; i < chars.length; i = i + 2) {
+            resultStr.append(chars[i]);
+        }
+        return resultStr.toString();
     }
 
     /**
@@ -37,8 +45,19 @@ public class StringsTraining {
      * вернуть пустой массив
      */
     public int[] getArrayLastSymbol(String text) {
-        //TODO: implement it
-        return new int[]{};
+        if (!text.isEmpty()) {
+            char[] chars = text.toCharArray();
+
+            ArrayList<Integer> numChars = new ArrayList<>();
+            char lastSymbol = chars[text.length() - 1];
+
+            for (int i = 0; i < chars.length - 1; i++) {
+                if (lastSymbol == chars[i]) numChars.add(i);
+            }
+            return numChars.stream().mapToInt(i -> i).toArray();
+        } else {
+            return new int[]{};
+        }
     }
 
     /**
@@ -49,8 +68,14 @@ public class StringsTraining {
      * @return количество цифр в строке
      */
     public int getNumbersCount(String text) {
-        //TODO: implement it
-        return 0;
+        String regex = "\\d";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+        return count;
     }
 
     /**
@@ -61,9 +86,39 @@ public class StringsTraining {
      * @return текст, где цифры заменены словами
      */
     public String replaceAllNumbers(String text) {
-        //TODO: implement it
+        String regex = "\\d";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String match = matcher.group();
+            String replacement = changeChar(match);
+            text = text.replace(match, replacement);
+        }
         return text;
     }
+
+    private String changeChar(String symbol) {
+        final String[] arrayNumberBase = new String[]{
+                "zero",
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eigth",
+                "nine"
+
+        };
+        int currentNumber = Integer.parseInt(symbol);
+        if (currentNumber < arrayNumberBase.length) {
+            return arrayNumberBase[Integer.parseInt(symbol)];
+        } else {
+            return symbol;
+        }
+    }
+
 
     /**
      * Метод должен заменить заглавные буквы
@@ -73,8 +128,16 @@ public class StringsTraining {
      * @return измененная строка
      */
     public String capitalReverse(String text) {
-        //TODO: implement it
-        return text;
+        StringBuilder resultStr = new StringBuilder();
+        char[] chars = text.toCharArray();
+        for (char symbol : chars) {
+            if (Character.isUpperCase(symbol)) {
+                resultStr.append(Character.toLowerCase(symbol));
+            } else {
+                resultStr.append(Character.toUpperCase(symbol));
+            }
+        }
+        return resultStr.toString();
     }
 
 }
