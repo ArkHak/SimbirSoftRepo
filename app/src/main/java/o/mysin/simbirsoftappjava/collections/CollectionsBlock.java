@@ -36,11 +36,15 @@ public class CollectionsBlock<T extends Comparable> {
      * @return объединенный упорядоченный список
      * @throws NullPointerException если один из параметров null
      */
-    public List<T> collectionTask0(@NonNull List<T> firstList, @NonNull List<T> secondList) throws NullPointerException {
-        List<T> sortedList = new ArrayList<>(firstList);
-        sortedList.addAll(secondList);
-        sortedList.sort(Collections.reverseOrder());
-        return sortedList;
+    public List<T> collectionTask0( List<T> firstList, List<T> secondList) {
+        if (firstList == null || secondList == null) {
+            throw new NullPointerException();
+        } else {
+            List<T> sortedList = new ArrayList<>(firstList);
+            sortedList.addAll(secondList);
+            sortedList.sort(Collections.reverseOrder());
+            return sortedList;
+        }
     }
 
     /**

@@ -1,6 +1,9 @@
 package o.mysin.simbirsoftappjava.classes;
 
 
+import androidx.annotation.NonNull;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -34,12 +37,15 @@ public interface ClassesBlock {
             this.value2 = value2;
         }
 
-        public void setValues(int value1, int value2) {
+        public void setValue1(int value1) {
             this.value1 = value1;
+        }
+
+        public void setValue2(int value2) {
             this.value2 = value2;
         }
 
-        public void getValues() {
+        public void printValues() {
             System.out.println("Value 1: " + value1);
             System.out.println("Value 2: " + value2);
         }
@@ -97,8 +103,14 @@ public interface ClassesBlock {
             return set.size();
         }
 
+        @NonNull
+        @Override
+        public String toString() {
+            return Arrays.toString(array);
+        }
+
         public void printArray() {
-            System.out.println(Arrays.toString(array));
+            System.out.println(array);
         }
     }
 
@@ -250,6 +262,31 @@ public interface ClassesBlock {
             }
         }
 
+        public void addHours(int hours) {
+            int newHours = this.hours + hours;
+            if (newHours >= 24) {
+                newHours %= 24;
+            }
+            setHours(newHours);
+        }
+
+        public void addMinutes(int minutes) {
+            int newMinutes = this.minutes + minutes;
+            if (newMinutes >= 60) {
+                addHours(newMinutes / 60);
+                newMinutes %= 60;
+            }
+            setMinutes(minutes);
+        }
+
+        public void addSeconds(int seconds) {
+            int newSeconds = this.seconds + seconds;
+            if (newSeconds >= 60) {
+                addMinutes(newSeconds / 60);
+                newSeconds %= 60;
+            }
+            setMinutes(newSeconds);
+        }
     }
 
     /*
@@ -271,10 +308,11 @@ public interface ClassesBlock {
         private String patronymic;
         private String address;
         private String numberCreditCart;
-        private Double Debit;
-        private Double Credit;
+        private BigDecimal debit;
+        private BigDecimal credit;
         private int timeIntercityNegotiations;
         private int timeUrbanNegotiations;
+        private final int DECIMAL_SCALE = 2;
 
         public Subscriber(
                 int id,
@@ -294,8 +332,8 @@ public interface ClassesBlock {
             this.patronymic = patronymic;
             this.address = address;
             this.numberCreditCart = numberCreditCart;
-            Debit = debit;
-            Credit = credit;
+            this.debit = new BigDecimal(debit).setScale(DECIMAL_SCALE);
+            this.credit = new BigDecimal(credit).setScale(DECIMAL_SCALE);
             this.timeIntercityNegotiations = timeIntercityNegotiations;
             this.timeUrbanNegotiations = timeUrbanNegotiations;
         }
@@ -348,20 +386,20 @@ public interface ClassesBlock {
             this.numberCreditCart = numberCreditCart;
         }
 
-        public Double getDebit() {
-            return Debit;
+        public BigDecimal getDebit() {
+            return debit;
         }
 
         public void setDebit(Double debit) {
-            Debit = debit;
+            this.debit = new BigDecimal(debit).setScale(DECIMAL_SCALE);
         }
 
-        public Double getCredit() {
-            return Credit;
+        public BigDecimal getCredit() {
+            return credit;
         }
 
         public void setCredit(Double credit) {
-            Credit = credit;
+            this.credit = new BigDecimal(credit).setScale(DECIMAL_SCALE);
         }
 
         public int getTimeIntercityNegotiations() {
@@ -380,23 +418,26 @@ public interface ClassesBlock {
             this.timeUrbanNegotiations = timeUrbanNegotiations;
         }
 
-        public void getInfoSubscriber() {
-            System.out.println("ID: " + this.getId());
-            System.out.println("ФИО: " + this.getSurname() + " " + this.getName() + " " + this.getPatronymic());
-            System.out.println("Адрес: " + this.getAddress());
-            System.out.println("Номер карты: " + this.getNumberCreditCart());
-            System.out.println("Дебет: " + this.getDebit());
-            System.out.println("Кредит: " + this.getCredit());
-            System.out.println("Время междугородных переоговоров: " + this.getTimeIntercityNegotiations());
-            System.out.println("Время городских переоговоров: " + this.getTimeUrbanNegotiations());
+        @Override
+        public String toString() {
+            return "ID:" + id + "\n" +
+                    "Фамилия: " + surname + "\n" +
+                    "Имя: " + name + "\n" +
+                    "Отчество: " + patronymic + "\n" +
+                    "Адрес: " + address + "\n" +
+                    "Номер карты: " + numberCreditCart + "\n" +
+                    "Дебит: " + debit + "\n" +
+                    "Кредит: " + credit + "\n" +
+                    "Время междугородных переоговоров: " + timeIntercityNegotiations + "\n" +
+                    "Время городских переоговоров: " + timeUrbanNegotiations;
         }
 
-        public void getSubscribesForWitchUrbanNegotiationsExceedsSpecified(double time) {
-            if (this.getTimeUrbanNegotiations() > time) this.getInfoSubscriber();
+        public Boolean checkSubscribesForWitchUrbanNegotiationsExceedsSpecified(double time) {
+            return this.getTimeUrbanNegotiations() > time;
         }
 
-        public void getSubscribesUsedIntercityNegotiations() {
-            if (this.getTimeIntercityNegotiations() > 0) this.getInfoSubscriber();
+        public Boolean checkSubscribesUsedIntercityNegotiations() {
+            return this.getTimeIntercityNegotiations() > 0;
         }
 
         @Override
@@ -414,7 +455,7 @@ public interface ClassesBlock {
                 "Ivanovich",
                 "Moscow, Russia",
                 "1111 2222 3333 4444",
-                1000.0,
+                1000.00,
                 500.0,
                 50,
                 20
@@ -445,16 +486,18 @@ public interface ClassesBlock {
         );
 
         for (Subscriber subscriber : subscribers) {
-            subscriber.getSubscribesForWitchUrbanNegotiationsExceedsSpecified(10.0);
+            if (subscriber.checkSubscribesForWitchUrbanNegotiationsExceedsSpecified(10.0))
+                System.out.println(subscriber);
         }
 
         for (Subscriber subscriber : subscribers) {
-            subscriber.getSubscribesUsedIntercityNegotiations();
+            if (subscriber.checkSubscribesUsedIntercityNegotiations())
+                System.out.println(subscriber);
         }
 
         Arrays.sort(subscribers);
         for (Subscriber subscriber : subscribers) {
-            subscriber.getInfoSubscriber();
+            System.out.println(subscriber);
         }
 
     }
@@ -603,6 +646,14 @@ public interface ClassesBlock {
         private String name;
         private static int idCount = 1;
 
+        @Override
+        public String toString() {
+            return "Client{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+
         public Client(String name) {
             this.id = idCount++;
             this.name = name;
@@ -635,6 +686,10 @@ public interface ClassesBlock {
 
         public int getCount() {
             return count;
+        }
+
+        public void saleProduct() {
+            count -= 1;
         }
 
         public void setCount(int count) {
@@ -681,19 +736,33 @@ public interface ClassesBlock {
         }
     }
 
-    public class Merchandiser {
+    public class OnlineStore {
+        private List<Product> products;
+
         private List<Order> orders = new ArrayList<>();
+
         private List<Client> blackList = new ArrayList<>();
 
-        public void registerOrder(Order order) {
-            orders.add(order);
+        public List<Product> getProducts() {
+            return products;
+        }
+
+        public void addProduct(Product product) {
+            this.products.add(product);
+        }
+
+        public void registerOrder(Order order) throws ClientBlackListException {
+            if (!isInBlackList(order.client)) {
+                orders.add(order);
+            } else {
+                throw new ClientBlackListException("Данный клиент находится в Чёрном списке магазина", order.client);
+            }
         }
 
         public void registerSale(Order order) {
-            if (order.isPaid()) {
-                for (Product product : order.getProducts()) {
-                    product.setCount(product.getCount() - 1);
-                }
+            for (Product product : order.getProducts()) {
+                int indexProduct = this.products.indexOf(product);
+                products.get(indexProduct).saleProduct();
             }
         }
 
@@ -701,8 +770,47 @@ public interface ClassesBlock {
             blackList.add(client);
         }
 
-        public boolean isInBlackList(Client client) {
+        private boolean isInBlackList(Client client) {
             return blackList.contains(client);
+        }
+    }
+
+    public class Merchandiser {
+        OnlineStore onlineStore = new OnlineStore();
+
+        public void setOnlineStore(OnlineStore onlineStore) {
+            this.onlineStore = onlineStore;
+        }
+
+        public void registerSale(Order order) {
+            if (order.isPaid()) {
+                onlineStore.registerSale(order);
+            }
+        }
+
+        public void addToBlackList(Client client) {
+            onlineStore.addToBlackList(client);
+        }
+
+        public void addProduct(Product product) {
+            onlineStore.addProduct(product);
+        }
+
+        public void registerOrder(Order orderClient) throws ClientBlackListException {
+            onlineStore.registerOrder(orderClient);
+        }
+    }
+
+    class ClientBlackListException extends Exception {
+        private Client client;
+
+        public Client getClient() {
+            return client;
+        }
+
+        public ClientBlackListException(String message, Client client) {
+            super(message);
+            this.client = client;
         }
     }
 
@@ -710,22 +818,30 @@ public interface ClassesBlock {
     public static void task7(String[] args) {
 
         Client client = new Client("Олег");
+        OnlineStore ozon = new OnlineStore();
+        Merchandiser merchandiser = new Merchandiser();
+
+        merchandiser.setOnlineStore(ozon);
 
         Product product1 = new Product("PS5", 50_000, 5);
         Product product2 = new Product("MacBook Pro ", 150_000, 3);
 
-        Order order = new Order(client);
-        order.addProduct(product1);
-        order.addProduct(product2);
-        order.pay();
+        merchandiser.addProduct(product1);
+        merchandiser.addProduct(product2);
 
-        Merchandiser merchandiser = new Merchandiser();
-        merchandiser.registerOrder(order);
-        merchandiser.registerSale(order);
+        Order orderClient = new Order(client);
+        orderClient.addProduct(ozon.products.get(0));
+        orderClient.addProduct(ozon.products.get(1));
 
-        System.out.println("Продано");
+        try {
+            merchandiser.registerOrder(orderClient);
+            orderClient.pay();
+            merchandiser.registerSale(orderClient);
+            System.out.println("Продано");
+        } catch (ClientBlackListException e) {
+            System.out.println(e.getMessage() + " " + e.getClient());
+        }
 
         merchandiser.addToBlackList(client);
-        merchandiser.isInBlackList(client);
     }
 }
