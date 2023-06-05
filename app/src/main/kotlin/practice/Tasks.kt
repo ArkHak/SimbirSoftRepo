@@ -8,24 +8,13 @@ fun main() {
     val book2 = Book(60.09, 3030)
     val book3 = Book(100.99, 7501)
     val magazine = Magazine(15.9, 30)
+    val bookshelf = listOf(book1, book2, book3, magazine)
 
     /***Вывести в лог для каждого объекта тип, количество строк и цену в евро в отформатированном виде.***/
 
-    println(
-        "Book 1: Type - ${book1.getType()}, Word Count - ${book1.wordCount}, Price - ${book1.price} EUR"
-    )
-
-    println(
-        "Book 2: Type - ${book2.getType()}, Word Count - ${book2.wordCount}, Price - ${book2.price} EUR"
-    )
-
-    println(
-        "Book 3: Type - ${book3.getType()}, Word Count - ${book3.wordCount}, Price - ${book3.price} EUR"
-    )
-
-    println(
-        "Magazine: Type - ${magazine.getType()}, Word Count - ${magazine.wordCount}, Price - ${magazine.price} EUR"
-    )
+    for (item in bookshelf) {
+        println(item.getInfo())
+    }
 
     println("\n-------------Task equals-------------\n")
 
@@ -37,19 +26,21 @@ fun main() {
     val book6 = book1
 
     println("book1 == book6: ${book1 == book6}")
+    println("book1 === book6: ${book1 === book6}")
     println("book1 == book2: ${book1 == book2}")
     println("book1 == book4: ${book1 == book4}")
     println("book4 == book5: ${book4 == book5}")
+    println("book4 === book5: ${book4 === book5}")
 
     println("\n-------------Task buy-------------\n")
 
     val book7: Book? = null
     val book8 = Book(4.0, 10)
     book7?.let {
-        buy(it)
+        println(it.buy())
     }
     book8?.let {
-        buy(it)
+        println(it.buy())
     }
 
     println("\n-------------Task lambda-------------\n")
@@ -67,9 +58,9 @@ fun main() {
 а второй любое notnull значение. Используя функцию let, попробуйте вызвать метод
 buy с каждой из переменных.***/
 
-fun buy(publication: Publication) {
-    println("The purchase is complete. The purchase amount was ${publication.price}.")
-}
+//fun buy(publication: Publication) {
+//    println("The purchase is complete. The purchase amount was ${publication.price}.")
+//}
 
 
 /***Создать переменную sum и присвоить ей лямбда-выражение, которое будет складывать
@@ -92,6 +83,12 @@ interface Publication {
     val wordCount: Int
 
     fun getType(): String
+
+    fun getInfo(): String
+
+    fun buy(): String {
+        return "The purchase is complete. The purchase amount was ${this.price}."
+    }
 }
 
 class Book(private val _price: Number, override val wordCount: Int) : Publication {
@@ -107,6 +104,10 @@ class Book(private val _price: Number, override val wordCount: Int) : Publicatio
         }
     }
 
+    override fun getInfo(): String {
+        return "Book: Type - ${this.getType()}, Word Count - ${this.wordCount}, Price - ${this.price} EUR"
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is Book) return false
@@ -120,5 +121,9 @@ class Magazine(private val _price: Number, override val wordCount: Int) : Public
 
     override fun getType(): String {
         return "Magazine"
+    }
+
+    override fun getInfo(): String {
+        return "Magazine: Type - ${this.getType()}, Word Count - ${this.wordCount}, Price - ${this.price} EUR"
     }
 }
