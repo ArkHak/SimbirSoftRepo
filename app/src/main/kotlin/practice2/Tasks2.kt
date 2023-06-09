@@ -32,7 +32,7 @@ fun main() {
     // Получить первый и последний элементы списка и вывести их в лог.
     println("-----------------------Task7--------------------------------")
     val usersNameList = listUsers.map { it.name }
-    println("first = ${usersNameList.first()}, last = ${usersNameList.last()}")
+    println("first = ${usersNameList.firstOrNull()}, last = ${usersNameList.lastOrNull()}")
 
     // 8.
     println("-----------------------Task8--------------------------------")
@@ -46,7 +46,7 @@ fun main() {
 
     // 10. 11.
     println("-----------------------Task10 Task11--------------------------------")
-    auth(updateCache())
+    user1.auth(updateCache())
 
     // 12. 13.
     println("-----------------------Task13--------------------------------")
@@ -103,7 +103,7 @@ private val authCallback = object : AuthCallback {
 // Функция updateCache должна выводить в лог информацию об обновлении кэша.
 // 11. Внутри функции auth вызвать метод коллбека authSuccess и переданный updateCache,
 // если проверка возраста пользователя произошла без ошибки. В случае получения ошибки вызвать authFailed.
-private inline fun auth(updateCache: () -> Boolean) {
+private inline fun User.auth(updateCache: () -> Boolean) {
     if (updateCache.invoke()) {
         authCallback.authSuccess()
     } else {
@@ -131,7 +131,7 @@ private fun doAction(action: Action) {
     when (action) {
         is Action.Login -> {
             println("Auth started")
-            auth(updateCache())
+            action.user.auth(updateCache())
         }
 
         is Action.Logout -> println("Action Logout")
