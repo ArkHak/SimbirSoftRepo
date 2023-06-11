@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import o.mysin.simbirsoftappjava.ui.MainActivity
 
 class SplashScreen : AppCompatActivity() {
 
@@ -18,6 +19,6 @@ class SplashScreen : AppCompatActivity() {
     }
 
     companion object {
-        private const val SPLASH_SCREEN_TIMEOUT = 3000L
+        private const val SPLASH_SCREEN_TIMEOUT = 2000L
     }
 }

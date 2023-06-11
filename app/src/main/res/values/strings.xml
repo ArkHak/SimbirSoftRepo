@@ -3,4 +3,11 @@
 
     <!-- SplashScreen -->
     <string name="splash_screen_loading">Загрузка…</string>
+    <string name="title_news">Новости</string>
+    <string name="title_search">Поиск</string>
+    <string name="title_help">Помочь</string>
+    <string name="title_history">История</string>
+    <string name="title_profile">Профиль</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
