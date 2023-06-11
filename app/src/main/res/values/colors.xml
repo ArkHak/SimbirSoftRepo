@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="background_splash_screen">#FFEFF3F6</color>
+    <color name="app_bar_leaf">#FF66A636</color>
+    <color name="loading_turtle_green">#FF7DB354</color>
 </resources>

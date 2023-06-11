@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SplashScreen -->
+    <dimen name="splash_screen_loading_text_size">14sp</dimen>
+    <dimen name="margin_top_loading_progress_bar">80dp</dimen>
+    <dimen name="margin_top_loading_text_view">16dp</dimen>
+    <dimen name="text_size_loading_text_view">14sp</dimen>
+    <dimen name="margin_bottom_logo_image_view">80dp</dimen>
+</resources>
