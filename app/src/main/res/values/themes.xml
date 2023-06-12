@@ -7,6 +7,6 @@
 
     <style name="Theme.SimbirSoftAppJava" parent="Base.Theme.SimbirSoftAppJava">
         <item name="colorPrimary">@color/turtle_green</item>
-        <item name="colorPrimaryDark">@color/app_bar_leaf</item>
+        <item name="colorPrimaryDark">@color/leaf</item>
     </style>
 </resources>

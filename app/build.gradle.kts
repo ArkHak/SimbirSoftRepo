@@ -52,13 +52,18 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Android Navigation
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
-    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     //ViewBindingPropertyDelegate
-    implementation ("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
+    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
+
+    // Lifecycle components
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
     //Coil
     implementation("io.coil-kt:coil:1.4.0")

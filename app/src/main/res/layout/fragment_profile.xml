@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/profile_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_profile_avatar_image"
+        android:importantForAccessibility="no"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/profile_info_block"
+        style="@style/profile_linear_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_avatar">
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_87"
+            android:textSize="@dimen/text_size_profile_name"
+            tools:text="Константинов Денис" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_space_16" />
+
+        <TextView
+            style="@style/profile_title_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/birthday_title" />
+
+        <TextView
+            android:id="@+id/profile_birthday"
+            style="@style/profile_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="01 февраля 1980" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_space_10" />
+
+        <TextView
+            style="@style/profile_title_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/working_title" />
+
+        <TextView
+            android:id="@+id/profile_working"
+            style="@style/profile_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Хирургия, травмотология" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_space_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/profile_item_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/push_notifications" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/push_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:thumbTint="@color/leaf"
+                app:trackTint="@drawable/color_switch_selector" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/spacer_after_info_block"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_spacer"
+        android:background="@color/cool_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_info_block" />
+
+    <LinearLayout
+        android:id="@+id/profile_friends"
+        style="@style/profile_linear_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spacer_after_info_block">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_space_20" />
+
+        <TextView
+            style="@style/profile_title_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_friends_title" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_space_16" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_friend_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_friends" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_space_20" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/spacer_after_list_friends"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_spacer"
+        android:background="@color/cool_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_friends" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/title_profile" />
+        android:layout_marginTop="@dimen/margin_top_logout_button"
+        android:backgroundTint="@color/leaf"
+        android:text="@string/logout_button_text"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_logout_button"
+        app:cornerRadius="@dimen/corner_radius_logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spacer_after_list_friends" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
