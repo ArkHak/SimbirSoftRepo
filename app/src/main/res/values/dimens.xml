@@ -10,8 +10,8 @@
     <!-- MainActivity -->
     <dimen name="margin_vertical_label_app_bar">14dp</dimen>
     <dimen name="text_size_label_app_bar">21sp</dimen>
-    <dimen name="height_bottom_navigation_bar">70dp</dimen>
-    <dimen name="height_app_bar">60dp</dimen>
+    <dimen name="height_bottom_navigation_bar">60dp</dimen>
+    <dimen name="height_app_bar">40dp</dimen>
 
     <!-- ProfileFragment -->
     <dimen name="text_size_title_item">12sp</dimen>
@@ -24,8 +24,8 @@
     <dimen name="height_space_10">10dp</dimen>
     <dimen name="height_space_28">28dp</dimen>
     <dimen name="height_space_20">20dp</dimen>
-    <dimen name="margin_top_logout_button">20dp</dimen>
+    <dimen name="margin_vertical_logout_button">16dp</dimen>
     <dimen name="text_size_logout_button">14sp</dimen>
-    <dimen name="corner_radius_logout_button">2dp</dimen>
+    <dimen name="corner_radius_logout_button">6dp</dimen>
 
 </resources>

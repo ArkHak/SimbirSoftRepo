@@ -20,6 +20,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         ViewModelProvider(this)[ProfileViewModel::class.java]
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -32,7 +33,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             profileName.text = user.name
             profileBirthday.text = user.birthday
             profileWorking.text = user.work
-            profileAvatar.load(R.drawable.temp_image_man){
+            profileAvatar.load(R.drawable.temp_image_man) {
                 crossfade(true)
             }
         }
@@ -47,5 +48,4 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.profileFriendRecyclerView.setHasFixedSize(true)
 
     }
-
 }
