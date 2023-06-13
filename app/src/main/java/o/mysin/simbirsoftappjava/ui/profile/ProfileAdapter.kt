@@ -7,29 +7,22 @@ import o.mysin.simbirsoftappjava.data.Friend
 import o.mysin.simbirsoftappjava.databinding.ItemFriendsBinding
 
 class ProfileAdapter(private val friendList: List<Friend>) :
-    RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ProfileViewHolder>() {
 
-    inner class ViewHolder(private val binding: ItemFriendsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(friend: Friend) {
-            binding.itemName.text = friend.name
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding = ItemFriendsBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
-            false
+            false,
         )
-        return ViewHolder(binding)
+        return ProfileViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return friendList.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         holder.bind(friendList[position])
     }
 }

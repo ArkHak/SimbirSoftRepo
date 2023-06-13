@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="bottom_navigation_view" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemRippleColor">?colorPrimaryVariant</item>
         <item name="android:background">@drawable/bottom_nav_border</item>
         <item name="itemIconTint">@drawable/color_nav_button_selected</item>
         <item name="itemTextColor">@drawable/color_nav_button_selected</item>
-        <item name="labelVisibilityMode">selected</item>
-    </style>
-
-    <style name="profile_linear_block">
-        <item name="android:layout_marginHorizontal" tools:targetApi="o">
-            @dimen/margin_horizontal_default
-        </item>
-        <item name="android:orientation">vertical</item>
+        <item name="labelVisibilityMode">labeled</item>
     </style>
 
     <style name="profile_title_item_text_view">

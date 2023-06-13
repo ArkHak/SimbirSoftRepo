@@ -3,8 +3,7 @@ package o.mysin.simbirsoftappjava.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
@@ -16,16 +15,15 @@ import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val binding: FragmentProfileBinding by viewBinding()
-    private val viewModel: ProfileViewModel by lazy {
-        ViewModelProvider(this)[ProfileViewModel::class.java]
-    }
-
+    private val profileViewModel: ProfileViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getData()
-            .observe(viewLifecycleOwner, Observer<User> { renderData(it) })
+        profileViewModel.userProfile
+            .observe(viewLifecycleOwner) { renderData(it) }
+
+        initAdapter(profileViewModel.loadFriends())
     }
 
     private fun renderData(user: User) {
@@ -37,7 +35,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 crossfade(true)
             }
         }
-        initAdapter(user.friendsList)
     }
 
     private fun initAdapter(friendsList: List<Friend>) {
@@ -46,6 +43,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.profileFriendRecyclerView.adapter = adapter
         binding.profileFriendRecyclerView.setHasFixedSize(true)
-
     }
 }

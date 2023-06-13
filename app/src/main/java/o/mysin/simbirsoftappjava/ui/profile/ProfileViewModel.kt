@@ -6,16 +6,19 @@ import androidx.lifecycle.ViewModel
 import o.mysin.simbirsoftappjava.data.Friend
 import o.mysin.simbirsoftappjava.data.User
 
-class ProfileViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<User> = MutableLiveData(),
-) : ViewModel() {
+class ProfileViewModel : ViewModel() {
 
-    fun getData(): LiveData<User> {
-        return liveDataForViewToObserve
-    }
+    private val _userProfile: MutableLiveData<User> = MutableLiveData()
+    val userProfile: LiveData<User>
+        get() = _userProfile
 
     init {
-        val friendList = mutableListOf<Friend>(
+        val user = User(friendsList = loadFriends())
+        _userProfile.value = user
+    }
+
+    fun loadFriends(): List<Friend> {
+        return listOf(
             Friend(name = "Николай Басков"),
             Friend(name = "Иван Петрович"),
             Friend(name = "Юлия Пересильд"),
@@ -35,11 +38,7 @@ class ProfileViewModel(
             Friend(name = "Алексей Гладков"),
             Friend(name = "Филлип Киркоров"),
             Friend(name = "Надежда Бабкина"),
-            Friend(name = "Наруто Узумаки")
+            Friend(name = "Наруто Узумаки"),
         )
-
-        val user = User(friendsList = friendList)
-
-        liveDataForViewToObserve.value = user
     }
 }

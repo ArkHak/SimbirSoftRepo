@@ -1,19 +1,19 @@
 package o.mysin.simbirsoftappjava
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import o.mysin.simbirsoftappjava.ui.MainActivity
 
-class SplashScreen : AppCompatActivity() {
+class SplashFragment : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_screen)
+        setContentView(R.layout.fragment_splash)
 
         Handler().postDelayed({
-            startActivity(Intent(this@SplashScreen, MainActivity::class.java))
+            startActivity(Intent(this@SplashFragment, MainActivity::class.java))
             finish()
         }, SPLASH_SCREEN_TIMEOUT)
     }

@@ -7,32 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_app_bar"
-        app:layout_scrollFlags="scroll|enterAlways">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/leaf_light"
-            android:elevation="4dp">
-
-            <TextView
-                android:id="@+id/label_fragment_text_vew"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_label_app_bar"
-                android:textStyle="bold"
-                tools:text="Профиль" />
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
     <fragment
         android:id="@+id/navigation_fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"

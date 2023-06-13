@@ -17,7 +17,7 @@
             android:exported="false"
             android:theme="@style/Theme.SimbirSoftAppJava" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashFragment"
             android:exported="true"
             android:theme="@style/Theme.SimbirSoftAppJava.SplashScreen">
             <intent-filter>
