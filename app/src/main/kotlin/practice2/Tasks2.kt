@@ -47,20 +47,20 @@ fun main() {
     // 10. 11.
     println("-----------------------Task10 Task11--------------------------------")
     user1.auth(updateCache())
+    user2.auth(updateCache())
+    user3.auth(updateCache())
 
     // 12. 13.
     println("-----------------------Task13--------------------------------")
     doAction(Action.Registration)
     doAction(Action.Login(user1))
     doAction(Action.Logout)
-
-
 }
 
 // 2. Создать enum Type с константами DEMO и FULL.
 enum class Type {
     DEMO,
-    FULL
+    FULL,
 }
 
 // 3. Реализовать класс данных User с полями id, name, age и type. У класса User создать ленивое
@@ -79,6 +79,10 @@ data class User(
 // и в случае успеха выводит в лог, а в случае неуспеха возвращает ошибку.
 private fun User.checkAge(): String {
     return if (this.age > 18) "Совершеннолетний" else throw Exception("Несовершеннолетний")
+}
+
+private fun User.checkAgeBoolean(): Boolean {
+    return this.age > 18
 }
 
 // 9. Создать интерфейс AuthCallback с методами authSuccess, authFailed и
@@ -103,16 +107,17 @@ private val authCallback = object : AuthCallback {
 // Функция updateCache должна выводить в лог информацию об обновлении кэша.
 // 11. Внутри функции auth вызвать метод коллбека authSuccess и переданный updateCache,
 // если проверка возраста пользователя произошла без ошибки. В случае получения ошибки вызвать authFailed.
-private inline fun User.auth(updateCache: () -> Boolean) {
-    if (updateCache.invoke()) {
+private inline fun User.auth(updateCache: () -> Unit) {
+    if (this.checkAgeBoolean()) {
         authCallback.authSuccess()
+        updateCache.invoke()
     } else {
         authCallback.authFailed()
     }
 }
 
-private fun updateCache(): () -> Boolean {
-    return { (0..1).random() == 0 }
+private fun updateCache(): () -> Unit {
+    return { println("Cache update") }
 }
 
 // 12. Реализовать изолированный класс Action и его наследников – Registration,
@@ -138,5 +143,3 @@ private fun doAction(action: Action) {
         is Action.Registration -> println("Action Registration")
     }
 }
-
-
