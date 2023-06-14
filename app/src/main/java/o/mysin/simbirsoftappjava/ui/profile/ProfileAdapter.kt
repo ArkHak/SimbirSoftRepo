@@ -15,11 +15,13 @@ class ProfileAdapter(private val friendList: List<Friend>) :
             parent,
             false,
         )
+        val height = parent.measuredHeight / 3
+        binding.root.minimumHeight = height
         return ProfileViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return friendList.size
+        return friendList.size.coerceAtMost(3)
     }
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {

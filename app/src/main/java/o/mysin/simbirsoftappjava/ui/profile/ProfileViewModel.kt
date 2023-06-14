@@ -19,25 +19,8 @@ class ProfileViewModel : ViewModel() {
 
     fun loadFriends(): List<Friend> {
         return listOf(
-            Friend(name = "Николай Басков"),
-            Friend(name = "Иван Петрович"),
-            Friend(name = "Юлия Пересильд"),
-            Friend(name = "Никос Сафронов"),
-            Friend(name = "Владимир Кажома"),
-            Friend(name = "Игорь Николаев"),
             Friend(name = "Алексей Гладков"),
             Friend(name = "Филлип Киркоров"),
-            Friend(name = "Надежда Бабкина"),
-            Friend(name = "Наруто Узумаки"),
-            Friend(name = "Николай Басков"),
-            Friend(name = "Иван Петрович"),
-            Friend(name = "Юлия Пересильд"),
-            Friend(name = "Никос Сафронов"),
-            Friend(name = "Владимир Кажома"),
-            Friend(name = "Игорь Николаев"),
-            Friend(name = "Алексей Гладков"),
-            Friend(name = "Филлип Киркоров"),
-            Friend(name = "Надежда Бабкина"),
             Friend(name = "Наруто Узумаки"),
         )
     }

@@ -6,9 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/leaf_light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <TextView
+                android:id="@+id/label_fragment_text_vew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/title_profile"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_label_app_bar"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/button_profile_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/margin_horizontal_default"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_edit" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:id="@+id/profile_info_block"
@@ -16,33 +55,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/leaf_light"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:titleTextColor="@android:color/white">
-
-                <TextView
-                    android:id="@+id/label_fragment_text_vew"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/title_profile"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_label_app_bar"
-                    android:textStyle="bold" />
-
-            </androidx.appcompat.widget.Toolbar>
-
             <ImageView
                 android:id="@+id/profile_avatar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_profile_avatar_image"
+                android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
-                android:scaleType="fitXY" />
+                tools:src="@drawable/temp_image_man" />
 
             <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
