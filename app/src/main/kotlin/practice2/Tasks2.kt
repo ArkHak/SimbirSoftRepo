@@ -46,9 +46,9 @@ fun main() {
 
     // 10. 11.
     println("-----------------------Task10 Task11--------------------------------")
-    user1.auth(updateCache())
-    user2.auth(updateCache())
-    user3.auth(updateCache())
+    user1.auth(updateCache)
+    user2.auth(updateCache)
+    user3.auth(updateCache)
 
     // 12. 13.
     println("-----------------------Task13--------------------------------")
@@ -116,8 +116,8 @@ private inline fun User.auth(updateCache: () -> Unit) {
     }
 }
 
-private fun updateCache(): () -> Unit {
-    return { println("Cache update") }
+private val updateCache = {
+    println("Cache update")
 }
 
 // 12. Реализовать изолированный класс Action и его наследников – Registration,
@@ -136,7 +136,7 @@ private fun doAction(action: Action) {
     when (action) {
         is Action.Login -> {
             println("Auth started")
-            action.user.auth(updateCache())
+            action.user.auth(updateCache)
         }
 
         is Action.Logout -> println("Action Logout")
