@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.Friend
 import o.mysin.simbirsoftappjava.data.User
 import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
 
@@ -15,6 +14,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val binding: FragmentProfileBinding by viewBinding()
     private val profileViewModel: ProfileViewModel by viewModels()
+    private lateinit var adapter: ProfileAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,7 +22,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         profileViewModel.userProfile
             .observe(viewLifecycleOwner) { renderData(it) }
 
-        profileViewModel.userProfile.value?.friendsList?.let { initAdapter(it) }
+        initAdapter()
     }
 
     private fun renderData(user: User) {
@@ -34,10 +34,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 crossfade(true)
             }
         }
+        adapter.updateFriendsList(user.friendsList)
     }
 
-    private fun initAdapter(friendsList: List<Friend>) {
-        val adapter = ProfileAdapter(friendsList)
+    private fun initAdapter() {
+        adapter = ProfileAdapter()
         binding.profileFriendRecyclerView.adapter = adapter
         binding.profileFriendRecyclerView.setHasFixedSize(true)
     }
