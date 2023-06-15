@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SplashScreen -->
+    <dimen name="splash_screen_loading_text_size">14sp</dimen>
+    <dimen name="margin_top_loading_progress_bar">160dp</dimen>
+    <dimen name="margin_top_loading_text_view">16dp</dimen>
+    <dimen name="text_size_loading_text_view">14sp</dimen>
+    <dimen name="margin_bottom_logo_image_view">80dp</dimen>
+
+    <!-- MainActivity -->
+    <dimen name="margin_vertical_label_app_bar">14dp</dimen>
+    <dimen name="text_size_label_app_bar">21sp</dimen>
+    <dimen name="height_bottom_navigation_bar">60dp</dimen>
+    <dimen name="height_app_bar">80dp</dimen>
+
+    <!-- ProfileFragment -->
+    <dimen name="text_size_title_item">12sp</dimen>
+    <dimen name="margin_horizontal_default">20sp</dimen>
+    <dimen name="text_size_item">16sp</dimen>
+    <dimen name="height_divider">1dp</dimen>
+    <dimen name="height_profile_avatar_image">220dp</dimen>
+    <dimen name="text_size_profile_name">24sp</dimen>
+    <dimen name="height_space_default">16dp</dimen>
+    <dimen name="text_size_logout_button">16sp</dimen>
+    <dimen name="corner_radius_logout_button">2dp</dimen>
+
+</resources>

@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">SimbirSoftAppJava</string>
+
+    <!-- SplashScreen -->
+    <string name="splash_screen_loading">Загрузка…</string>
+
+    <!-- MainActivity -->
+    <string name="title_news">Новости</string>
+    <string name="title_search">Поиск</string>
+    <string name="title_help">Помочь</string>
+    <string name="title_history">История</string>
+    <string name="title_profile">Профиль</string>
+
+
+    <!-- ProfileFragment -->
+    <string name="date_of_birth_title">Дата рождения</string>
+    <string name="working_title">Сфера деятельности</string>
+    <string name="push_notifications">Получать push-уведомления</string>
+    <string name="list_friends_title">Ваши друзья</string>
+    <string name="logout_button_text">Выйти из аккаунта</string>
 </resources>
