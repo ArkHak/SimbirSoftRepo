@@ -22,6 +22,6 @@
     <dimen name="text_size_profile_name">24sp</dimen>
     <dimen name="height_space_default">16dp</dimen>
     <dimen name="text_size_logout_button">16sp</dimen>
-    <dimen name="corner_radius_logout_button">6dp</dimen>
+    <dimen name="corner_radius_logout_button">2dp</dimen>
 
 </resources>

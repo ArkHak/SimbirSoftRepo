@@ -6,5 +6,5 @@ data class User(
     val birthday: String = "07 июля 1996г.",
     val work: String = "Android developer",
     val isPush: Boolean = false,
-    val friendsList: List<Friend>,
+    val friendsList: List<Friend> = emptyList(),
 )

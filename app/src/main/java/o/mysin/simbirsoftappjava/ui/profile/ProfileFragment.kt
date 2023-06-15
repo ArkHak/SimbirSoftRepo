@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import o.mysin.simbirsoftappjava.R
@@ -23,7 +22,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         profileViewModel.userProfile
             .observe(viewLifecycleOwner) { renderData(it) }
 
-        initAdapter(profileViewModel.loadFriends())
+        profileViewModel.userProfile.value?.friendsList?.let { initAdapter(it) }
     }
 
     private fun renderData(user: User) {
@@ -39,8 +38,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun initAdapter(friendsList: List<Friend>) {
         val adapter = ProfileAdapter(friendsList)
-        binding.profileFriendRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.profileFriendRecyclerView.adapter = adapter
         binding.profileFriendRecyclerView.setHasFixedSize(true)
     }

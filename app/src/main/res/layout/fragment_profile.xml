@@ -59,6 +59,7 @@
                 android:id="@+id/profile_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:importantForAccessibility="no"
                 tools:src="@drawable/temp_image_man" />
 
@@ -157,7 +158,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_horizontal_default"
                 android:nestedScrollingEnabled="true"
-                tools:itemCount="10"
+                android:orientation="vertical"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:reverseLayout="false"
+                tools:itemCount="3"
                 tools:listitem="@layout/item_friends" />
 
             <androidx.legacy.widget.Space
@@ -178,12 +183,15 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="38dp"
                 android:backgroundTint="@color/leaf_light"
+                android:elevation="2dp"
                 android:fontFamily="sans-serif-medium"
                 android:letterSpacing="0.1"
+                android:stateListAnimator="@null"
                 android:text="@string/logout_button_text"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_logout_button"
+                android:translationZ="2dp"
                 app:cornerRadius="@dimen/corner_radius_logout_button" />
 
         </LinearLayout>
