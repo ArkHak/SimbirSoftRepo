@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import o.mysin.simbirsoftappjava.data.Friend
 import o.mysin.simbirsoftappjava.databinding.ItemFriendsBinding
 
-class ProfileAdapter(private val friendList: MutableList<Friend> = mutableListOf()) :
+class ProfileAdapter :
     RecyclerView.Adapter<ProfileViewHolder>() {
+    private var friendList: List<Friend> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding = ItemFriendsBinding.inflate(
@@ -29,8 +30,7 @@ class ProfileAdapter(private val friendList: MutableList<Friend> = mutableListOf
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateFriendsList(newFriendsList: List<Friend>) {
-        friendList.clear()
-        friendList.addAll(newFriendsList)
+        friendList = newFriendsList
         notifyDataSetChanged()
     }
 }
