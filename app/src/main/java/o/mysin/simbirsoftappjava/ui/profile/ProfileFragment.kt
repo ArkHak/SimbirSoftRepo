@@ -23,6 +23,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             .observe(viewLifecycleOwner) { renderData(it) }
 
         initAdapter()
+        initAction()
     }
 
     private fun renderData(user: User) {
@@ -30,8 +31,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             profileName.text = user.name
             profileBirthday.text = user.birthday
             profileWorking.text = user.work
-            profileAvatar.load(R.drawable.temp_image_man) {
-                crossfade(true)
+            user.avatarSrc?.let {
+                profileAvatar.load(it) {
+                    crossfade(true)
+                }
+            } ?: run {
+                profileAvatar.load(R.drawable.no_photo)
             }
         }
         adapter.updateFriendsList(user.friendsList)
@@ -41,5 +46,24 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         adapter = ProfileAdapter()
         binding.profileFriendRecyclerView.adapter = adapter
         binding.profileFriendRecyclerView.setHasFixedSize(true)
+    }
+
+    private fun initAction() {
+        binding.profileAvatar.setOnClickListener {
+            val imageDialogFragment = ProfileImageDialogFragment { item ->
+                when (item) {
+                    ItemPhotoSelector.SELECT -> {}
+
+                    ItemPhotoSelector.CREATE -> {}
+
+                    ItemPhotoSelector.DELETE -> profileViewModel.removeProfilePhoto()
+                }
+            }
+            imageDialogFragment.show(childFragmentManager, IMAGE_SELECTOR)
+        }
+    }
+
+    companion object {
+        private const val IMAGE_SELECTOR = "IMAGE_SELECTOR"
     }
 }

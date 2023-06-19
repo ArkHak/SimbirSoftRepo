@@ -24,4 +24,8 @@
     <dimen name="text_size_logout_button">16sp</dimen>
     <dimen name="corner_radius_logout_button">2dp</dimen>
 
+    <!-- DialogFragment -->
+    <dimen name="text_size_dialog_item">22sp</dimen>
+    <dimen name="margin_start_title_item_dialog_fragment">24dp</dimen>
+
 </resources>
