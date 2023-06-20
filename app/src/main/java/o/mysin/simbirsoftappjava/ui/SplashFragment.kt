@@ -1,10 +1,10 @@
-package o.mysin.simbirsoftappjava
+package o.mysin.simbirsoftappjava.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import o.mysin.simbirsoftappjava.ui.MainActivity
+import o.mysin.simbirsoftappjava.R
 
 class SplashFragment : AppCompatActivity() {
 

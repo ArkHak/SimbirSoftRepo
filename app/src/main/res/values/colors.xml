@@ -12,5 +12,8 @@
     <color name="leaf_light">#FF66A636</color>
     <color name="leaf_light_super">#FFA5D184</color>
     <color name="turtle_green">#FF7DB354</color>
+    <color name="light_olive_green">#FF9EBF50</color>
     <color name="cool_grey">#FFAABBBB</color>
+    <color name="light_grey">#FFEAEDE8</color>
+
 </resources>

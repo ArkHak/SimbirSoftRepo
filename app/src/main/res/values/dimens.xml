@@ -28,4 +28,7 @@
     <dimen name="text_size_dialog_item">22sp</dimen>
     <dimen name="margin_start_title_item_dialog_fragment">24dp</dimen>
 
+    <!-- HelpFragment -->
+    <dimen name="text_size_help_select">16sp</dimen>
+    <dimen name="item_helps_margin">8dp</dimen>
 </resources>

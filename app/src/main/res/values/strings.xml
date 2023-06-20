@@ -23,4 +23,7 @@
     <string name="removed_photo">Удалить</string>
     <string name="warning_permission_create_photo">Для добавления фотографии необходимо предоставить доступ в настройках приложения</string>
 
+    <!-- HelpFragment -->
+    <string name="select_help">Выберете категорию помощи</string>
+
 </resources>
