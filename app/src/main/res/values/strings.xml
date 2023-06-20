@@ -21,4 +21,6 @@
     <string name="select_photo">Выбрать фото</string>
     <string name="create_photo">Сделать снимок</string>
     <string name="removed_photo">Удалить</string>
+    <string name="warning_permission_create_photo">Для добавления фотографии необходимо предоставить доступ в настройках приложения</string>
+
 </resources>
