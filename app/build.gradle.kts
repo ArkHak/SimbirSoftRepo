@@ -67,4 +67,7 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil:1.4.0")
+
+    // ViewPager2
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }
