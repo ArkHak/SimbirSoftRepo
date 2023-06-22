@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Common -->
+    <dimen name="margin_default">20sp</dimen>
+
     <!-- SplashScreen -->
     <dimen name="splash_screen_loading_text_size">14sp</dimen>
     <dimen name="margin_top_loading_progress_bar">160dp</dimen>
@@ -15,7 +18,6 @@
 
     <!-- ProfileFragment -->
     <dimen name="text_size_title_item">12sp</dimen>
-    <dimen name="margin_horizontal_default">20sp</dimen>
     <dimen name="text_size_item">16sp</dimen>
     <dimen name="height_divider">1dp</dimen>
     <dimen name="height_profile_avatar_image">220dp</dimen>

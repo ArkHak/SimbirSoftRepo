@@ -18,7 +18,15 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.SimbirSoftAppJava" />
+            android:theme="@style/Theme.SimbirSoftAppJava">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
         <activity
             android:name=".ui.SplashFragment"
             android:exported="true"

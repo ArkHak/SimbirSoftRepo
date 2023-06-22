@@ -1,5 +1,7 @@
 package o.mysin.simbirsoftappjava.ui.search
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -14,6 +16,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private val binding: FragmentSearchBinding by viewBinding()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        requireActivity().apply {
+            val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+            binding.searchView.apply {
+                setSearchableInfo(searchManager.getSearchableInfo(componentName))
+                setIconifiedByDefault(false)
+            }
+        }
 
         initViewPager()
     }

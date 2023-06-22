@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/margin_horizontal_default"
+                android:layout_marginEnd="@dimen/margin_default"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_edit" />
 
@@ -71,7 +71,7 @@
                 android:id="@+id/profile_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:textColor="@color/black_87"
                 android:textSize="@dimen/text_size_profile_name"
                 tools:text="Константинов Денис" />
@@ -84,7 +84,7 @@
                 style="@style/profile_title_item_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/date_of_birth_title" />
 
             <TextView
@@ -92,7 +92,7 @@
                 style="@style/profile_item_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 tools:text="01 февраля 1980" />
 
             <androidx.legacy.widget.Space
@@ -103,7 +103,7 @@
                 style="@style/profile_title_item_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/working_title" />
 
             <TextView
@@ -111,7 +111,7 @@
                 style="@style/profile_item_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 tools:text="Хирургия, травмотология" />
 
             <androidx.legacy.widget.Space
@@ -123,7 +123,7 @@
                 style="@style/profile_item_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/push_notifications"
                 app:thumbTint="@color/leaf"
                 app:trackTint="@drawable/color_switch_selector" />
@@ -145,7 +145,7 @@
                 style="@style/profile_title_item_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/list_friends_title" />
 
             <androidx.legacy.widget.Space
@@ -156,7 +156,7 @@
                 android:id="@+id/profile_friend_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:nestedScrollingEnabled="true"
                 android:orientation="vertical"
                 android:overScrollMode="never"
