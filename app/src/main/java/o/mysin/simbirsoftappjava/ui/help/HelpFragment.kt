@@ -14,22 +14,26 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
 
     private val binding: FragmentHelpBinding by viewBinding()
     private val helpViewModel: HelpViewModel by viewModels()
-    private lateinit var adapter: HelpAdapter
+    private val adapter: HelpAdapter by lazy { HelpAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initAdapter()
+        initRecycler()
+        updateData()
     }
 
-    private fun initAdapter() {
-        adapter = HelpAdapter()
-        adapter.updateHelpCategoryList(helpViewModel.loadHelpCategory())
+
+    private fun initRecycler() {
         binding.helpItemRecyclerView.adapter = adapter
 
-        binding.helpItemRecyclerView.setHasFixedSize(true)
-        binding.helpItemRecyclerView.addItemDecoration(MarginDecoration(binding.root.context))
+        binding.helpItemRecyclerView.apply {
+            setHasFixedSize(true)
+            addItemDecoration(MarginDecoration(binding.root.context))
+        }
     }
 
-
+    private fun updateData() {
+        adapter.updateHelpCategoryList(helpViewModel.loadHelpCategory())
+    }
 }

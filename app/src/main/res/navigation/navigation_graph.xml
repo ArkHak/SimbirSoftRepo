@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/fragment_search"
-        android:name="o.mysin.simbirsoftappjava.ui.search.SearchFragment"
+        android:name="o.mysin.simbirsoftappjava.ui.search.main.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 </navigation>

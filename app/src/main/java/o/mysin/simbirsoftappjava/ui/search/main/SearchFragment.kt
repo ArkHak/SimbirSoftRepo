@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.search
+package o.mysin.simbirsoftappjava.ui.search.main
 
 import android.app.SearchManager
 import android.content.Context
@@ -14,6 +14,7 @@ import o.mysin.simbirsoftappjava.utils.ZoomOutPageTransformer
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private val binding: FragmentSearchBinding by viewBinding()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,8 +42,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun tabNames(type: Int): String? {
         when (type) {
-            SearchTypeNumber.EVENTS.number -> return getString(R.string.tab_name_search_by_events)
-            SearchTypeNumber.NKO.number -> return getString(R.string.tab_name_search_by_nko)
+            SearchTypeNumber.EVENTS.ordinal -> return getString(SearchTypeNumber.EVENTS.titleId)
+            SearchTypeNumber.NKO.ordinal -> return getString(SearchTypeNumber.NKO.titleId)
         }
         return null
     }

@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.search
+package o.mysin.simbirsoftappjava.ui.search.nko
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,39 +8,38 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
+import o.mysin.simbirsoftappjava.data.Event
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByNkoBinding
+import o.mysin.simbirsoftappjava.ui.search.SearchViewModel
 
 
-class SearchByNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
+class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
 
     private val binding: FragmentSearchByNkoBinding by viewBinding()
     private val searchViewModel: SearchViewModel by viewModels()
-    private lateinit var adapter: SearchAdapter
-    private var firstInit = false
+    private val adapter: SearchNKOAdapter by lazy { SearchNKOAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initAdapter()
+        searchViewModel.nkoList
+            .observe(viewLifecycleOwner) { renderData(it) }
+
+        initRecycler()
     }
+
 
     override fun onResume() {
         super.onResume()
-        repeatRandomLoadEvents()
+        searchViewModel.loadResultList()
     }
 
-    private fun repeatRandomLoadEvents() {
-        if (firstInit) {
-            adapter.updateEventList(searchViewModel.getRandomList())
-        }
+    private fun renderData(nkoList: List<Event>?) {
+        nkoList?.let { adapter.updateEventList(it) }
     }
 
-    private fun initAdapter() {
-        firstInit = true
-        adapter = SearchAdapter()
-        adapter.updateEventList(searchViewModel.getRandomList())
+    private fun initRecycler() {
         binding.searchNkoItemRecyclerView.adapter = adapter
-
 
         val divider = ContextCompat.getDrawable(requireContext(), R.drawable.divider)
 
@@ -48,11 +47,9 @@ class SearchByNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
             androidx.recyclerview.widget.DividerItemDecoration(
                 requireContext(),
                 LinearLayoutManager.VERTICAL
-            )
-                .apply { divider?.let { setDrawable(it) } }
+            ).apply { divider?.let { setDrawable(it) } }
         )
 
     }
-
 
 }

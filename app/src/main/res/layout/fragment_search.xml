@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/leaf_light"
     android:orientation="vertical"
-    tools:context=".ui.search.SearchFragment">
+    tools:context=".ui.search.main.SearchFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

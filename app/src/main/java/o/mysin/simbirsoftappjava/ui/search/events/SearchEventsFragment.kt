@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.search
+package o.mysin.simbirsoftappjava.ui.search.events
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import o.mysin.simbirsoftappjava.R
 
-class SearchByEventsFragment : Fragment() {
+class SearchEventsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
