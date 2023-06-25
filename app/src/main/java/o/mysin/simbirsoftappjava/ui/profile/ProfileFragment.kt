@@ -20,6 +20,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var adapter: ProfileAdapter
 
+    private val permission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            when {
+                granted -> {
+                    cameraActivityLauncher.launch()
+                }
+
+                !shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
+                    showWarningPictureToast()
+                }
+
+                else -> {
+                    showWarningPictureToast()
+                }
+            }
+        }
+
+    private val cameraActivityLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+            binding.profileAvatar.setImageBitmap(bitmap)
+        }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -54,52 +76,35 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun initAction() {
         binding.profileAvatar.setOnClickListener {
-            val imageDialogFragment = ProfileImageDialogFragment { item ->
-                when (item) {
-                    ItemPhotoSelector.SELECT -> {}
+            ProfileImageDialogFragment().show(childFragmentManager, IMAGE_SELECTOR)
+        }
 
-                    ItemPhotoSelector.CREATE -> takePhoto()
+        childFragmentManager.setFragmentResultListener(
+            REQUEST_KEY,
+            viewLifecycleOwner
+        ) { _, bundle ->
+            when (bundle.getInt(ITEM_KEY)) {
+                ItemPhotoSelector.SELECT.ordinal -> {}
 
-                    ItemPhotoSelector.DELETE -> profileViewModel.removeProfilePhoto()
-                }
+                ItemPhotoSelector.CREATE.ordinal -> takePhoto()
+
+                ItemPhotoSelector.DELETE.ordinal -> profileViewModel.removeProfilePhoto()
             }
-            imageDialogFragment.show(childFragmentManager, IMAGE_SELECTOR)
         }
     }
 
+
     private fun takePhoto() {
         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-            warningPictureToast()
+            showWarningPictureToast()
         } else {
             permission.launch(Manifest.permission.CAMERA)
         }
     }
 
-    private val permission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            when {
-                granted -> {
-                    camera.launch()
-                }
-
-                !shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
-                    warningPictureToast()
-                }
-
-                else -> {
-                    warningPictureToast()
-                }
-            }
-        }
-
-    private val camera =
-        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
-            binding.profileAvatar.setImageBitmap(bitmap)
-        }
-
-    private fun warningPictureToast() {
+    private fun showWarningPictureToast() {
         Toast.makeText(
-            binding.root.context,
+            requireContext(),
             resources.getText(R.string.warning_permission_create_photo),
             Toast.LENGTH_SHORT,
         ).show()
@@ -107,5 +112,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     companion object {
         private const val IMAGE_SELECTOR = "IMAGE_SELECTOR"
+        private const val REQUEST_KEY = "REQUEST_KEY"
+        private const val ITEM_KEY = "ITEM_KEY"
     }
 }

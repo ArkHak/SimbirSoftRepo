@@ -3,48 +3,55 @@ package o.mysin.simbirsoftappjava.ui.profile
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import o.mysin.simbirsoftappjava.R
+import o.mysin.simbirsoftappjava.databinding.DialogFragmentImageSelectorBinding
 
-class ProfileImageDialogFragment(
-    val clickListenerCreatePhoto: (ItemPhotoSelector) -> Unit,
-) : DialogFragment() {
+class ProfileImageDialogFragment : DialogFragment() {
+
+    private var _binding: DialogFragmentImageSelectorBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        _binding = DialogFragmentImageSelectorBinding.inflate(layoutInflater)
         val builder = AlertDialog.Builder(requireContext())
-        val inflater = requireActivity().layoutInflater
-        val view = inflater.inflate(R.layout.dialog_fragment_image_selector, null)
-        builder.setView(view)
-
-        initItemClickListener(view)
-
+        builder.setView(binding.root)
+        initItemsClickListener()
         return builder.create()
     }
 
-    private fun initItemClickListener(view: View) {
-        view.findViewById<View>(R.id.item_select_photo).apply {
-            setOnClickListener {
-                dismiss()
-                clickListenerCreatePhoto(ItemPhotoSelector.SELECT)
-            }
+    private fun initItemsClickListener() {
+        binding.itemSelectPhoto.setOnClickListener {
+            val resultData = bundleOf(ITEM_KEY to ItemPhotoSelector.SELECT.ordinal)
+            parentFragmentManager.setFragmentResult(REQUEST_KEY, resultData)
+            dismiss()
         }
 
-        view.findViewById<View>(R.id.item_create_photo).apply {
-            setOnClickListener {
-                dismiss()
-                clickListenerCreatePhoto(ItemPhotoSelector.CREATE)
-            }
+        binding.itemCreatePhoto.setOnClickListener {
+            val resultData = bundleOf(ITEM_KEY to ItemPhotoSelector.CREATE.ordinal)
+            parentFragmentManager.setFragmentResult(REQUEST_KEY, resultData)
+            dismiss()
         }
 
-        view.findViewById<View>(R.id.item_delete_photo).apply {
-            setOnClickListener {
-                dismiss()
-                clickListenerCreatePhoto(ItemPhotoSelector.DELETE)
-            }
+        binding.itemDeletePhoto.setOnClickListener {
+            val resultData = bundleOf(ITEM_KEY to ItemPhotoSelector.DELETE.ordinal)
+            parentFragmentManager.setFragmentResult(REQUEST_KEY, resultData)
+            dismiss()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+    companion object {
+        private const val REQUEST_KEY = "REQUEST_KEY"
+        private const val ITEM_KEY = "ITEM_KEY"
+    }
 }
+
 
 enum class ItemPhotoSelector {
     SELECT,
