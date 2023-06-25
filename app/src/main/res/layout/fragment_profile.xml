@@ -21,13 +21,11 @@
 
             <TextView
                 android:id="@+id/label_fragment_text_vew"
-                style="@style/title_font"
+                style="@style/TextStyle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/title_profile"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_label_app_bar" />
+                android:text="@string/title_profile" />
 
             <ImageView
                 android:id="@+id/button_profile_edit"
@@ -68,10 +66,10 @@
 
             <TextView
                 android:id="@+id/profile_name"
-                style="@style/default_font"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_default"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black_87"
                 android:textSize="@dimen/text_size_profile_name"
                 tools:text="Константинов Денис" />
@@ -89,7 +87,7 @@
 
             <TextView
                 android:id="@+id/profile_birthday"
-                style="@style/profile_item_text_view"
+                style="@style/TextStyle8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_default"
@@ -108,7 +106,7 @@
 
             <TextView
                 android:id="@+id/profile_working"
-                style="@style/profile_item_text_view"
+                style="@style/TextStyle8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_default"
@@ -120,7 +118,7 @@
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/push_notifications"
-                style="@style/profile_item_text_view"
+                style="@style/TextStyle8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_default"
@@ -177,7 +175,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout_button"
-                style="@style/button_font"
+                style="@style/TextStyle7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -185,12 +183,10 @@
                 android:layout_marginBottom="38dp"
                 android:backgroundTint="@color/leaf_light"
                 android:elevation="2dp"
-                android:letterSpacing="0.1"
+                android:gravity="center"
                 android:stateListAnimator="@null"
                 android:text="@string/logout_button_text"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_logout_button"
                 android:translationZ="2dp"
                 app:cornerRadius="@dimen/corner_radius_logout_button" />
 

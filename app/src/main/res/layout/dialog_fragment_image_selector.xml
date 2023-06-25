@@ -22,12 +22,11 @@
             android:src="@drawable/ic_upload" />
 
         <TextView
-            style="@style/default_font"
+            style="@style/TextStyle16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_title_item_dialog_fragment"
-            android:text="@string/select_photo"
-            android:textSize="@dimen/text_size_dialog_item" />
+            android:text="@string/select_photo" />
 
     </LinearLayout>
 
@@ -46,12 +45,11 @@
             android:src="@drawable/ic_camera" />
 
         <TextView
-            style="@style/default_font"
+            style="@style/TextStyle16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_title_item_dialog_fragment"
-            android:text="@string/create_photo"
-            android:textSize="@dimen/text_size_dialog_item" />
+            android:text="@string/create_photo" />
 
     </LinearLayout>
 
@@ -70,12 +68,11 @@
             android:src="@drawable/ic_delete" />
 
         <TextView
-            style="@style/default_font"
+            style="@style/TextStyle16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_title_item_dialog_fragment"
-            android:text="@string/removed_photo"
-            android:textSize="@dimen/text_size_dialog_item" />
+            android:text="@string/removed_photo" />
 
     </LinearLayout>
 

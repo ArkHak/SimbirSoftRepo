@@ -22,13 +22,11 @@
 
             <TextView
                 android:id="@+id/label_fragment_text_vew"
-                style="@style/title_font"
+                style="@style/TextStyle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/title_help"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_label_app_bar" />
+                android:text="@string/title_help" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -48,13 +46,11 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/default_font"
+                style="@style/TextStyle5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/select_help"
-                android:textColor="@color/black_87"
-                android:textSize="@dimen/text_size_help_select" />
+                android:text="@string/select_help" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/help_item_recycler_view"

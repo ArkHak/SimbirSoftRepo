@@ -28,9 +28,6 @@ class MarginDecoration(context: Context) : RecyclerView.ItemDecoration() {
         outRect.left = margin - column * margin / spanCount
         outRect.right = (column + 1) * margin / spanCount
 
-        if (position < spanCount) {
-            outRect.top = margin
-        }
         outRect.bottom = margin
     }
 }
