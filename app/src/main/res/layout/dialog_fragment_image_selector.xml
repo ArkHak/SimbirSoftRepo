@@ -22,6 +22,7 @@
             android:src="@drawable/ic_upload" />
 
         <TextView
+            style="@style/default_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_title_item_dialog_fragment"
@@ -45,6 +46,7 @@
             android:src="@drawable/ic_camera" />
 
         <TextView
+            style="@style/default_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_title_item_dialog_fragment"
@@ -68,6 +70,7 @@
             android:src="@drawable/ic_delete" />
 
         <TextView
+            style="@style/default_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_title_item_dialog_fragment"

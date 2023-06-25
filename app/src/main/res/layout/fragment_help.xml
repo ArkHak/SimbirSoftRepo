@@ -22,14 +22,13 @@
 
             <TextView
                 android:id="@+id/label_fragment_text_vew"
+                style="@style/title_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="sans-serif-medium"
                 android:text="@string/title_help"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_label_app_bar"
-                android:textStyle="bold" />
+                android:textSize="@dimen/text_size_label_app_bar" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -49,6 +48,7 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/default_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

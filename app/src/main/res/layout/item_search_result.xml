@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/item_title"
+        style="@style/default_font"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -18,14 +19,14 @@
         android:maxLines="1"
         android:textColor="@color/black_87"
         android:textSize="@dimen/text_size_item"
-        tools:text="Евгений Александров" />
+        tools:text="Благотворительный фонд" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_chevron_right"
-        android:importantForAccessibility="no" />
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_chevron_right" />
 
 
 </LinearLayout>

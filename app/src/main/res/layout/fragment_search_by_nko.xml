@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/default_font"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ключевые слова: мастер-класс, помощь"

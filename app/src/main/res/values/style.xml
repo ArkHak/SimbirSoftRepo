@@ -11,17 +11,31 @@
 
     <style name="profile_title_item_text_view">
         <item name="android:textColor">@color/black_38</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/text_size_title_item</item>
     </style>
 
     <style name="profile_item_text_view">
         <item name="android:textColor">@color/black_87</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/text_size_item</item>
     </style>
 
-    <style name="CustomTextAppearanceTabLayout" parent="TextAppearance.Design.Tab">
+    <style name="custom_text_appearance_tab_layout" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="title_font" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/officina_sans_extra_bold_scc</item>
+    </style>
+
+    <style name="default_font" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="button_font" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
 
