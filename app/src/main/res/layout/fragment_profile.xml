@@ -21,21 +21,18 @@
 
             <TextView
                 android:id="@+id/label_fragment_text_vew"
+                style="@style/TextStyle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/title_profile"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_label_app_bar"
-                android:textStyle="bold" />
+                android:text="@string/title_profile" />
 
             <ImageView
                 android:id="@+id/button_profile_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/margin_horizontal_default"
+                android:layout_marginEnd="@dimen/margin_default"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_edit" />
 
@@ -71,7 +68,8 @@
                 android:id="@+id/profile_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black_87"
                 android:textSize="@dimen/text_size_profile_name"
                 tools:text="Константинов Денис" />
@@ -84,15 +82,15 @@
                 style="@style/profile_title_item_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/date_of_birth_title" />
 
             <TextView
                 android:id="@+id/profile_birthday"
-                style="@style/profile_item_text_view"
+                style="@style/TextStyle8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 tools:text="01 февраля 1980" />
 
             <androidx.legacy.widget.Space
@@ -103,15 +101,15 @@
                 style="@style/profile_title_item_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/working_title" />
 
             <TextView
                 android:id="@+id/profile_working"
-                style="@style/profile_item_text_view"
+                style="@style/TextStyle8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 tools:text="Хирургия, травмотология" />
 
             <androidx.legacy.widget.Space
@@ -120,10 +118,10 @@
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/push_notifications"
-                style="@style/profile_item_text_view"
+                style="@style/TextStyle8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/push_notifications"
                 app:thumbTint="@color/leaf"
                 app:trackTint="@drawable/color_switch_selector" />
@@ -145,7 +143,7 @@
                 style="@style/profile_title_item_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/list_friends_title" />
 
             <androidx.legacy.widget.Space
@@ -156,7 +154,7 @@
                 android:id="@+id/profile_friend_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_horizontal_default"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:nestedScrollingEnabled="true"
                 android:orientation="vertical"
                 android:overScrollMode="never"
@@ -177,6 +175,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout_button"
+                style="@style/TextStyle7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -184,13 +183,10 @@
                 android:layout_marginBottom="38dp"
                 android:backgroundTint="@color/leaf_light"
                 android:elevation="2dp"
-                android:fontFamily="sans-serif-medium"
-                android:letterSpacing="0.1"
+                android:gravity="center"
                 android:stateListAnimator="@null"
                 android:text="@string/logout_button_text"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_logout_button"
                 android:translationZ="2dp"
                 app:cornerRadius="@dimen/corner_radius_logout_button" />
 

@@ -30,4 +30,8 @@ class ProfileViewModel : ViewModel() {
         )
         _userProfile.value = _userProfile.value?.copy(friendsList = list)
     }
+
+    fun removeProfilePhoto() {
+        _userProfile.value = _userProfile.value?.copy(avatarSrc = null)
+    }
 }

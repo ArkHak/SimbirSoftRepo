@@ -24,12 +24,11 @@
 
     <TextView
         android:id="@+id/item_name"
+        style="@style/TextStyle8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/margin_horizontal_default"
-        android:textColor="@color/black_87"
-        android:textSize="@dimen/text_size_item"
+        android:layout_marginStart="@dimen/margin_default"
         tools:text="Евгений Александров" />
 
 </LinearLayout>

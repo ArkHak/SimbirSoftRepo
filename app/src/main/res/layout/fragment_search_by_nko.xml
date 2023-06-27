@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey_two"
+    android:orientation="vertical"
+    tools:context=".ui.search.nko.SearchNKOFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_default"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="72dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextStyle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ключевые слова: мастер-класс, помощь" />
+
+        <TextView
+            style="@style/TextStyle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Результаты поиска: 109 мероприятий" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/result_search_view_border">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_nko_item_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:background="@android:color/transparent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_search_result" />
+    </RelativeLayout>
+
+
+</LinearLayout>
