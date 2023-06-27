@@ -40,11 +40,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }.attach()
     }
 
-    private fun tabNames(type: Int): String? {
-        when (type) {
-            SearchTypeNumber.EVENTS.ordinal -> return getString(SearchTypeNumber.EVENTS.titleId)
-            SearchTypeNumber.NKO.ordinal -> return getString(SearchTypeNumber.NKO.titleId)
-        }
-        return null
-    }
+    private fun tabNames(type: Int): String = getString(SearchTypeNumber.getTitleIdByIndex(type))
+
 }

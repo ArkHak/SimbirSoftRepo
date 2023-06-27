@@ -10,13 +10,12 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.data.Event
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByNkoBinding
-import o.mysin.simbirsoftappjava.ui.search.SearchViewModel
 
 
 class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
 
     private val binding: FragmentSearchByNkoBinding by viewBinding()
-    private val searchViewModel: SearchViewModel by viewModels()
+    private val searchViewModel: SearchNKOViewModel by viewModels()
     private val adapter: SearchNKOAdapter by lazy { SearchNKOAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,8 +33,8 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
         searchViewModel.loadResultList()
     }
 
-    private fun renderData(nkoList: List<Event>?) {
-        nkoList?.let { adapter.updateEventList(it) }
+    private fun renderData(nkoList: List<Event>) {
+        adapter.updateEventList(nkoList)
     }
 
     private fun initRecycler() {
