@@ -1,6 +1,7 @@
 package o.mysin.simbirsoftappjava.ui.profile
 
 import android.Manifest
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -37,9 +38,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
         }
 
+
     private val cameraActivityLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
             binding.profileAvatar.setImageBitmap(bitmap)
+        }
+
+    private val galleryActivityLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                binding.profileAvatar.setImageURI(uri)
+            }
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -84,17 +93,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             viewLifecycleOwner
         ) { _, bundle ->
             when (bundle.getInt(ITEM_KEY)) {
-                ItemPhotoSelector.SELECT.ordinal -> {}
+                ItemPhotoSelector.SELECT.ordinal -> takePhotoGallery()
 
-                ItemPhotoSelector.CREATE.ordinal -> takePhoto()
+                ItemPhotoSelector.CREATE.ordinal -> takePhotoCamera()
 
                 ItemPhotoSelector.DELETE.ordinal -> profileViewModel.removeProfilePhoto()
             }
         }
     }
 
+    private fun takePhotoGallery() {
+        galleryActivityLauncher.launch("image/*")
+    }
 
-    private fun takePhoto() {
+    private fun takePhotoCamera() {
         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
             showWarningPictureToast()
         } else {
