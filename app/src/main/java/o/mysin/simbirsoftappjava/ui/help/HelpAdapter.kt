@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.data.HelpCategory
+import o.mysin.simbirsoftappjava.data.entity.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.ItemHelpsBinding
 
 class HelpAdapter :
     RecyclerView.Adapter<HelpViewHolder>() {
-    private var helpCategoryList: List<HelpCategory> = emptyList()
+    private var _helpCategoryList: List<HelpCategory> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HelpViewHolder {
         val binding = ItemHelpsBinding.inflate(
@@ -21,16 +21,16 @@ class HelpAdapter :
     }
 
     override fun getItemCount(): Int {
-        return helpCategoryList.size
+        return _helpCategoryList.size
     }
 
     override fun onBindViewHolder(holder: HelpViewHolder, position: Int) {
-        holder.bind(helpCategoryList[position])
+        holder.bind(_helpCategoryList[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateHelpCategoryList(newHelpCategoryList: List<HelpCategory>) {
-        helpCategoryList = newHelpCategoryList
+    fun updateHelpCategoryList(helpCategoryList: List<HelpCategory>) {
+        _helpCategoryList = helpCategoryList
         notifyDataSetChanged()
     }
 }

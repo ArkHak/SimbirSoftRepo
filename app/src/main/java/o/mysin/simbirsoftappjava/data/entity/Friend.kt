@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.data
+package o.mysin.simbirsoftappjava.data.entity
 
 import o.mysin.simbirsoftappjava.R
 

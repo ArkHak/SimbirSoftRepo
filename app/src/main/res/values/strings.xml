@@ -30,5 +30,20 @@
     <string name="tab_name_search_by_events">По мероприятиям</string>
     <string name="tab_name_search_by_nko">По НКО</string>
     <string name="hint_input_name_organization">Введите название организации</string>
+    <string name="title_filter">Фильтр</string>
+    <string name="category_help">Категории помощи:</string>
+    <string name="title_item_filter_money">Деньгами</string>
+    <string name="titile_item_filter_thing">Вещами</string>
+    <string name="title_item_filter_prof_helps">Проф. помощью</string>
+    <string name="titile_item_filter_volunteering">Волонтерством</string>
+
+    <!-- HelpCategory -->
+    <string name="title_help_children">Дети</string>
+    <string name="title_help_adults">Взрослые</string>
+    <string name="title_help_elderly">Пожилые</string>
+    <string name="title_help_animals">Animals</string>
+    <string name="title_help_events">Мероприятия</string>
+    <string name="tmp_key_words">Ключевые слова: мастер-класс, помощь</string>
+    <string name="tmp_result_search">Результаты поиска: 109 мероприятий</string>
 
 </resources>

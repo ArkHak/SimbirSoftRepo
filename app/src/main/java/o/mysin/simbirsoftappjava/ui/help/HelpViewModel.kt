@@ -1,18 +1,30 @@
 package o.mysin.simbirsoftappjava.ui.help
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.HelpCategory
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import o.mysin.simbirsoftappjava.data.db.HelpCategoryRepository
+import o.mysin.simbirsoftappjava.data.entity.HelpCategory
 
-class HelpViewModel : ViewModel() {
+class HelpViewModel(
+    private val helpCategoryRepository: HelpCategoryRepository,
+) : ViewModel() {
 
-    fun loadHelpCategory(): List<HelpCategory> {
-        return listOf(
-            HelpCategory(title = "Дети", icon = R.mipmap.help_children),
-            HelpCategory(title = "Взрослые", icon = R.mipmap.help_adults),
-            HelpCategory(title = "Пожилые", icon = R.mipmap.help_old_aged),
-            HelpCategory(title = "Животные", icon = R.mipmap.help_animals),
-            HelpCategory(title = "Мероприятия", icon = R.mipmap.help_events),
-        )
+
+    private val _helpCategoryList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
+    val helpCategoryList: LiveData<List<HelpCategory>>
+        get() = _helpCategoryList
+
+    init {
+        loadHelpCategory()
     }
+
+    private fun loadHelpCategory() {
+        viewModelScope.launch {
+            _helpCategoryList.value = helpCategoryRepository.getHelpCategory()
+        }
+    }
+
 }

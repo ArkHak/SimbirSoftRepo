@@ -21,7 +21,11 @@
         android:id="@+id/fragment_news"
         android:name="o.mysin.simbirsoftappjava.ui.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_fragment_news_to_filtersFragment"
+            app:destination="@id/filtersFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_profile"
@@ -34,4 +38,9 @@
         android:name="o.mysin.simbirsoftappjava.ui.search.main.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/filtersFragment"
+        android:name="o.mysin.simbirsoftappjava.ui.filter.FilterFragment"
+        android:label="fragment_filters"
+        tools:layout="@layout/fragment_filter" />
 </navigation>

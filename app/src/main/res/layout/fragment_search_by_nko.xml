@@ -20,20 +20,20 @@
             style="@style/TextStyle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ключевые слова: мастер-класс, помощь" />
+            android:text="@string/tmp_key_words" />
 
         <TextView
             style="@style/TextStyle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Результаты поиска: 109 мероприятий" />
+            android:text="@string/tmp_result_search" />
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/result_search_view_border">
+        android:background="@drawable/gray_view_border">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_nko_item_recycler_view"

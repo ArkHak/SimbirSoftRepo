@@ -12,8 +12,9 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.User
+import o.mysin.simbirsoftappjava.data.entity.User
 import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
+import o.mysin.simbirsoftappjava.utils.convertTime
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -64,7 +65,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun renderData(user: User) {
         with(binding) {
             profileName.text = user.name
-            profileBirthday.text = user.birthday
+            profileBirthday.text = convertTime(user.birthday)
             profileWorking.text = user.work
             user.avatarSrc?.let {
                 profileAvatar.load(it) {

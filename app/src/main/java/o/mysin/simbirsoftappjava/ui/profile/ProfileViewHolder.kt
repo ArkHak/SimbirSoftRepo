@@ -3,7 +3,7 @@ package o.mysin.simbirsoftappjava.ui.profile
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import o.mysin.simbirsoftappjava.data.Friend
+import o.mysin.simbirsoftappjava.data.entity.Friend
 import o.mysin.simbirsoftappjava.databinding.ItemFriendsBinding
 
 class ProfileViewHolder(private val binding: ItemFriendsBinding) :
