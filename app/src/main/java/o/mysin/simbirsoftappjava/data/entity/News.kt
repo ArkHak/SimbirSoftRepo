@@ -5,7 +5,7 @@ data class News(
     val pictureUrl: Int,
     val title: String,
     val description: String,
-    val dateTime: Long,
-    val period: Long,
+    val startDateTime: Long,
+    val endDateTime: Long,
     val listHelpCategoryId: List<Int>,
 )

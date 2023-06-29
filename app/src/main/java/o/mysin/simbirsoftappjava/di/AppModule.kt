@@ -21,7 +21,7 @@ val appModule = module {
     }
 
     viewModel {
-        NewsViewModel(get())
+        NewsViewModel(get(), get())
     }
 
     single<HelpCategoryRepository> {

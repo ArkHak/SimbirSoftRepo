@@ -26,6 +26,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         initActionButtons()
     }
 
+    override fun onResume() {
+        super.onResume()
+        newsViewModel.loadNews()
+    }
+
     private fun renderData(newsList: List<News>) {
         adapter.updateNewsList(newsList)
     }

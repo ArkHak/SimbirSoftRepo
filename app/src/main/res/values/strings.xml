@@ -11,7 +11,6 @@
     <string name="title_history">История</string>
     <string name="title_profile">Профиль</string>
 
-
     <!-- ProfileFragment -->
     <string name="date_of_birth_title">Дата рождения</string>
     <string name="working_title">Сфера деятельности</string>
@@ -25,7 +24,6 @@
 
     <!-- HelpFragment -->
     <string name="select_help">Выберете категорию помощи</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_name_search_by_events">По мероприятиям</string>
     <string name="tab_name_search_by_nko">По НКО</string>
@@ -37,13 +35,15 @@
     <string name="title_item_filter_prof_helps">Проф. помощью</string>
     <string name="titile_item_filter_volunteering">Волонтерством</string>
 
+    <!-- SearchFragmentNKO-->
+    <string name="tmp_key_words">Ключевые слова: мастер-класс, помощь</string>
+    <string name="tmp_result_search">Результаты поиска: 109 мероприятий</string>
+
     <!-- HelpCategory -->
     <string name="title_help_children">Дети</string>
     <string name="title_help_adults">Взрослые</string>
     <string name="title_help_elderly">Пожилые</string>
-    <string name="title_help_animals">Animals</string>
+    <string name="title_help_animals">Животные</string>
     <string name="title_help_events">Мероприятия</string>
-    <string name="tmp_key_words">Ключевые слова: мастер-класс, помощь</string>
-    <string name="tmp_result_search">Результаты поиска: 109 мероприятий</string>
 
 </resources>

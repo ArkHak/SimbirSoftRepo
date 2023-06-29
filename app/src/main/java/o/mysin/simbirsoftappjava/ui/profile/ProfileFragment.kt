@@ -14,7 +14,7 @@ import coil.load
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.data.entity.User
 import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
-import o.mysin.simbirsoftappjava.utils.convertTime
+import o.mysin.simbirsoftappjava.utils.convertDateTimeProfile
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -65,7 +65,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun renderData(user: User) {
         with(binding) {
             profileName.text = user.name
-            profileBirthday.text = convertTime(user.birthday)
+            profileBirthday.text = convertDateTimeProfile(user.birthday)
             profileWorking.text = user.work
             user.avatarSrc?.let {
                 profileAvatar.load(it) {
