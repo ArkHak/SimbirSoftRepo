@@ -19,7 +19,6 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     private val filterViewModel: FilterViewModel by viewModel()
     private val adapter: FilterAdapter by lazy { FilterAdapter() }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

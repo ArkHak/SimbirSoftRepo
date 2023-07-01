@@ -77,6 +77,9 @@ dependencies {
     // Kotlinx datetime
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
+    //Gson
+    implementation("com.google.code.gson:gson:2.10")
+
     // Koin
     implementation("io.insert-koin:koin-android:3.3.0")
 }

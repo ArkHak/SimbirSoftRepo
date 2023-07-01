@@ -27,7 +27,6 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
         initRecycler()
     }
 
-
     override fun onResume() {
         super.onResume()
         searchViewModel.loadResultList()

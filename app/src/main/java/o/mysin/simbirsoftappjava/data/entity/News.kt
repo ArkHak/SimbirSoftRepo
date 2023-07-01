@@ -1,15 +1,17 @@
 package o.mysin.simbirsoftappjava.data.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class News(
     val id: Int,
     val owner: String,
-    val ownerAddress: String,
-    val ownerContacts: String,
-    val picturesUrl: List<Int>,
+    @SerializedName("owner_address") val ownerAddress: String,
+    @SerializedName("owner_contacts") val ownerContacts: String,
+    @SerializedName("pictures_url") val picturesUrl: List<Int>,
     val title: String,
     val description: String,
-    val fullDescription: String,
-    val startDateTime: Long,
-    val endDateTime: Long,
-    val listHelpCategoryId: List<Int>,
+    @SerializedName("full_description") val fullDescription: String,
+    @SerializedName("start_date_time") val startDateTime: Long,
+    @SerializedName("end_date_time") val endDateTime: Long,
+    @SerializedName("list_help_category_id") val listHelpCategoryId: List<Int>,
 )

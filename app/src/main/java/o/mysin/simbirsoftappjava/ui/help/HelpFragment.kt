@@ -10,7 +10,6 @@ import o.mysin.simbirsoftappjava.databinding.FragmentHelpBinding
 import o.mysin.simbirsoftappjava.utils.MarginDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class HelpFragment : Fragment(R.layout.fragment_help) {
 
     private val binding: FragmentHelpBinding by viewBinding()
@@ -29,7 +28,6 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
     private fun renderData(helpCategoryList: List<HelpCategory>) {
         adapter.updateHelpCategoryList(helpCategoryList)
     }
-
 
     private fun initRecycler() {
         binding.helpItemRecyclerView.adapter = adapter

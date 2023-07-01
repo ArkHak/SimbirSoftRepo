@@ -14,7 +14,6 @@ class SearchNKOViewModel : ViewModel() {
     val nkoList: LiveData<List<Event>>
         get() = _nkoList
 
-
     private val fooNKOEventsList = listOf(
         Event(title = "Благотворительный фонд Алины Кактотамовны"),
         Event(title = "\"Во имя жизни \""),

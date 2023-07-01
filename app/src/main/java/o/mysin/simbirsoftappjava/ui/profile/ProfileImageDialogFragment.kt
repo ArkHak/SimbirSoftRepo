@@ -52,7 +52,6 @@ class ProfileImageDialogFragment : DialogFragment() {
     }
 }
 
-
 enum class ItemPhotoSelector {
     SELECT,
     CREATE,

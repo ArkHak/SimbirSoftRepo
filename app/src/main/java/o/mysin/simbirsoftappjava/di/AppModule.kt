@@ -9,6 +9,7 @@ import o.mysin.simbirsoftappjava.ui.help.HelpViewModel
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailViewModel
 import o.mysin.simbirsoftappjava.ui.news.main.NewsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val appModule = module {
@@ -30,11 +31,11 @@ val appModule = module {
     }
 
     single<HelpCategoryRepository> {
-        HelpCategoryRepositoryImpl()
+        HelpCategoryRepositoryImpl(get(), get(named("helpCategories")))
     }
 
     single<NewsRepository> {
-        NewsRepositoryImpl()
+        NewsRepositoryImpl(get(), get(named("news")))
     }
 
 }

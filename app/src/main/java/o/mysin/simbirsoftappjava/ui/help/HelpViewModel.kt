@@ -12,7 +12,6 @@ class HelpViewModel(
     private val helpCategoryRepository: HelpCategoryRepository,
 ) : ViewModel() {
 
-
     private val _helpCategoryList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
     val helpCategoryList: LiveData<List<HelpCategory>>
         get() = _helpCategoryList
