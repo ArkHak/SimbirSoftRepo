@@ -13,9 +13,17 @@ class NewsRepositoryImpl : NewsRepository {
             listOf(
                 News(
                     id = 1,
-                    pictureUrl = R.drawable.tmp_item_news_picture,
+                    owner = "Благотворительный Фонд «Счастливый Мир»",
+                    ownerAddress = "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+                    ownerContacts = "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+                    picturesUrl = listOf(
+                        R.drawable.tmp_news_picture,
+                        R.drawable.tmp_news_picture_2,
+                        R.drawable.tmp_news_picture_3,
+                    ),
                     title = "Спонсоры отремонтируют школу-интернат",
                     description = "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+                    fullDescription = "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.",
                     startDateTime = 1687958180,
                     endDateTime = 1690318800,
                     listHelpCategoryId = listOf(
@@ -24,9 +32,16 @@ class NewsRepositoryImpl : NewsRepository {
                 ),
                 News(
                     id = 2,
-                    pictureUrl = R.drawable.tmp_two_item_news_picture,
-                    title = "Конкурс по вокальному пению в детском доме №6",
+                    owner = "Благотворительный Фонд «Счастливый Мир»",
+                    ownerAddress = "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+                    ownerContacts = "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+                    picturesUrl = listOf(
+                        R.drawable.tmp_two_news_picture,
+                        R.drawable.tmp_news_picture_2,
+                        R.drawable.tmp_news_picture_3,
+                    ), title = "Конкурс по вокальному пению в детском доме №6",
                     description = "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+                    fullDescription = "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.",
                     startDateTime = 1687968980,
                     endDateTime = 1690491600,
                     listHelpCategoryId = listOf(
@@ -35,9 +50,16 @@ class NewsRepositoryImpl : NewsRepository {
                 ),
                 News(
                     id = 3,
-                    pictureUrl = R.drawable.tmp_item_news_picture,
-                    title = "Спонсоры отремонтируют школу-интернат",
+                    owner = "Благотворительный Фонд «Счастливый Мир»",
+                    ownerAddress = "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+                    ownerContacts = "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+                    picturesUrl = listOf(
+                        R.drawable.tmp_news_picture,
+                        R.drawable.tmp_news_picture_2,
+                        R.drawable.tmp_news_picture_3,
+                    ), title = "Спонсоры отремонтируют школу-интернат",
                     description = "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+                    fullDescription = "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.",
                     startDateTime = 1687958180,
                     endDateTime = 1687958180,
                     listHelpCategoryId = listOf(
@@ -46,9 +68,16 @@ class NewsRepositoryImpl : NewsRepository {
                 ),
                 News(
                     id = 4,
-                    pictureUrl = R.drawable.tmp_two_item_news_picture,
-                    title = "Конкурс по вокальному пению в детском доме №6",
+                    owner = "Благотворительный Фонд «Счастливый Мир»",
+                    ownerAddress = "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+                    ownerContacts = "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+                    picturesUrl = listOf(
+                        R.drawable.tmp_two_news_picture,
+                        R.drawable.tmp_news_picture_2,
+                        R.drawable.tmp_news_picture_3,
+                    ), title = "Конкурс по вокальному пению в детском доме №6",
                     description = "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+                    fullDescription = "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.",
                     startDateTime = 1687968980,
                     endDateTime = 1687968980,
                     listHelpCategoryId = listOf(
@@ -57,9 +86,16 @@ class NewsRepositoryImpl : NewsRepository {
                 ),
                 News(
                     id = 5,
-                    pictureUrl = R.drawable.tmp_item_news_picture,
-                    title = "Спонсоры отремонтируют школу-интернат",
+                    owner = "Благотворительный Фонд «Счастливый Мир»",
+                    ownerAddress = "Санкт-Петербург, Кирочная улица, д. 50А, каб. 208",
+                    ownerContacts = "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+                    picturesUrl = listOf(
+                        R.drawable.tmp_news_picture,
+                        R.drawable.tmp_news_picture_2,
+                        R.drawable.tmp_news_picture_3,
+                    ), title = "Спонсоры отремонтируют школу-интернат",
                     description = "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+                    fullDescription = "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.",
                     startDateTime = 1687958180,
                     endDateTime = 1690491600,
                     listHelpCategoryId = listOf(
@@ -81,5 +117,9 @@ class NewsRepositoryImpl : NewsRepository {
 
     override fun addNews(news: News) {
         _listNews.add(news)
+    }
+
+    override fun getNewsById(newsId: Int): News? {
+        return _listNews.find { it.id == newsId }
     }
 }

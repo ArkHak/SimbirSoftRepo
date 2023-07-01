@@ -17,5 +17,4 @@
         app:trackTint="@drawable/color_switch_selector"
         tools:text="@string/title_item_filter_money" />
 
-
 </LinearLayout>

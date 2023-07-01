@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_news"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
@@ -26,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:importantForAccessibility="no"
-                tools:src="@drawable/tmp_two_item_news_picture" />
+                tools:src="@drawable/tmp_two_news_picture" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -87,7 +88,7 @@
                 android:layout_gravity="center"
                 android:drawablePadding="10dp"
                 android:gravity="center"
-                app:drawableStartCompat="@drawable/ic_calendar"
+                app:drawableStartCompat="@drawable/ic_calendar_white"
                 tools:text="Осталось 13 дней (21.09 - 20.10)" />
 
         </androidx.cardview.widget.CardView>

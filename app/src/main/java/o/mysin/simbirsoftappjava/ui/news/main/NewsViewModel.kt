@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.news
+package o.mysin.simbirsoftappjava.ui.news.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

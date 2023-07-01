@@ -34,6 +34,15 @@ fun convertDateTimeProfile(timestamp: Long): String {
     return formattingDate(date, formatter)
 }
 
+fun correctDateTime(startDateTime: Long, endDateTime: Long): String {
+    val countDays = getDaysStartEndDate(startDateTime, endDateTime)
+    return if (countDays > 0) {
+        "Осталось $countDays дней ${getPeriodStartEndDate(startDateTime, endDateTime)}"
+    } else {
+        convertDateNews(startDateTime)
+    }
+}
+
 //Октябрь 20, 2016
 fun convertDateNews(timestamp: Long): String {
     val date = convertTimestampToLocalDate(timestamp)

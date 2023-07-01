@@ -1,6 +1,8 @@
 package o.mysin.simbirsoftappjava.ui
 
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -13,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by viewBinding()
 
+    private val profileViewModel: MainActivityViewModel by viewModels()
+
     private val bottomNavigationPanel: BottomNavigationView by lazy { binding.bottomNavigationPanel }
 
     private val bottomNavigationPanelController by lazy { findNavController(R.id.navigation_fragment_container) }
@@ -22,5 +26,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bottomNavigationPanel.setupWithNavController(bottomNavigationPanelController)
+
+        profileViewModel.hideBottomNavigation.observe(this) { hide ->
+            binding.bottomNavigationPanel.visibility = if (hide) View.GONE else View.VISIBLE
+        }
+
     }
 }

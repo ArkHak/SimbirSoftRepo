@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.news
+package o.mysin.simbirsoftappjava.ui.news.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,6 +10,8 @@ import o.mysin.simbirsoftappjava.databinding.ItemNewsBinding
 class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
 
     private var _newsList: List<News> = emptyList()
+
+    private var onItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val binding = ItemNewsBinding.inflate(
@@ -26,6 +28,13 @@ class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.bind(_newsList[position])
+        holder.binding.itemNews.setOnClickListener {
+            onItemClickListener?.onItemClick(_newsList[position].id)
+        }
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.onItemClickListener = listener
     }
 
     fun updateNewsList(newsList: List<News>) {
@@ -33,4 +42,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
         _newsList = newsList
         diffResult.dispatchUpdatesTo(this)
     }
+}
+
+fun interface OnItemClickListener {
+    fun onItemClick(idItem: Int)
 }
