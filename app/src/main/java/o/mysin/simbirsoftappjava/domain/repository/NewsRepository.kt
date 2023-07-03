@@ -1,6 +1,6 @@
-package o.mysin.simbirsoftappjava.data.db
+package o.mysin.simbirsoftappjava.domain.repository
 
-import o.mysin.simbirsoftappjava.data.entity.News
+import o.mysin.simbirsoftappjava.domain.model.News
 
 interface NewsRepository {
     fun getAllNews(): List<News>

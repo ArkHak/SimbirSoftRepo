@@ -2,13 +2,14 @@ package o.mysin.simbirsoftappjava.ui.filter
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentFilterBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +28,6 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
         initAdapter()
         initRecycler()
         initActionButtons()
-
     }
 
     private fun renderData(filterList: List<HelpCategory>) {
@@ -56,6 +56,14 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     private fun initActionButtons() {
         binding.filterToolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.applyFilterSettings.setOnClickListener {
+            filterViewModel.saveFilterList()
+            Toast.makeText(
+                context,
+                requireContext().getText(R.string.filter_change_apply),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

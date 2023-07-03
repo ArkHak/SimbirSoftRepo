@@ -30,12 +30,13 @@
                 android:text="@string/title_filter" />
 
             <ImageView
-                android:id="@+id/button_profile_edit"
+                android:id="@+id/apply_filter_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginEnd="4dp"
                 android:importantForAccessibility="no"
+                android:padding="@dimen/default_padding_toolbar_action_button"
                 android:src="@drawable/ic_ok" />
 
         </androidx.appcompat.widget.Toolbar>

@@ -1,9 +1,9 @@
-package o.mysin.simbirsoftappjava.data
+package o.mysin.simbirsoftappjava.data.repository
 
 import com.google.gson.Gson
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.db.HelpCategoryRepository
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import java.io.InputStream
 import java.io.InputStreamReader
 
@@ -21,11 +21,11 @@ class HelpCategoryRepositoryImpl(
         return _listHelpCategory
     }
 
-    override fun changeEnabledItemById(idItem: Int) {
-        val index = _listHelpCategory.indexOfFirst { it.id == idItem }
-        if (index != -1) {
-            _listHelpCategory[index] =
-                _listHelpCategory[index].copy(isEnabled = !_listHelpCategory[index].isEnabled)
+    override fun updateList(newListHelpCategory: List<HelpCategory>) {
+        _listHelpCategory.zip(newListHelpCategory).forEachIndexed { index, (oldItem, newItem) ->
+            if (oldItem.isEnabled != newItem.isEnabled) {
+                _listHelpCategory[index] = newItem
+            }
         }
     }
 
@@ -33,7 +33,10 @@ class HelpCategoryRepositoryImpl(
         val reader = InputStreamReader(inputStream)
         val listCategory = gson.fromJson(reader, Array<HelpCategory>::class.java).toList()
         val correctList = listCategory.map {
-            it.copy(iconUrl = HelpCategoryFixList.getIconIdByIndex(it.iconUrl), isEnabled = true)
+            it.copy(
+                iconUrl = HelpCategoryFixList.getIconIdByIndex(it.iconUrl),
+                isEnabled = true
+            )
         }
         reader.close()
         inputStream.close()

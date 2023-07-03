@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.data.entity.Event
+import o.mysin.simbirsoftappjava.domain.model.Event
 import o.mysin.simbirsoftappjava.databinding.ItemSearchResultBinding
 
 class SearchNKOAdapter : RecyclerView.Adapter<SearchNKOViewHolder>() {

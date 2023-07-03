@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.data.entity.Event
+import o.mysin.simbirsoftappjava.domain.model.Event
 import java.util.Random
 
 class SearchNKOViewModel : ViewModel() {

@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.Event
+import o.mysin.simbirsoftappjava.domain.model.Event
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByNkoBinding
 
 

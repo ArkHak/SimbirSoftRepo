@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.ItemHelpsBinding
 
 class HelpAdapter :

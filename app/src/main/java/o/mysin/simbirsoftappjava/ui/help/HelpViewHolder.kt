@@ -3,7 +3,7 @@ package o.mysin.simbirsoftappjava.ui.help
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.ItemHelpsBinding
 
 class HelpViewHolder(private val binding: ItemHelpsBinding) :

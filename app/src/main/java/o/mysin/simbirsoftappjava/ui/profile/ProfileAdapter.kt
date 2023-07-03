@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.data.entity.Friend
+import o.mysin.simbirsoftappjava.domain.model.Friend
 import o.mysin.simbirsoftappjava.databinding.ItemFriendsBinding
 
 class ProfileAdapter :

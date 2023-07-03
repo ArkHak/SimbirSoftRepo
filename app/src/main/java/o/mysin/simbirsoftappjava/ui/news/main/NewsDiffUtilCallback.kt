@@ -1,7 +1,7 @@
 package o.mysin.simbirsoftappjava.ui.news.main
 
 import androidx.recyclerview.widget.DiffUtil
-import o.mysin.simbirsoftappjava.data.entity.News
+import o.mysin.simbirsoftappjava.domain.model.News
 
 class NewsDiffUtilCallback(private val oldList: List<News>, private val newList: List<News>) :
     DiffUtil.Callback() {

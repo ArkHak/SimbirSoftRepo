@@ -1,16 +1,17 @@
 package o.mysin.simbirsoftappjava.ui.news.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.News
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsDetailBinding
+import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.utils.correctDateTime
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
@@ -26,6 +27,7 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
         initActionButtons()
         binding.labelNewsDetail.text = args.newsId.toString()
+
     }
 
     private fun renderData(news: News) {

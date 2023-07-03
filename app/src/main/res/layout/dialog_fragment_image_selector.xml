@@ -4,8 +4,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingVertical="32dp"
-    android:paddingStart="24dp"
+    android:paddingVertical="16dp"
+    android:paddingStart="8dp"
     tools:ignore="RtlSymmetry">
 
     <LinearLayout
@@ -13,7 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -34,9 +37,12 @@
         android:id="@+id/item_create_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -57,9 +63,12 @@
         android:id="@+id/item_delete_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="wrap_content"

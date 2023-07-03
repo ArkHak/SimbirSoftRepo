@@ -1,7 +1,7 @@
 package o.mysin.simbirsoftappjava.ui.filter
 
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.ItemFilterBinding
 
 class FilterViewHolder(val binding: ItemFilterBinding) :

@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.data.entity
+package o.mysin.simbirsoftappjava.domain.model
 
 import com.google.gson.annotations.SerializedName
 

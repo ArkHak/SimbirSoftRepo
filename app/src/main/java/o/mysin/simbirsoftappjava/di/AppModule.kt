@@ -1,9 +1,9 @@
 package o.mysin.simbirsoftappjava.di
 
-import o.mysin.simbirsoftappjava.data.db.HelpCategoryRepository
-import o.mysin.simbirsoftappjava.data.HelpCategoryRepositoryImpl
-import o.mysin.simbirsoftappjava.data.db.NewsRepository
-import o.mysin.simbirsoftappjava.data.NewsRepositoryImpl
+import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
+import o.mysin.simbirsoftappjava.data.repository.HelpCategoryRepositoryImpl
+import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
+import o.mysin.simbirsoftappjava.data.repository.NewsRepositoryImpl
 import o.mysin.simbirsoftappjava.ui.filter.FilterViewModel
 import o.mysin.simbirsoftappjava.ui.help.HelpViewModel
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailViewModel

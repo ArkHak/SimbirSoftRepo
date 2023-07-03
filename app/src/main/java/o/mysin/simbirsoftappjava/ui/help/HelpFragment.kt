@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentHelpBinding
 import o.mysin.simbirsoftappjava.utils.MarginDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel

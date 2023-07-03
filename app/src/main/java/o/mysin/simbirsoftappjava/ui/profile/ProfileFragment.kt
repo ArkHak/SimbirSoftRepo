@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.User
+import o.mysin.simbirsoftappjava.domain.model.User
 import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
 import o.mysin.simbirsoftappjava.utils.convertDateTimeProfile
 

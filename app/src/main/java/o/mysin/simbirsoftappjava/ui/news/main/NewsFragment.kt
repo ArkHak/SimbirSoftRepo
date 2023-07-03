@@ -7,10 +7,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.News
+import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsBinding
 import o.mysin.simbirsoftappjava.ui.MainActivityViewModel
-import o.mysin.simbirsoftappjava.utils.MarginDecoration
+import o.mysin.simbirsoftappjava.utils.NewsItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
@@ -36,6 +36,23 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         mainViewModel.setHideBottomNavigation(false)
     }
 
+    private fun renderData(newsList: List<News>) {
+        showEmptyList(newsList.isEmpty())
+        if (newsList.isNotEmpty()) {
+            adapter.updateNewsList(newsList)
+        }
+    }
+
+    private fun showEmptyList(listIsEmpty: Boolean) {
+        if (listIsEmpty) {
+            binding.newsItemsRecyclerView.visibility = View.GONE
+            binding.emptyListText.visibility = View.VISIBLE
+        } else {
+            binding.newsItemsRecyclerView.visibility = View.VISIBLE
+            binding.emptyListText.visibility = View.GONE
+        }
+    }
+
     private fun initAdapter() {
         adapter.setOnItemClickListener { idItem ->
             mainViewModel.setHideBottomNavigation(true)
@@ -44,15 +61,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
     }
 
-    private fun renderData(newsList: List<News>) {
-        adapter.updateNewsList(newsList)
-    }
-
     private fun initRecycler() {
         binding.newsItemsRecyclerView.adapter = adapter
 
         binding.newsItemsRecyclerView.apply {
-            addItemDecoration(MarginDecoration(binding.root.context))
+            addItemDecoration(NewsItemDecoration(binding.root.context))
         }
     }
 

@@ -27,3 +27,25 @@ class MarginDecoration(context: Context) : RecyclerView.ItemDecoration() {
         outRect.bottom = margin
     }
 }
+
+class NewsItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
+    private val margin = context.resources.getDimensionPixelSize(R.dimen.margin_bottom_last_item)
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State,
+    ) {
+        super.getItemOffsets(outRect, view, parent, state)
+
+
+        val position = parent.getChildAdapterPosition(view)
+        val itemCount = parent.adapter?.itemCount ?: 0
+        if (position == itemCount - 1) {
+            outRect.bottom = margin
+        }
+    }
+
+
+}

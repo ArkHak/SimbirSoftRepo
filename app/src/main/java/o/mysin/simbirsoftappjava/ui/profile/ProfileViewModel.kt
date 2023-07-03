@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.entity.Friend
-import o.mysin.simbirsoftappjava.data.entity.User
+import o.mysin.simbirsoftappjava.domain.model.Friend
+import o.mysin.simbirsoftappjava.domain.model.User
 
 class ProfileViewModel : ViewModel() {
 

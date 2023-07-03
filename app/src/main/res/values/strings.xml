@@ -46,7 +46,13 @@
     <string name="title_help_animals">Животные</string>
     <string name="title_help_events">Мероприятия</string>
 
+    <!-- NewsFragment -->
+    <string name="empty_news_list">По заданным категориям новостей нет</string>
 
+    <!-- FilterFragment -->
+    <string name="filter_change_apply">Изменения приняты</string>
+
+    <!-- NewsDetailFragment -->
     <string name="hyperlink_news_owner_mail"><u>Напишите нам</u></string>
     <string name="hyperlink_news_owner_web"><u>Перейти на сайт организации</u></string>
     <string name="help_things">Помочь\nвещами</string>

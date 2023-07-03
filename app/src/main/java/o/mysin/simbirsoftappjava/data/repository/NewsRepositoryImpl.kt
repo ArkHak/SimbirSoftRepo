@@ -1,10 +1,10 @@
-package o.mysin.simbirsoftappjava.data
+package o.mysin.simbirsoftappjava.data.repository
 
 import com.google.gson.Gson
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.NewsPictureList.Companion.getNewsPictureById
-import o.mysin.simbirsoftappjava.data.db.NewsRepository
-import o.mysin.simbirsoftappjava.data.entity.News
+import o.mysin.simbirsoftappjava.data.repository.NewsPictureList.Companion.getNewsPictureById
+import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
+import o.mysin.simbirsoftappjava.domain.model.News
 import java.io.InputStream
 import java.io.InputStreamReader
 

@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.data.db.HelpCategoryRepository
-import o.mysin.simbirsoftappjava.data.entity.HelpCategory
+import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
+import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 
 class FilterViewModel(
     private val helpCategoryRepository: HelpCategoryRepository,
@@ -16,9 +16,13 @@ class FilterViewModel(
     val filterList: LiveData<List<HelpCategory>>
         get() = _filterList
 
+    private val _tmpFilterList = mutableListOf<HelpCategory>()
+
     init {
         loadFilterList()
+        filterList.value?.toList()?.let { _tmpFilterList.addAll(it) }
     }
+
 
     private fun loadFilterList() {
         viewModelScope.launch {
@@ -26,8 +30,15 @@ class FilterViewModel(
         }
     }
 
-    fun changeValueItemFilter(idItem: Int) {
-        helpCategoryRepository.changeEnabledItemById(idItem)
+    fun changeValueItemFilter(idtItem: Int) {
+        val index = _tmpFilterList.indexOfFirst { it.id == idtItem }
+        if (index != -1) {
+            _tmpFilterList[index] =
+                _tmpFilterList[index].copy(isEnabled = !_tmpFilterList[index].isEnabled)
+        }
     }
 
+    fun saveFilterList() {
+        helpCategoryRepository.updateList(_tmpFilterList)
+    }
 }
