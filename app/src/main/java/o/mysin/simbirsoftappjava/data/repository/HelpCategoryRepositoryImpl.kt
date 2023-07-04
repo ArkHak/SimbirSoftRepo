@@ -11,22 +11,14 @@ class HelpCategoryRepositoryImpl(
     private val gson: Gson,
     private val inputStream: InputStream,
 ) : HelpCategoryRepository {
-    private val _listHelpCategory = mutableListOf<HelpCategory>()
+    private var _listHelpCategories: List<HelpCategory> = getCategoryFromAssets()
 
-    init {
-        _listHelpCategory.addAll(getCategoryFromAssets())
-    }
-
-    override fun getHelpCategory(): List<HelpCategory> {
-        return _listHelpCategory
+    override fun getHelpCategories(): List<HelpCategory> {
+        return _listHelpCategories
     }
 
     override fun updateList(newListHelpCategory: List<HelpCategory>) {
-        _listHelpCategory.zip(newListHelpCategory).forEachIndexed { index, (oldItem, newItem) ->
-            if (oldItem.isEnabled != newItem.isEnabled) {
-                _listHelpCategory[index] = newItem
-            }
-        }
+        _listHelpCategories = newListHelpCategory
     }
 
     private fun getCategoryFromAssets(): List<HelpCategory> {

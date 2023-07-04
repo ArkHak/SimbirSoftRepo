@@ -7,7 +7,15 @@ import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.ItemNewsBinding
 import o.mysin.simbirsoftappjava.utils.correctDateTime
 
-class NewsViewHolder(val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+class NewsViewHolder(val binding: ItemNewsBinding, private val onItemClicked: (Int) -> Unit) :
+    RecyclerView.ViewHolder(binding.root) {
+
+    init {
+        binding.root.setOnClickListener {
+            onItemClicked(bindingAdapterPosition)
+        }
+    }
+
     fun bind(news: News) {
         with(binding) {
             pictureNews.load(news.picturesUrl.first()) {
@@ -18,6 +26,5 @@ class NewsViewHolder(val binding: ItemNewsBinding) : RecyclerView.ViewHolder(bin
             descriptionNews.text = news.description
             timeText.text = correctDateTime(news.startDateTime, news.endDateTime)
         }
-
     }
 }

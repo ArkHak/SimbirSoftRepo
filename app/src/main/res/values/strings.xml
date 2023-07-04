@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SimbirSoftAppJava</string>
+    <string name="app_name">WantHelpApp</string>
 
     <!-- SplashScreen -->
     <string name="splash_screen_loading">Загрузка…</string>

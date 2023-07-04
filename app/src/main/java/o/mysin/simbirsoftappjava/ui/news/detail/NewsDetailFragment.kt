@@ -45,10 +45,6 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        newsDetailViewModel.getNews(args.newsId)
-    }
 
     private fun initActionButtons() {
         binding.newsDetailToolbar.setNavigationOnClickListener {

@@ -55,20 +55,16 @@
         android:textSize="14sp"
         android:textStyle="normal" />
 
-    <RelativeLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filter_item_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gray_view_border">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/filter_item_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
-            android:background="@android:color/transparent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_filter" />
-    </RelativeLayout>
+        android:background="@drawable/gray_view_border"
+        android:paddingStart="@dimen/margin_default"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:ignore="RtlSymmetry"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_filter" />
 
 </LinearLayout>

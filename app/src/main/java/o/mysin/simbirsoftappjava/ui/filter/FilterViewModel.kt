@@ -26,7 +26,7 @@ class FilterViewModel(
 
     private fun loadFilterList() {
         viewModelScope.launch {
-            _filterList.value = helpCategoryRepository.getHelpCategory()
+            _filterList.value = helpCategoryRepository.getHelpCategories()
         }
     }
 

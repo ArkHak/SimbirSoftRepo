@@ -18,24 +18,20 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     private val binding: FragmentFilterBinding by viewBinding()
     private val filterViewModel: FilterViewModel by viewModel()
-    private val adapter: FilterAdapter by lazy { FilterAdapter() }
+    private lateinit var adapter: FilterAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        filterViewModel.filterList.observe(viewLifecycleOwner) { renderData(it) }
-
         initAdapter()
         initRecycler()
         initActionButtons()
-    }
 
-    private fun renderData(filterList: List<HelpCategory>) {
-        adapter.updateFilterList(filterList)
+        filterViewModel.filterList.observe(viewLifecycleOwner) { renderData(it) }
     }
 
     private fun initAdapter() {
-        adapter.setOnItemClickListener { idItem ->
+        adapter = FilterAdapter { idItem ->
             filterViewModel.changeValueItemFilter(idItem)
         }
     }
@@ -65,6 +61,10 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun renderData(filterList: List<HelpCategory>) {
+        adapter.updateFilterList(filterList)
     }
 
 }

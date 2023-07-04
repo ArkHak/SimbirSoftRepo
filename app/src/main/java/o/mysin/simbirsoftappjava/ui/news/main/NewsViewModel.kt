@@ -19,11 +19,19 @@ class NewsViewModel(
         get() = _newsList
 
     fun loadNews() {
-        val filterIdList = helpCategoryRepository.getHelpCategory()
+        val filterIdList = helpCategoryRepository.getHelpCategories()
             .filter { it.isEnabled }
             .map { it.id }
         viewModelScope.launch {
-            _newsList.value = newsRepository.getNewsByFilter(filterIdList)
+            _newsList.value = getNewsByFilter(filterIdList)
+        }
+    }
+
+    private fun getNewsByFilter(filter: List<Int>): List<News> {
+        return newsRepository.getAllNews().filter { news ->
+            news.listHelpCategoryId.any() { category ->
+                category in filter
+            }
         }
     }
 }

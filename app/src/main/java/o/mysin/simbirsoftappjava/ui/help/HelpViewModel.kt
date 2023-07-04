@@ -22,7 +22,7 @@ class HelpViewModel(
 
     private fun loadHelpCategory() {
         viewModelScope.launch {
-            _helpCategoryList.value = helpCategoryRepository.getHelpCategory()
+            _helpCategoryList.value = helpCategoryRepository.getHelpCategories()
         }
     }
 

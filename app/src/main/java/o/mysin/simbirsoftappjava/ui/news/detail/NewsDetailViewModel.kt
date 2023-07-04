@@ -16,8 +16,7 @@ class NewsDetailViewModel(private val newsRepository: NewsRepository) : ViewMode
 
     fun getNews(newsId: Int) {
         viewModelScope.launch {
-            _news.value = newsRepository.getNewsById(newsId)
+            _news.value = newsRepository.getAllNews().find { it.id == newsId }
         }
     }
-
 }

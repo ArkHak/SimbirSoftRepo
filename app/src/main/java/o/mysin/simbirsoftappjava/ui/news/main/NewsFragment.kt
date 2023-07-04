@@ -18,43 +18,30 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private val binding: FragmentNewsBinding by viewBinding()
     private val newsViewModel: NewsViewModel by viewModel()
     private val mainViewModel: MainActivityViewModel by activityViewModels()
-    private val adapter: NewsAdapter by lazy { NewsAdapter() }
+    private lateinit var adapter: NewsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        newsViewModel.newsList.observe(viewLifecycleOwner) { renderData(it) }
-
+        renderView()
         initAdapter()
         initRecycler()
         initActionButtons()
+
+        newsViewModel.newsList.observe(viewLifecycleOwner) { renderData(it) }
+    }
+
+    private fun renderView() {
+        mainViewModel.setHideBottomNavigation(false)
     }
 
     override fun onResume() {
         super.onResume()
         newsViewModel.loadNews()
-        mainViewModel.setHideBottomNavigation(false)
-    }
-
-    private fun renderData(newsList: List<News>) {
-        showEmptyList(newsList.isEmpty())
-        if (newsList.isNotEmpty()) {
-            adapter.updateNewsList(newsList)
-        }
-    }
-
-    private fun showEmptyList(listIsEmpty: Boolean) {
-        if (listIsEmpty) {
-            binding.newsItemsRecyclerView.visibility = View.GONE
-            binding.emptyListText.visibility = View.VISIBLE
-        } else {
-            binding.newsItemsRecyclerView.visibility = View.VISIBLE
-            binding.emptyListText.visibility = View.GONE
-        }
     }
 
     private fun initAdapter() {
-        adapter.setOnItemClickListener { idItem ->
+        adapter = NewsAdapter { idItem ->
             mainViewModel.setHideBottomNavigation(true)
             val action = NewsFragmentDirections.actionFragmentNewsToNewsDetailFragment(idItem)
             findNavController().navigate(action)
@@ -72,6 +59,23 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private fun initActionButtons() {
         binding.buttonFilters.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_news_to_filtersFragment)
+        }
+    }
+
+    private fun renderData(newsList: List<News>) {
+        showEmptyList(newsList.isEmpty())
+        if (newsList.isNotEmpty()) {
+            adapter.updateNewsList(newsList)
+        }
+    }
+
+    private fun showEmptyList(listIsEmpty: Boolean) {
+        if (listIsEmpty) {
+            binding.newsItemsRecyclerView.visibility = View.GONE
+            binding.emptyListText.visibility = View.VISIBLE
+        } else {
+            binding.newsItemsRecyclerView.visibility = View.VISIBLE
+            binding.emptyListText.visibility = View.GONE
         }
     }
 

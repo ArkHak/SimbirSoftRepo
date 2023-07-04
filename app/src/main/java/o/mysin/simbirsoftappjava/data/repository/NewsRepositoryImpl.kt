@@ -13,27 +13,10 @@ class NewsRepositoryImpl(
     private val inputStream: InputStream,
 ) : NewsRepository {
 
-    private val _listNews = mutableListOf<News>()
-
-    init {
-        _listNews.addAll(getNewsFromAssets())
-    }
+    private val _listNews = getNewsFromAssets()
 
     override fun getAllNews(): List<News> {
         return _listNews
-    }
-
-    override fun getNewsByFilter(filter: List<Int>): List<News> {
-        return _listNews
-            .filter { it.listHelpCategoryId.intersect(filter.toSet()).isNotEmpty() }
-    }
-
-    override fun addNews(news: News) {
-        _listNews.add(news)
-    }
-
-    override fun getNewsById(newsId: Int): News? {
-        return _listNews.find { it.id == newsId }
     }
 
     private fun getNewsFromAssets(): List<News> {
