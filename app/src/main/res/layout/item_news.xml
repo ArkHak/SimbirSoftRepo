@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:importantForAccessibility="no"
-                tools:src="@drawable/tmp_two_news_picture" />
+                tools:src="@drawable/tmp_news_picture" />
 
             <ImageView
                 android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import coil.load
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsDetailBinding
 import o.mysin.simbirsoftappjava.domain.model.News
@@ -38,9 +39,9 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
             titleOwnerNewsDetail.text = news.owner
             ownerAddress.text = news.ownerAddress
             ownerContacts.text = news.ownerContacts
-            firstImageNews.setImageResource(news.picturesUrl[0])
-            secondImageNews.setImageResource(news.picturesUrl[1])
-            thirdImageNews.setImageResource(news.picturesUrl[2])
+            firstImageNews.load(news.picturesUrl[0])
+            secondImageNews.load(news.picturesUrl[1])
+            thirdImageNews.load(news.picturesUrl[2])
             newsDescription.text = news.fullDescription
         }
     }

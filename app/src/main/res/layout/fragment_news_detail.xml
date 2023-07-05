@@ -257,7 +257,7 @@
                             android:layout_width="105dp"
                             android:layout_height="74dp"
                             android:importantForAccessibility="no"
-                            tools:src="@drawable/tmp_news_picture_2" />
+                            tools:src="@drawable/tmp_news_picture" />
 
 
                         <ImageView
@@ -266,7 +266,7 @@
                             android:layout_height="74dp"
                             android:layout_marginTop="10dp"
                             android:importantForAccessibility="no"
-                            tools:src="@drawable/tmp_news_picture_3" />
+                            tools:src="@drawable/tmp_news_picture" />
                     </LinearLayout>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

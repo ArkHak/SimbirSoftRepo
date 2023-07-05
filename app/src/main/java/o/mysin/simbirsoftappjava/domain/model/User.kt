@@ -1,9 +1,7 @@
 package o.mysin.simbirsoftappjava.domain.model
 
-import o.mysin.simbirsoftappjava.R
-
 data class User(
-    val avatarSrc: Int? = R.drawable.temp_image_man,
+    val avatarSrc: String? = "https://cdn.zeplin.io/5a8295e8de62056425a09dbc/assets/F3374F01-1829-407F-9955-EFD70C08794F.png",
     val name: String = "Олег Мысин",
     val birthday: Long = 836683200,
     val work: String = "Android developer",

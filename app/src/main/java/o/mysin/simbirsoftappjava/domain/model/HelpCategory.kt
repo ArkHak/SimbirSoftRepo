@@ -8,7 +8,7 @@ data class HelpCategory(
     @SerializedName("title")
     val title: String,
     @SerializedName("icon_url")
-    val iconUrl: Int,
+    val iconUrl: String,
     @SerializedName("is_enabled")
     val isEnabled: Boolean = true,
 )
