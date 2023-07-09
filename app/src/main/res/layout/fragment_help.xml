@@ -52,17 +52,31 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/select_help" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/help_item_recycler_view"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:nestedScrollingEnabled="true"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:itemCount="5"
-                tools:listitem="@layout/item_helps" />
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/loading_progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_loading_progress_bar"
+                    android:indeterminateTint="@color/turtle_green"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/help_item_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:nestedScrollingEnabled="true"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_helps" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
