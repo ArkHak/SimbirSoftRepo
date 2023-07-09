@@ -3,9 +3,8 @@ package o.mysin.simbirsoftappjava.ui.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.Friend
-import o.mysin.simbirsoftappjava.data.User
+import o.mysin.simbirsoftappjava.domain.model.Friend
+import o.mysin.simbirsoftappjava.domain.model.User
 
 class ProfileViewModel : ViewModel() {
 
@@ -21,12 +20,30 @@ class ProfileViewModel : ViewModel() {
 
     private fun loadFriends() {
         val list: List<Friend> = listOf(
-            Friend(name = "Алексей Гладков", imageSrc = R.drawable.ava_gladkov),
-            Friend(name = "Филлип Киркоров", imageSrc = R.drawable.ava_phill),
-            Friend(name = "Наруто Узумаки", imageSrc = R.drawable.ava_naruto),
-            Friend(name = "Алексей Гладков2", imageSrc = R.drawable.ava_gladkov),
-            Friend(name = "Филлип Киркоров2", imageSrc = R.drawable.ava_phill),
-            Friend(name = "Наруто Узумаки2", imageSrc = R.drawable.ava_naruto),
+            Friend(
+                name = "Алексей Гладков",
+                imageSrc = "https://thumb.tildacdn.com/tild3739-3337-4530-b562-643539663265/-/format/webp/_.jpg"
+            ),
+            Friend(
+                name = "Филлип Киркоров",
+                imageSrc = "https://s1.bloknot-voronezh.ru/thumb/850x0xcut/upload/iblock/1ae/8r55oxgxldtr24o21gorz5bjvkqf1d74/Kirkorov.png"
+            ),
+            Friend(
+                name = "Наруто Узумаки",
+                imageSrc = "https://arthive.net/res/media/img/orig/work/58b/7525132.jpg"
+            ),
+            Friend(
+                name = "Алексей Гладков2",
+                imageSrc = "https://thumb.tildacdn.com/tild3739-3337-4530-b562-643539663265/-/format/webp/_.jpg"
+            ),
+            Friend(
+                name = "Филлип Киркоров2",
+                imageSrc = "https://s1.bloknot-voronezh.ru/thumb/850x0xcut/upload/iblock/1ae/8r55oxgxldtr24o21gorz5bjvkqf1d74/Kirkorov.png"
+            ),
+            Friend(
+                name = "Наруто Узумаки2",
+                imageSrc = "https://arthive.net/res/media/img/orig/work/58b/7525132.jpg"
+            ),
         )
         _userProfile.value = _userProfile.value?.copy(friendsList = list)
     }

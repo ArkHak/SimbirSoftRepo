@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.data.Friend
+import o.mysin.simbirsoftappjava.domain.model.Friend
 import o.mysin.simbirsoftappjava.databinding.ItemFriendsBinding
 
 class ProfileAdapter :
     RecyclerView.Adapter<ProfileViewHolder>() {
-    private var friendList: List<Friend> = emptyList()
+    private var _friendList: List<Friend> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding = ItemFriendsBinding.inflate(
@@ -21,16 +21,16 @@ class ProfileAdapter :
     }
 
     override fun getItemCount(): Int {
-        return friendList.size.coerceAtMost(3)
+        return _friendList.size.coerceAtMost(3)
     }
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
-        holder.bind(friendList[position])
+        holder.bind(_friendList[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateFriendsList(newFriendsList: List<Friend>) {
-        friendList = newFriendsList
+    fun updateFriendsList(friendsList: List<Friend>) {
+        _friendList = friendsList
         notifyDataSetChanged()
     }
 }

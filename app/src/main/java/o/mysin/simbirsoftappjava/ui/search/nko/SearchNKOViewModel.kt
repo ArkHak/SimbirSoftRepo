@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.data.Event
+import o.mysin.simbirsoftappjava.domain.model.Event
 import java.util.Random
 
 class SearchNKOViewModel : ViewModel() {
@@ -13,7 +13,6 @@ class SearchNKOViewModel : ViewModel() {
     private val _nkoList: MutableLiveData<List<Event>> = MutableLiveData()
     val nkoList: LiveData<List<Event>>
         get() = _nkoList
-
 
     private val fooNKOEventsList = listOf(
         Event(title = "Благотворительный фонд Алины Кактотамовны"),

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SimbirSoftAppJava</string>
+    <string name="app_name">WantHelpApp</string>
 
     <!-- SplashScreen -->
     <string name="splash_screen_loading">Загрузка…</string>
@@ -10,7 +10,6 @@
     <string name="title_help">Помочь</string>
     <string name="title_history">История</string>
     <string name="title_profile">Профиль</string>
-
 
     <!-- ProfileFragment -->
     <string name="date_of_birth_title">Дата рождения</string>
@@ -25,10 +24,41 @@
 
     <!-- HelpFragment -->
     <string name="select_help">Выберете категорию помощи</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_name_search_by_events">По мероприятиям</string>
     <string name="tab_name_search_by_nko">По НКО</string>
     <string name="hint_input_name_organization">Введите название организации</string>
+    <string name="title_filter">Фильтр</string>
+    <string name="category_help">Категории помощи:</string>
+    <string name="title_item_filter_money">Деньгами</string>
+    <string name="titile_item_filter_thing">Вещами</string>
+    <string name="title_item_filter_prof_helps">Проф. помощью</string>
+    <string name="titile_item_filter_volunteering">Волонтерством</string>
+
+    <!-- SearchFragmentNKO-->
+    <string name="tmp_key_words">Ключевые слова: мастер-класс, помощь</string>
+    <string name="tmp_result_search">Результаты поиска: 109 мероприятий</string>
+
+    <!-- HelpCategory -->
+    <string name="title_help_children">Дети</string>
+    <string name="title_help_adults">Взрослые</string>
+    <string name="title_help_elderly">Пожилые</string>
+    <string name="title_help_animals">Животные</string>
+    <string name="title_help_events">Мероприятия</string>
+
+    <!-- NewsFragment -->
+    <string name="empty_news_list">По заданным категориям новостей нет</string>
+
+    <!-- FilterFragment -->
+    <string name="filter_change_apply">Изменения приняты</string>
+
+    <!-- NewsDetailFragment -->
+    <string name="hyperlink_news_owner_mail"><u>Напишите нам</u></string>
+    <string name="hyperlink_news_owner_web"><u>Перейти на сайт организации</u></string>
+    <string name="help_things">Помочь\nвещами</string>
+    <string name="help_volunteer">Стать\nволонтером</string>
+    <string name="help_prof">Проф.\nпомощь</string>
+    <string name="help_money">Помочь\nденьгами</string>
+    <string name="questions_news">У вас есть вопросы?</string>
 
 </resources>

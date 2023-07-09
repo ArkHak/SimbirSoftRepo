@@ -1,6 +1,7 @@
 package o.mysin.simbirsoftappjava.ui.profile
 
 import android.Manifest
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,8 +12,9 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.User
+import o.mysin.simbirsoftappjava.domain.model.User
 import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
+import o.mysin.simbirsoftappjava.utils.convertDateTimeProfile
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -37,9 +39,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
         }
 
+
     private val cameraActivityLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
             binding.profileAvatar.setImageBitmap(bitmap)
+        }
+
+    private val galleryActivityLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                binding.profileAvatar.setImageURI(uri)
+            }
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +65,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun renderData(user: User) {
         with(binding) {
             profileName.text = user.name
-            profileBirthday.text = user.birthday
+            profileBirthday.text = convertDateTimeProfile(user.birthday)
             profileWorking.text = user.work
             user.avatarSrc?.let {
                 profileAvatar.load(it) {
@@ -84,17 +94,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             viewLifecycleOwner
         ) { _, bundle ->
             when (bundle.getInt(ITEM_KEY)) {
-                ItemPhotoSelector.SELECT.ordinal -> {}
+                ItemPhotoSelector.SELECT.ordinal -> takePhotoGallery()
 
-                ItemPhotoSelector.CREATE.ordinal -> takePhoto()
+                ItemPhotoSelector.CREATE.ordinal -> takePhotoCamera()
 
                 ItemPhotoSelector.DELETE.ordinal -> profileViewModel.removeProfilePhoto()
             }
         }
     }
 
+    private fun takePhotoGallery() {
+        galleryActivityLauncher.launch("image/*")
+    }
 
-    private fun takePhoto() {
+    private fun takePhotoCamera() {
         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
             showWarningPictureToast()
         } else {

@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.data.Event
+import o.mysin.simbirsoftappjava.domain.model.Event
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByNkoBinding
 
 
@@ -26,7 +26,6 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
 
         initRecycler()
     }
-
 
     override fun onResume() {
         super.onResume()
@@ -48,7 +47,6 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
                 LinearLayoutManager.VERTICAL
             ).apply { divider?.let { setDrawable(it) } }
         )
-
     }
 
 }
