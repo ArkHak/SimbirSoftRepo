@@ -4,6 +4,7 @@ import o.mysin.simbirsoftappjava.ui.filter.FilterViewModel
 import o.mysin.simbirsoftappjava.ui.help.HelpViewModel
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailViewModel
 import o.mysin.simbirsoftappjava.ui.news.main.NewsViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -17,7 +18,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        NewsViewModel(get(), get())
+        NewsViewModel(androidContext(), get(), get())
     }
 
     viewModel {

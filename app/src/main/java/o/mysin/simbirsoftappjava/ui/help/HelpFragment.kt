@@ -22,12 +22,24 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
         helpViewModel.helpCategoryList
             .observe(viewLifecycleOwner) { renderData(it) }
 
+        updateData()
         initRecycler()
     }
 
-    private fun renderData(helpCategoryList: List<HelpCategory>) {
-        adapter.updateHelpCategoryList(helpCategoryList)
+    private fun updateData() {
+        if (helpViewModel.helpCategoryList.value.isNullOrEmpty()) {
+            showLoadingData()
+            helpViewModel.updateData()
+        }
     }
+
+    private fun renderData(helpCategoryList: List<HelpCategory>) {
+        if (helpCategoryList.isNotEmpty()) {
+            showData()
+            adapter.updateHelpCategoryList(helpCategoryList)
+        }
+    }
+
 
     private fun initRecycler() {
         binding.helpItemRecyclerView.adapter = adapter
@@ -36,5 +48,15 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
             setHasFixedSize(true)
             addItemDecoration(MarginDecoration(binding.root.context))
         }
+    }
+
+    private fun showLoadingData() {
+        binding.loadingProgressBar.visibility = View.VISIBLE
+        binding.helpItemRecyclerView.visibility = View.GONE
+    }
+
+    private fun showData() {
+        binding.loadingProgressBar.visibility = View.GONE
+        binding.helpItemRecyclerView.visibility = View.VISIBLE
     }
 }

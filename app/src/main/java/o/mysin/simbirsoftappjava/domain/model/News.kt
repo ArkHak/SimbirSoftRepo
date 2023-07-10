@@ -1,7 +1,10 @@
 package o.mysin.simbirsoftappjava.domain.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class News(
     @SerializedName("id")
     val id: Int,
@@ -25,4 +28,4 @@ data class News(
     val endDateTime: Long,
     @SerializedName("list_help_category_id")
     val listHelpCategoryId: List<Int>,
-)
+) : Parcelable

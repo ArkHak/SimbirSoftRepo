@@ -11,10 +11,14 @@ class NewsRepositoryImpl(
     private val inputStream: InputStream,
 ) : NewsRepository {
 
-    private val _listNews = getNewsFromAssets()
+    private var _listNews = emptyList<News>()
 
     override fun getAllNews(): List<News> {
         return _listNews
+    }
+
+    override fun addListNews(listNews: List<News>) {
+        _listNews = listNews
     }
 
     private fun getNewsFromAssets(): List<News> {
