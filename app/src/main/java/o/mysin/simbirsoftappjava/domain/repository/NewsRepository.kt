@@ -2,7 +2,7 @@ package o.mysin.simbirsoftappjava.domain.repository
 
 import o.mysin.simbirsoftappjava.domain.model.News
 
-fun interface NewsRepository {
+interface NewsRepository {
     fun getAllNews(): List<News>
-
+    fun addListNews(listNews: List<News>)
 }

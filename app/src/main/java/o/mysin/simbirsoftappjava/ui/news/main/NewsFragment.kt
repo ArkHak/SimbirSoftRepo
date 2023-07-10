@@ -23,21 +23,30 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (savedInstanceState != null) {
+            serviceInit = savedInstanceState.getBoolean(SERVICE_INIT)
+        }
+
         renderView()
         initAdapter()
         initRecycler()
         initActionButtons()
-
         newsViewModel.newsList.observe(viewLifecycleOwner) { renderData(it) }
+        updateData()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(SERVICE_INIT, serviceInit)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        newsViewModel.unregisterReceiver()
     }
 
     private fun renderView() {
         mainViewModel.setHideBottomNavigation(false)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        newsViewModel.loadNews()
     }
 
     private fun initAdapter() {
@@ -63,13 +72,29 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
     private fun renderData(newsList: List<News>) {
-        showEmptyList(newsList.isEmpty())
+        showList(newsList.isEmpty())
         if (newsList.isNotEmpty()) {
             adapter.updateNewsList(newsList)
         }
     }
 
-    private fun showEmptyList(listIsEmpty: Boolean) {
+    private fun updateData() {
+        showLoadingData()
+        if (!serviceInit) {
+            serviceInit = true
+            startNewsService()
+        } else {
+            newsViewModel.loadNews()
+        }
+    }
+
+    private fun startNewsService() {
+        newsViewModel.registerReceiver()
+        newsViewModel.startNewsService()
+    }
+
+    private fun showList(listIsEmpty: Boolean) {
+        hideLoadingData()
         if (listIsEmpty) {
             binding.newsItemsRecyclerView.visibility = View.GONE
             binding.emptyListText.visibility = View.VISIBLE
@@ -77,6 +102,21 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             binding.newsItemsRecyclerView.visibility = View.VISIBLE
             binding.emptyListText.visibility = View.GONE
         }
+    }
+
+    private fun showLoadingData() {
+        binding.loadingProgressBar.visibility = View.VISIBLE
+        binding.newsItemsRecyclerView.visibility = View.GONE
+        binding.emptyListText.visibility = View.GONE
+    }
+
+    private fun hideLoadingData() {
+        binding.loadingProgressBar.visibility = View.GONE
+    }
+
+    companion object {
+        private var serviceInit = false
+        private const val SERVICE_INIT = "SERVICE_INIT_FLAG"
     }
 
 }
