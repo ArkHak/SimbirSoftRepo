@@ -6,6 +6,7 @@ import android.os.IBinder
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import o.mysin.simbirsoftappjava.domain.model.News
+import o.mysin.simbirsoftappjava.domain.model.NewsList
 import java.io.InputStreamReader
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -38,8 +39,10 @@ class NewsService : Service() {
     }
 
     private fun sendResult(listNews: List<News>) {
+        val parcelNewsList = NewsList(listNews)
+
         val intent = Intent(NEWS_SERVICE)
-        intent.putParcelableArrayListExtra(NEWS_LIST, ArrayList(listNews))
+        intent.putExtra(NEWS_LIST, parcelNewsList)
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
     }
 

@@ -1,14 +1,21 @@
 package o.mysin.simbirsoftappjava.ui.news.main
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
+import o.mysin.simbirsoftappjava.data.datasource.local.NewsService
 import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsBinding
+import o.mysin.simbirsoftappjava.domain.model.NewsList
 import o.mysin.simbirsoftappjava.ui.MainActivityViewModel
 import o.mysin.simbirsoftappjava.utils.NewsItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -19,6 +26,9 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private val newsViewModel: NewsViewModel by viewModel()
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var adapter: NewsAdapter
+    private var serviceInit = false
+    private lateinit var receiver: BroadcastReceiver
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,6 +41,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         initAdapter()
         initRecycler()
         initActionButtons()
+        initBroadcastReceiver()
         newsViewModel.newsList.observe(viewLifecycleOwner) { renderData(it) }
         updateData()
     }
@@ -40,9 +51,14 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         super.onSaveInstanceState(outState)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        newsViewModel.unregisterReceiver()
+    override fun onResume() {
+        super.onResume()
+        registerReceiver(receiver)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(receiver)
     }
 
     private fun renderView() {
@@ -71,6 +87,29 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
     }
 
+    private fun initBroadcastReceiver() {
+        receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                val newsListFromService: NewsList? =
+                    intent.getParcelableExtra(
+                        NewsService.NEWS_LIST
+                    )
+                newsListFromService?.let { newsViewModel.addListFromService(it.newsList) }
+                newsViewModel.loadNews()
+            }
+        }
+        registerReceiver(receiver)
+    }
+
+    private fun registerReceiver(receiver: BroadcastReceiver) {
+        val filter = IntentFilter(NewsService.NEWS_SERVICE)
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(receiver, filter)
+    }
+
+    private fun unregisterReceiver(receiver: BroadcastReceiver) {
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(receiver)
+    }
+
     private fun renderData(newsList: List<News>) {
         showList(newsList.isEmpty())
         if (newsList.isNotEmpty()) {
@@ -82,15 +121,19 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         showLoadingData()
         if (!serviceInit) {
             serviceInit = true
-            startNewsService()
+            startService()
         } else {
             newsViewModel.loadNews()
         }
     }
 
+    private fun startService() {
+        startNewsService()
+    }
+
     private fun startNewsService() {
-        newsViewModel.registerReceiver()
-        newsViewModel.startNewsService()
+        val intent = Intent(context, NewsService::class.java)
+        context?.startService(intent)
     }
 
     private fun showList(listIsEmpty: Boolean) {
@@ -115,7 +158,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
     companion object {
-        private var serviceInit = false
         private const val SERVICE_INIT = "SERVICE_INIT_FLAG"
     }
 
