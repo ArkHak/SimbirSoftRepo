@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -26,7 +27,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private val newsViewModel: NewsViewModel by viewModel()
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var adapter: NewsAdapter
-    private var serviceInit = false
+    private var serviceStatus = ServiceStatus.INIT.value
     private lateinit var receiver: BroadcastReceiver
 
 
@@ -34,7 +35,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState != null) {
-            serviceInit = savedInstanceState.getBoolean(SERVICE_INIT)
+            serviceStatus = savedInstanceState.getString(SERVICE_FLAG, ServiceStatus.INIT.value)
         }
 
         renderView()
@@ -47,7 +48,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putBoolean(SERVICE_INIT, serviceInit)
+        outState.putString(SERVICE_FLAG, serviceStatus)
         super.onSaveInstanceState(outState)
     }
 
@@ -90,16 +91,27 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private fun initBroadcastReceiver() {
         receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                val newsListFromService: NewsList? =
-                    intent.getParcelableExtra(
-                        NewsService.NEWS_LIST
-                    )
-                newsListFromService?.let { newsViewModel.addListFromService(it.newsList) }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    val newsListFromService: List<News> =
+                        intent.getParcelableArrayListExtra(
+                            NewsService.NEWS_LIST,
+                            News::class.java
+                        ) as ArrayList<News>
+                    newsListFromService.let { newsViewModel.addListFromService(it) }
+                } else {
+                    val newsListFromService: NewsList? =
+                        intent.getParcelableExtra(
+                            NewsService.NEWS_LIST
+                        )
+                    newsListFromService?.let { newsViewModel.addListFromService(it.newsList) }
+                }
+                serviceStatus = ServiceStatus.SUCCESS.value
                 newsViewModel.loadNews()
             }
         }
         registerReceiver(receiver)
     }
+
 
     private fun registerReceiver(receiver: BroadcastReceiver) {
         val filter = IntentFilter(NewsService.NEWS_SERVICE)
@@ -111,18 +123,21 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
     private fun renderData(newsList: List<News>) {
-        showList(newsList.isEmpty())
-        if (newsList.isNotEmpty()) {
-            adapter.updateNewsList(newsList)
+        if (serviceStatus == ServiceStatus.SUCCESS.value) {
+            showList(newsList.isEmpty())
+            if (newsList.isNotEmpty()) {
+                adapter.updateNewsList(newsList)
+            }
         }
     }
 
     private fun updateData() {
         showLoadingData()
-        if (!serviceInit) {
-            serviceInit = true
+        if (serviceStatus == ServiceStatus.INIT.value) {
             startService()
-        } else {
+            serviceStatus = ServiceStatus.LOADING.value
+        }
+        if (serviceStatus == ServiceStatus.SUCCESS.value) {
             newsViewModel.loadNews()
         }
     }
@@ -157,8 +172,16 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         binding.loadingProgressBar.visibility = View.GONE
     }
 
-    companion object {
-        private const val SERVICE_INIT = "SERVICE_INIT_FLAG"
+    private enum class ServiceStatus(val value: String) {
+        INIT(SERVICE_STATUS_INIT),
+        LOADING(SERVICE_STATUS_LOADING),
+        SUCCESS(SERVICE_STATUS_SUCCESS)
     }
 
+    companion object {
+        private const val SERVICE_FLAG = "SERVICE_FLAG"
+        private const val SERVICE_STATUS_INIT = "SERVICE_STATUS_INIT"
+        private const val SERVICE_STATUS_LOADING = "SERVICE_STATUS_LOADING"
+        private const val SERVICE_STATUS_SUCCESS = "SERVICE_STATUS_SUCCESS"
+    }
 }

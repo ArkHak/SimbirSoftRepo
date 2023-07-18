@@ -2,6 +2,7 @@ package o.mysin.simbirsoftappjava.data.datasource.local
 
 import android.app.Service
 import android.content.Intent
+import android.os.Build
 import android.os.IBinder
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
@@ -39,12 +40,21 @@ class NewsService : Service() {
     }
 
     private fun sendResult(listNews: List<News>) {
-        val parcelNewsList = NewsList(listNews)
-
         val intent = Intent(NEWS_SERVICE)
-        intent.putExtra(NEWS_LIST, parcelNewsList)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.putParcelableArrayListExtra(NEWS_LIST, ArrayList(listNews))
+        } else {
+            val parcelNewsList = NewsList(listNews)
+            intent.putExtra(NEWS_LIST, parcelNewsList)
+        }
+
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
     }
+
+    //private fun sendResult(listNews: List<News>) {
+    //         val intent = Intent(NEWS_SERVICE)
+    //
 
     override fun onDestroy() {
         executorService.shutdown()
