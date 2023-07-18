@@ -84,14 +84,17 @@ public class RxCreatingTraining {
      * 3. {@link #unstableMethod(boolean)}
      */
     public Observable<Integer> combinationExpensiveMethods(final boolean unstableCondition) {
-        return Observable.defer(() -> {
-            int value1 = expensiveMethod();
-            int value2 = alternativeExpensiveMethod();
-            int value3 = unstableMethod(unstableCondition);
-            return Observable.just(value1, value2, value3);
-        });
+        return Observable.defer(() -> Observable.just(
+                        expensiveMethod(),
+                        alternativeExpensiveMethod()
+                ).concatWith(
+                        Observable.defer(() -> Observable.just(unstableMethod(unstableCondition)).onErrorResumeNext(Observable.empty()))
+                )
+        );
     }
 
+
+    //
 
     /**
      * Без каких либо событий
