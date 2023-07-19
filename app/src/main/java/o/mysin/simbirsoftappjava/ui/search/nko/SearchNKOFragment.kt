@@ -4,22 +4,26 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.domain.model.Event
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByNkoBinding
+import o.mysin.simbirsoftappjava.ui.search.SearchFragmentsCommonViewModel
 
 
 class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
 
     private val binding: FragmentSearchByNkoBinding by viewBinding()
     private val searchViewModel: SearchNKOViewModel by viewModels()
+    private val commonViewModel: SearchFragmentsCommonViewModel by activityViewModels()
     private val adapter: SearchNKOAdapter by lazy { SearchNKOAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         searchViewModel.nkoList
             .observe(viewLifecycleOwner) { renderData(it) }
@@ -30,6 +34,7 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
     override fun onResume() {
         super.onResume()
         searchViewModel.loadResultList()
+        commonViewModel.correctTitleSearchView(ID_TITLE)
     }
 
     private fun renderData(nkoList: List<Event>) {
@@ -47,6 +52,10 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
                 LinearLayoutManager.VERTICAL
             ).apply { divider?.let { setDrawable(it) } }
         )
+    }
+
+    companion object {
+        private val ID_TITLE = R.string.hint_input_name_organization
     }
 
 }
