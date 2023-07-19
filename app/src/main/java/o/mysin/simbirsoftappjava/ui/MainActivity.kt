@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by viewBinding()
 
-    private val profileViewModel: MainActivityViewModel by viewModels()
+    private val mainViewModel: MainActivityViewModel by viewModels()
 
     private val bottomNavigationPanel: BottomNavigationView by lazy { binding.bottomNavigationPanel }
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationPanel.setupWithNavController(bottomNavigationPanelController)
 
-        profileViewModel.hideBottomNavigation.observe(this) { hide ->
+        mainViewModel.hideBottomNavigation.observe(this) { hide ->
             binding.bottomNavigationPanel.visibility = if (hide) View.GONE else View.VISIBLE
         }
 

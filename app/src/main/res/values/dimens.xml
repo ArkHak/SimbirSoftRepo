@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Common -->
+    <dimen name="margin_default_large">26dp</dimen>
     <dimen name="margin_default">20dp</dimen>
     <dimen name="margin_default_small">16dp</dimen>
 
