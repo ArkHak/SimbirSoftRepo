@@ -27,4 +27,10 @@ class SearchEventsViewModel(
             _eventsList.value = filterEvents
         }
     }
+
+    fun cleanEventList() {
+        viewModelScope.launch {
+            _eventsList.value = emptyList()
+        }
+    }
 }

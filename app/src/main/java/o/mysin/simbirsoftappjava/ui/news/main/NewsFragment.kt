@@ -30,7 +30,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private var serviceStatus = ServiceStatus.INIT.value
     private lateinit var receiver: BroadcastReceiver
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

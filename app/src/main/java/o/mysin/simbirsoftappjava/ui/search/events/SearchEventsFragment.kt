@@ -19,23 +19,46 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
     private val commonViewModel: SearchFragmentsCommonViewModel by activityViewModels()
     private val searchViewModel: SearchEventsViewModel by viewModel()
     private val adapter: SearchEventsAdapter by lazy { SearchEventsAdapter() }
+    private var emptySearch = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        commonViewModel.queryEvents
-            .observe(viewLifecycleOwner) { searchViewModel.searchEvents(it) }
-
         searchViewModel.eventsList
             .observe(viewLifecycleOwner) { renderData(it) }
 
+        commonViewModel.queryEvents
+            .observe(viewLifecycleOwner) { renderView(it) }
+
+
         initRecycler()
+        emptyScreenState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        commonViewModel.correctTitleSearchView(ID_TITLE)
+    }
+
+    private fun renderView(query: String) {
+        if (query.isEmpty()) {
+            emptySearch = true
+            emptyScreenState()
+            adapter.cleanEventList()
+            searchViewModel.cleanEventList()
+        } else {
+            emptySearch = false
+            searchViewModel.searchEvents(query)
+        }
     }
 
     private fun renderData(eventList: List<Event>) {
-        if (eventList.isNotEmpty()) {
-            binding.initLayout.visibility = View.GONE
-            binding.recyclerViewLayout.visibility = View.VISIBLE
+        if (!emptySearch){
+            if (eventList.isNotEmpty()) {
+                dataScreenState()
+            } else {
+                dataEmptyScreenState()
+            }
         }
         adapter.updateEventList(eventList)
     }
@@ -54,9 +77,22 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
         )
     }
 
-    override fun onResume() {
-        super.onResume()
-        commonViewModel.correctTitleSearchView(ID_TITLE)
+    private fun emptyScreenState() {
+        binding.initLayout.visibility = View.VISIBLE
+        binding.recyclerViewLayout.visibility = View.GONE
+        binding.eventsNotFoundTextView.visibility = View.GONE
+    }
+
+    private fun dataScreenState() {
+        binding.initLayout.visibility = View.GONE
+        binding.recyclerViewLayout.visibility = View.VISIBLE
+        binding.eventsNotFoundTextView.visibility = View.GONE
+    }
+
+    private fun dataEmptyScreenState() {
+        binding.initLayout.visibility = View.GONE
+        binding.recyclerViewLayout.visibility = View.GONE
+        binding.eventsNotFoundTextView.visibility = View.VISIBLE
     }
 
     companion object {

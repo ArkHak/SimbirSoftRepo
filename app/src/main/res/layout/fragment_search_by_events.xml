@@ -54,6 +54,19 @@
 
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/events_not_found_text_view"
+        style="@style/TextStyle10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/events_not_found"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RelativeLayout
         android:id="@+id/recycler_view_layout"
         android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -23,6 +24,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private val binding: FragmentSearchBinding by viewBinding()
     private val commonViewModel: SearchFragmentsCommonViewModel by activityViewModels()
+    private val searchViewModel: SearchVewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,7 +46,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun renderSearchView(idTitle: Int) {
         binding.searchView.queryHint = requireContext().getString(idTitle)
-        binding.searchView.setQuery("", false)
+        if (binding.searchTabLayout.selectedTabPosition == 0) {
+            binding.searchView.setQuery(searchViewModel.queryByEventScreen, false)
+        } else {
+            binding.searchView.setQuery("", false)
+        }
     }
 
     private fun initViewPager() {
@@ -81,7 +87,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { query ->
-                if (query.isNotEmpty() && binding.searchTabLayout.selectedTabPosition == 0) {
+                if (binding.searchTabLayout.selectedTabPosition == 0) {
+                    searchViewModel.changeQueryByEventScreen(query)
                     commonViewModel.sendQueryToSearchEvents(query)
                 }
             }

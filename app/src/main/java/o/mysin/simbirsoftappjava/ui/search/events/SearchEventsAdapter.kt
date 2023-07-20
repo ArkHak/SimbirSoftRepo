@@ -33,4 +33,10 @@ class SearchEventsAdapter : RecyclerView.Adapter<SearchEventsViewHolder>() {
         _eventList = eventList
         notifyDataSetChanged()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun cleanEventList() {
+        _eventList = emptyList()
+        notifyDataSetChanged()
+    }
 }
