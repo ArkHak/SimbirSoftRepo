@@ -31,6 +31,11 @@ class NewsViewModel(
         newsRepository.addListNews(newsListFromService)
     }
 
+    fun setIsViewedNews(idNews: Int) {
+        _newsList.value?.find { it.id == idNews }?.isViewed = true
+        newsRepository.setIsViewedNews(idNews)
+    }
+
     private fun getNewsByFilter(filter: List<Int>): List<News> {
         return newsRepository.getAllNews().filter { news ->
             news.listHelpCategoryId.any() { category ->

@@ -67,6 +67,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     private fun initAdapter() {
         adapter = NewsAdapter { idItem ->
+            newsViewModel.setIsViewedNews(idItem)
             mainViewModel.setHideBottomNavigation(true)
             val action = NewsFragmentDirections.actionFragmentNewsToNewsDetailFragment(idItem)
             findNavController().navigate(action)
@@ -127,6 +128,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             if (newsList.isNotEmpty()) {
                 adapter.updateNewsList(newsList)
             }
+            mainViewModel.setBadgeCount(newsList.count { !it.isViewed })
         }
     }
 

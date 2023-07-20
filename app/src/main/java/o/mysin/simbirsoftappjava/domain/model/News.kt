@@ -28,4 +28,6 @@ data class News(
     val endDateTime: Long,
     @SerializedName("list_help_category_id")
     val listHelpCategoryId: List<Int>,
+    @SerializedName("is_viewed")
+    var isViewed: Boolean = false,
 ) : Parcelable

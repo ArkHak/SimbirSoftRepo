@@ -21,6 +21,10 @@ class NewsRepositoryImpl(
         _listNews = listNews
     }
 
+    override fun setIsViewedNews(idNews: Int) {
+        _listNews.find { it.id == idNews }?.isViewed = true
+    }
+
     private fun getNewsFromAssets(): List<News> {
         val reader = InputStreamReader(inputStream)
         val listNews = gson.fromJson(reader, Array<News>::class.java).toList()
