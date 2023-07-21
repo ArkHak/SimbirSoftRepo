@@ -52,10 +52,6 @@ class NewsService : Service() {
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
     }
 
-    //private fun sendResult(listNews: List<News>) {
-    //         val intent = Intent(NEWS_SERVICE)
-    //
-
     override fun onDestroy() {
         executorService.shutdown()
         super.onDestroy()

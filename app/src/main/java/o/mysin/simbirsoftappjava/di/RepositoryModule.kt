@@ -14,7 +14,7 @@ val repositoryModule = module {
     }
 
     single<NewsRepository> {
-        NewsRepositoryImpl(get(), get(named("news")))
+        NewsRepositoryImpl(get(), get(named("news")), get(named("newsFake")))
     }
 
 }

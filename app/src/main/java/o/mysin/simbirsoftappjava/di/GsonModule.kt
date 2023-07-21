@@ -15,6 +15,10 @@ val gsonModule = module {
         androidContext().assets.open("news.json")
     }
 
+    single(named("newsFake")) {
+        androidContext().assets.open("fake_news.json")
+    }
+
     single {
         Gson()
     }

@@ -56,6 +56,7 @@
 
     <!-- NewsFragment -->
     <string name="empty_news_list">По заданным категориям новостей нет</string>
+    <string name="events_not_found">События по заданному критерию не найдены</string>
 
     <!-- FilterFragment -->
     <string name="filter_change_apply">Изменения приняты</string>
@@ -81,6 +82,5 @@
     <string name="login_button_text">Войти</string>
     <string name="forgot_your_password"><u>Забыли пароль?</u></string>
     <string name="registration"><u>Регистрация</u></string>
-    <string name="events_not_found">События по заданному критерию не найдены</string>
 
 </resources>

@@ -18,6 +18,14 @@ class NewsViewModel(
     val newsList: LiveData<List<News>>
         get() = _newsList
 
+    init {
+        newsRepository.getObservableNews()
+            .subscribe { newsList ->
+                _newsList.value = newsList
+            }
+            .dispose()
+    }
+
     fun loadNews() {
         val filterIdList = helpCategoryRepository.getHelpCategories()
             .filter { it.isEnabled }
@@ -25,10 +33,6 @@ class NewsViewModel(
         viewModelScope.launch {
             _newsList.value = getNewsByFilter(filterIdList)
         }
-    }
-
-    fun addListFromService(newsListFromService: List<News>) {
-        newsRepository.addListNews(newsListFromService)
     }
 
     fun setIsViewedNews(idNews: Int) {
