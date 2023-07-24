@@ -27,6 +27,10 @@ class NewsViewModel(
         }
     }
 
+    fun addListFromService(newsListFromService: List<News>) {
+        newsRepository.addListNews(newsListFromService)
+    }
+
     private fun getNewsByFilter(filter: List<Int>): List<News> {
         return newsRepository.getAllNews().filter { news ->
             news.listHelpCategoryId.any() { category ->

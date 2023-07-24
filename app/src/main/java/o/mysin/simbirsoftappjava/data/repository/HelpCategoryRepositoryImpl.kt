@@ -10,9 +10,12 @@ class HelpCategoryRepositoryImpl(
     private val gson: Gson,
     private val inputStream: InputStream,
 ) : HelpCategoryRepository {
-    private var _listHelpCategories: List<HelpCategory> = getCategoryFromAssets()
+    private var _listHelpCategories: List<HelpCategory> = emptyList()
 
     override fun getHelpCategories(): List<HelpCategory> {
+        if (_listHelpCategories.isEmpty()) {
+            _listHelpCategories = getCategoryFromAssets()
+        }
         return _listHelpCategories
     }
 
