@@ -19,6 +19,6 @@ class SplashFragment : AppCompatActivity() {
     }
 
     companion object {
-        private const val SPLASH_SCREEN_TIMEOUT = 2000L
+        private const val SPLASH_SCREEN_TIMEOUT = 1000L
     }
 }

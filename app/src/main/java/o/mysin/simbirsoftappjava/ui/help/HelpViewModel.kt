@@ -43,7 +43,7 @@ class HelpViewModel(
     }
 
     companion object {
-        private const val TIMEOUT = 5000L
+        private const val TIMEOUT = 1000L
     }
 
 }
