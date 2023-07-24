@@ -93,7 +93,14 @@ public class RxCreatingTraining {
         );
     }
 
-
+//    public Observable<Integer> combinationExpensiveMethods(final boolean unstableCondition) {
+//        return Observable.create(emitter -> {
+//            emitter.onNext(expensiveMethod());
+//            emitter.onNext(alternativeExpensiveMethod());
+//            emitter.onNext(unstableMethod(unstableCondition));
+//            emitter.onComplete();
+//        });
+//    }
     //
 
     /**
