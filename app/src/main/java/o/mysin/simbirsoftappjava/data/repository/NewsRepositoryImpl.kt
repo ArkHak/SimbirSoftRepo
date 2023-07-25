@@ -1,9 +1,9 @@
 package o.mysin.simbirsoftappjava.data.repository
 
-import android.annotation.SuppressLint
 import android.util.Log
 import com.google.gson.Gson
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
@@ -11,18 +11,18 @@ import o.mysin.simbirsoftappjava.domain.model.News
 import java.io.InputStream
 import java.io.InputStreamReader
 
-@SuppressLint("CheckResult")
 class NewsRepositoryImpl(
     private val gson: Gson,
     private val inputStreamOriginal: InputStream,
     private val inputStreamFake: InputStream,
 ) : NewsRepository {
+    private val compositeDisposable = CompositeDisposable()
+    private val newsSubject: BehaviorSubject<List<News>> = BehaviorSubject.create()
 
     private var _listNews = emptyList<News>()
 
-    private val newsSubject: BehaviorSubject<List<News>> = BehaviorSubject.create()
     init {
-        Observable.zip(
+        val disposableNews = Observable.zip(
             getNewsFromAssetsByRxJava(),
             getFooByRxJava()
         ) { list1, list2 -> list1 + list2 }
@@ -32,6 +32,7 @@ class NewsRepositoryImpl(
                 _listNews = data
                 newsSubject.onNext(data)
             }
+        compositeDisposable.add(disposableNews)
     }
 
     override fun getAllNews(): List<News> {
@@ -100,6 +101,10 @@ class NewsRepositoryImpl(
                 )
             }
             .onErrorReturnItem(emptyList())
+    }
+
+    override fun unsubscribe() {
+        compositeDisposable.dispose()
     }
 
     companion object {

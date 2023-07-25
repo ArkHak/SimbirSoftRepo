@@ -19,4 +19,9 @@ class NewsDetailViewModel(private val newsRepository: NewsRepository) : ViewMode
             _news.value = newsRepository.getAllNews().find { it.id == newsId }
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        newsRepository.unsubscribe()
+    }
 }

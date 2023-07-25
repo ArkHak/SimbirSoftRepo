@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
@@ -37,7 +38,7 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
 
     override fun onResume() {
         super.onResume()
-        commonViewModel.correctTitleSearchView(ID_TITLE)
+        commonViewModel.correctTitleSearchView(R.string.hint_input_title_event)
     }
 
     private fun renderView(query: String) {
@@ -53,7 +54,7 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
     }
 
     private fun renderData(eventList: List<Event>) {
-        if (!emptySearch){
+        if (!emptySearch) {
             if (eventList.isNotEmpty()) {
                 dataScreenState()
             } else {
@@ -63,18 +64,13 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
         adapter.updateEventList(eventList)
     }
 
-
     private fun initRecycler() {
-        binding.searchEventsItemRecyclerView.adapter = adapter
-
+        val itemDecorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
         val divider = ContextCompat.getDrawable(requireContext(), R.drawable.divider)
+        divider?.let { itemDecorator.setDrawable(it) }
 
-        binding.searchEventsItemRecyclerView.addItemDecoration(
-            androidx.recyclerview.widget.DividerItemDecoration(
-                requireContext(),
-                LinearLayoutManager.VERTICAL
-            ).apply { divider?.let { setDrawable(it) } }
-        )
+        binding.searchEventsItemRecyclerView.adapter = adapter
+        binding.searchEventsItemRecyclerView.addItemDecoration(itemDecorator)
     }
 
     private fun emptyScreenState() {
@@ -95,7 +91,4 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
         binding.eventsNotFoundTextView.visibility = View.VISIBLE
     }
 
-    companion object {
-        private val ID_TITLE = R.string.hint_input_title_event
-    }
 }

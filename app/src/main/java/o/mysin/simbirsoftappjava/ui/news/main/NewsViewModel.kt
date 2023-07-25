@@ -26,6 +26,11 @@ class NewsViewModel(
             .dispose()
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        newsRepository.unsubscribe()
+    }
+
     fun loadNews() {
         val filterIdList = helpCategoryRepository.getHelpCategories()
             .filter { it.isEnabled }

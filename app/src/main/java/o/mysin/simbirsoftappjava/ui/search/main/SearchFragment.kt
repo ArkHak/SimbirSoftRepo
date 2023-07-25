@@ -1,6 +1,5 @@
 package o.mysin.simbirsoftappjava.ui.search.main
 
-import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
@@ -11,14 +10,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchBinding
 import o.mysin.simbirsoftappjava.ui.search.SearchFragmentsCommonViewModel
 import o.mysin.simbirsoftappjava.utils.ZoomOutPageTransformer
-import java.util.concurrent.TimeUnit
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
@@ -31,6 +26,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         commonViewModel.titleSearchView
             .observe(viewLifecycleOwner) { renderSearchView(it) }
+
+        searchViewModel.queryByEventScreen
+            .observe(viewLifecycleOwner) { commonViewModel.sendQueryToSearchEvents(it) }
 
         requireActivity().apply {
             val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
@@ -47,7 +45,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun renderSearchView(idTitle: Int) {
         binding.searchView.queryHint = requireContext().getString(idTitle)
         if (binding.searchTabLayout.selectedTabPosition == 0) {
-            binding.searchView.setQuery(searchViewModel.queryByEventScreen, false)
+            binding.searchView.setQuery(searchViewModel.queryByEventScreen.value, false)
         } else {
             binding.searchView.setQuery("", false)
         }
@@ -65,37 +63,19 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun tabNames(type: Int): String = getString(SearchTypeNumber.getTitleIdByIndex(type))
 
-    @SuppressLint("CheckResult")
     private fun initSearchView() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-        val searchObservable = Observable.create { emitter ->
-            binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    emitter.onNext(query)
-                    return true
-                }
-
-                override fun onQueryTextChange(newText: String): Boolean {
-                    emitter.onNext(newText)
-                    return true
-                }
-            })
-        }
-
-        searchObservable
-            .debounce(SEARCH_TIMEOUT, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { query ->
-                if (binding.searchTabLayout.selectedTabPosition == 0) {
-                    searchViewModel.changeQueryByEventScreen(query)
-                    commonViewModel.sendQueryToSearchEvents(query)
-                }
+            override fun onQueryTextSubmit(query: String): Boolean {
+                searchViewModel.setSearchQuery(query)
+                return true
             }
-    }
 
-    companion object {
-        private const val SEARCH_TIMEOUT = 500L
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchViewModel.setSearchQuery(newText)
+                return true
+            }
+        })
     }
 
 }

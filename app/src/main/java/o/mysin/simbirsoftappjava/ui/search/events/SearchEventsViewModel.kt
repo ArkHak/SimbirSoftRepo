@@ -17,6 +17,10 @@ class SearchEventsViewModel(
     val eventsList: LiveData<List<Event>>
         get() = _eventsList
 
+    override fun onCleared() {
+        super.onCleared()
+        newsRepository.unsubscribe()
+    }
 
     fun searchEvents(searchEvents: String) {
         val filterEvents = newsRepository.getAllNews().filter { item ->
