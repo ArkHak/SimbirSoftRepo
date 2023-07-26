@@ -27,15 +27,17 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
         helpViewModel.helpCategoryList
             .observe(viewLifecycleOwner) { renderData(it) }
 
-        updateData()
         initRecycler()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateData()
+    }
+
     private fun updateData() {
-        if (helpViewModel.helpCategoryList.value.isNullOrEmpty()) {
-            showLoadingData()
-            helpViewModel.updateData()
-        }
+        helpViewModel.updateData()
+        showLoadingData()
     }
 
     private fun renderData(helpCategoryList: List<HelpCategory>) {

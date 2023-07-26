@@ -65,12 +65,10 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         mainViewModel.setBadgeCount(newsList.count { !it.isViewed })
     }
 
-
     private fun updateData() {
         showLoadingData()
         newsViewModel.loadNews()
     }
-
 
     private fun showList(listIsEmpty: Boolean) {
         hideLoadingData()

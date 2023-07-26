@@ -16,7 +16,6 @@ class MainActivityViewModel : ViewModel() {
         badgeSubject.onNext(count)
     }
 
-
     fun setHideBottomNavigation(hide: Boolean) {
         _hideBottomNavigation.value = hide
     }

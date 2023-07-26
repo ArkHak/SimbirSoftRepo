@@ -1,50 +1,33 @@
 package o.mysin.simbirsoftappjava.data.repository
 
 import android.util.Log
-import com.google.gson.Gson
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxjava3.subjects.BehaviorSubject
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
 import o.mysin.simbirsoftappjava.domain.model.News
-import java.io.InputStream
-import java.io.InputStreamReader
+import o.mysin.simbirsoftappjava.domain.utils.AssetManager
 
 class NewsRepositoryImpl(
-    private val gson: Gson,
-    private val inputStreamOriginal: InputStream,
-    private val inputStreamFake: InputStream,
+    private val assetManager: AssetManager,
 ) : NewsRepository {
-    private val compositeDisposable = CompositeDisposable()
-    private val newsSubject: BehaviorSubject<List<News>> = BehaviorSubject.create()
 
     private var _listNews = emptyList<News>()
-
-    init {
-        val disposableNews = Observable.zip(
-            getNewsFromAssetsByRxJava(),
-            getFooByRxJava()
-        ) { list1, list2 -> list1 + list2 }
-            .observeOn(Schedulers.io())
-            .subscribe { data ->
-                Log.d(TAG_MOD, "Thread in zip(): ${Thread.currentThread().name}")
-                _listNews = data
-                newsSubject.onNext(data)
-            }
-        compositeDisposable.add(disposableNews)
-    }
 
     override fun getAllNews(): List<News> {
         return _listNews
     }
 
     override fun getObservableNews(): Observable<List<News>> {
-        return newsSubject
-    }
-
-    override fun addListNews(listNews: List<News>) {
-        _listNews = listNews
+        return Observable.zip(
+            getNewsFromAssetsByRxJava(),
+            getFooByRxJava()
+        ) { list1, list2 ->
+            Log.d(TAG_MOD, "Thread in zip(): ${Thread.currentThread().name}")
+            val combinedList = mutableListOf<News>()
+            combinedList.addAll(list1)
+            combinedList.addAll(list2)
+            combinedList
+        }
     }
 
     override fun setIsViewedNews(idNews: Int) {
@@ -53,11 +36,8 @@ class NewsRepositoryImpl(
 
     private fun getNewsFromAssetsByRxJava(): Observable<List<News>> {
         return Observable.create { emitter ->
-            val reader = InputStreamReader(inputStreamOriginal)
-            val listNews = gson.fromJson(reader, Array<News>::class.java).toList()
-            reader.close()
-            inputStreamOriginal.close()
-            emitter.onNext(listNews)
+            val newsList = assetManager.getNewsListFromAsset("news.json")
+            emitter.onNext(newsList)
             emitter.onComplete()
         }
             .subscribeOn(Schedulers.io())
@@ -79,11 +59,8 @@ class NewsRepositoryImpl(
 
     private fun getFooByRxJava(): Observable<List<News>> {
         return Observable.create { emitter ->
-            val reader = InputStreamReader(inputStreamFake)
-            val listNews = gson.fromJson(reader, Array<News>::class.java).toList()
-            reader.close()
-            inputStreamFake.close()
-            emitter.onNext(listNews)
+            val fooNewsList = assetManager.getNewsListFromAsset("fake_news.json")
+            emitter.onNext(fooNewsList)
             emitter.onComplete()
         }
             .subscribeOn(Schedulers.io())
@@ -101,10 +78,6 @@ class NewsRepositoryImpl(
                 )
             }
             .onErrorReturnItem(emptyList())
-    }
-
-    override fun unsubscribe() {
-        compositeDisposable.dispose()
     }
 
     companion object {

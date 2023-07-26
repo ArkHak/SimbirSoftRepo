@@ -34,7 +34,7 @@ class AuthorizationViewModel : ViewModel() {
             it.length >= SYMBOL_COUNT
         } ?: false
 
-        _isValid.value = isEmailValid && isPasswordValid
+        this._isValid.value = isEmailValid && isPasswordValid
     }
 
 
