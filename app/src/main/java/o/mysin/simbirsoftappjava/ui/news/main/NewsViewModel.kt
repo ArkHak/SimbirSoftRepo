@@ -21,6 +21,8 @@ class NewsViewModel(
     val newsList: LiveData<List<News>>
         get() = _newsList
 
+    private var listIdNewsViewed = arrayListOf<Int>()
+
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
@@ -42,8 +44,7 @@ class NewsViewModel(
     }
 
     fun setIsViewedNews(idNews: Int) {
-        _newsList.value?.find { it.id == idNews }?.isViewed = true
-        newsRepository.setIsViewedNews(idNews)
+        listIdNewsViewed.add(idNews)
     }
 
     private fun getNewsByFilter(newsList: List<News>, filter: List<Int>): List<News> {
@@ -52,5 +53,12 @@ class NewsViewModel(
                 category in filter
             }
         }
+    }
+
+    fun getCountNewsNotViewed(newsList: List<News>): Int {
+        val currentListNewsSize = newsList.size
+        val currentCountNewsViewed =
+            newsList.count { news -> listIdNewsViewed.contains(news.id) }
+        return currentListNewsSize - currentCountNewsViewed
     }
 }

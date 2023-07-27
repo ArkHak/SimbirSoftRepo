@@ -62,7 +62,12 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         if (newsList.isNotEmpty()) {
             adapter.updateNewsList(newsList)
         }
-        mainViewModel.setBadgeCount(newsList.count { !it.isViewed })
+        setBadgeCount(newsList)
+    }
+
+    private fun setBadgeCount(newsList: List<News>) {
+        val currentCountNewsNotViewed = newsViewModel.getCountNewsNotViewed(newsList)
+        mainViewModel.setBadgeCount(currentCountNewsNotViewed)
     }
 
     private fun updateData() {

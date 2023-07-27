@@ -11,12 +11,6 @@ class NewsRepositoryImpl(
     private val assetManager: AssetManager,
 ) : NewsRepository {
 
-    private var _listNews = emptyList<News>()
-
-    override fun getAllNews(): List<News> {
-        return _listNews
-    }
-
     override fun getObservableNews(): Observable<List<News>> {
         return Observable.zip(
             getNewsFromAssetsByRxJava(),
@@ -28,10 +22,6 @@ class NewsRepositoryImpl(
             combinedList.addAll(list2)
             combinedList
         }
-    }
-
-    override fun setIsViewedNews(idNews: Int) {
-        _listNews.find { it.id == idNews }?.isViewed = true
     }
 
     private fun getNewsFromAssetsByRxJava(): Observable<List<News>> {
