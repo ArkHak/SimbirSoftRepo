@@ -43,6 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="none"
+                        android:gravity="start"
                         android:maxLines="1"
                         android:singleLine="true"
                         tools:text="Спонсоры отремонтируют школу-интернат" />
@@ -209,7 +210,7 @@
 
                 <TextView
                     android:id="@+id/owner_mail"
-                    style="@style/text_news_details_green"
+                    style="@style/clickable_green_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_between_items_news_detail"
@@ -275,7 +276,7 @@
 
                 <TextView
                     android:id="@+id/hyperlink_owner_site"
-                    style="@style/text_news_details_green"
+                    style="@style/clickable_green_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_default"
@@ -412,7 +413,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="+102" />
+                        android:text="@string/temp_count_102" />
 
                 </LinearLayout>
 

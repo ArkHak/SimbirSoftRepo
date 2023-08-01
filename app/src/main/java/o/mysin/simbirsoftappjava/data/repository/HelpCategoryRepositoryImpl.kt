@@ -1,14 +1,11 @@
 package o.mysin.simbirsoftappjava.data.repository
 
-import com.google.gson.Gson
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
-import java.io.InputStream
-import java.io.InputStreamReader
+import o.mysin.simbirsoftappjava.domain.utils.AssetManager
 
 class HelpCategoryRepositoryImpl(
-    private val gson: Gson,
-    private val inputStream: InputStream,
+    private val assetManager: AssetManager,
 ) : HelpCategoryRepository {
     private var _listHelpCategories: List<HelpCategory> = emptyList()
 
@@ -24,15 +21,12 @@ class HelpCategoryRepositoryImpl(
     }
 
     private fun getCategoryFromAssets(): List<HelpCategory> {
-        val reader = InputStreamReader(inputStream)
-        val listCategory = gson.fromJson(reader, Array<HelpCategory>::class.java).toList()
-        val correctList = listCategory.map {
+        val helpCategoryList = assetManager.getHelpCategoryListFromAsset("categories.json")
+        val correctList = helpCategoryList.map {
             it.copy(
                 isEnabled = true
             )
         }
-        reader.close()
-        inputStream.close()
         return correctList
     }
 }

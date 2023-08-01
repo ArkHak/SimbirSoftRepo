@@ -1,6 +1,7 @@
 package o.mysin.simbirsoftappjava
 
 import android.app.Application
+import o.mysin.simbirsoftappjava.di.assetManagerModule
 import o.mysin.simbirsoftappjava.di.repositoryModule
 import o.mysin.simbirsoftappjava.di.gsonModule
 import o.mysin.simbirsoftappjava.di.viewModelModule
@@ -20,6 +21,7 @@ class WantHelpApp : Application() {
                 repositoryModule,
                 viewModelModule,
                 gsonModule,
+                assetManagerModule
             )
         }
     }

@@ -26,7 +26,6 @@
             android:iconifiedByDefault="false"
             android:voiceSearchMode="showVoiceSearchButton"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="@string/hint_input_name_organization"
             app:searchIcon="@drawable/ic_search"
             app:voiceIcon="@drawable/ic_mic" />
     </androidx.cardview.widget.CardView>

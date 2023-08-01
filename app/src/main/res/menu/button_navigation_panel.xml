@@ -4,7 +4,8 @@
     <item
         android:id="@+id/fragment_news"
         android:icon="@drawable/ic_news"
-        android:title="@string/title_news" />
+        android:title="@string/title_news">
+    </item>
 
     <item
         android:id="@+id/fragment_search"

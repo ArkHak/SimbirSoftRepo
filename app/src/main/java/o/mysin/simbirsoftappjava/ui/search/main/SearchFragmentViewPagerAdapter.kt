@@ -5,7 +5,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import o.mysin.simbirsoftappjava.ui.search.events.SearchEventsFragment
 import o.mysin.simbirsoftappjava.ui.search.nko.SearchNKOFragment
 
-class SearchFragmentViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class SearchFragmentViewPagerAdapter(
+    fragment: Fragment,
+) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
         return SearchTypeNumber.values().size
     }
