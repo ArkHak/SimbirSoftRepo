@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
@@ -11,6 +14,7 @@ import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 class FilterViewModel(
     private val helpCategoryRepository: HelpCategoryRepository,
 ) : ViewModel() {
+    private val compositeDisposable = CompositeDisposable()
 
     private val _filterList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
     val filterList: LiveData<List<HelpCategory>>
@@ -23,11 +27,20 @@ class FilterViewModel(
         filterList.value?.toList()?.let { _tmpFilterList.addAll(it) }
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
+    }
 
     private fun loadFilterList() {
-        viewModelScope.launch {
-            _filterList.value = helpCategoryRepository.getHelpCategories()
-        }
+        val disposable = helpCategoryRepository.getHelpCategories()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { helpList ->
+                _filterList.value = helpList
+            }
+
+        compositeDisposable.add(disposable)
     }
 
     fun changeValueItemFilter(idtItem: Int) {
@@ -39,6 +52,8 @@ class FilterViewModel(
     }
 
     fun saveFilterList() {
-        helpCategoryRepository.updateList(_tmpFilterList)
+        viewModelScope.launch {
+            _filterList.value = _tmpFilterList
+        }
     }
 }

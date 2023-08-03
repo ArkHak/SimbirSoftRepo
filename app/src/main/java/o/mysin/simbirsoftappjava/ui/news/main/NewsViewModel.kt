@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
 import o.mysin.simbirsoftappjava.domain.model.News
+import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 
 class NewsViewModel(
     private val newsRepository: NewsRepository,
@@ -25,11 +25,8 @@ class NewsViewModel(
 
     private var listIdNewsViewed = arrayListOf<Int>()
 
-
     fun loadNews() {
-        val filterIdList = helpCategoryRepository.getHelpCategories()
-            .filter { it.isEnabled }
-            .map { it.id }
+        val filterIdList = helpCategoryRepository.getFilterList()
 
         viewModelScope.launch {
             newsRepository.getFlowableNews()

@@ -1,13 +1,15 @@
 package o.mysin.simbirsoftappjava.domain.model
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class HelpCategory(
     @SerializedName("id")
     val id: Int,
-    @SerializedName("title")
+    @SerializedName("name")
     val title: String,
-    @SerializedName("icon_url")
+    @SerializedName("image")
     val iconUrl: String,
     @SerializedName("is_enabled")
     val isEnabled: Boolean = true,
