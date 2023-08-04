@@ -20,11 +20,11 @@ class FilterViewModel(
     val filterList: LiveData<List<HelpCategory>>
         get() = _filterList
 
-    private val _tmpFilterList = mutableListOf<HelpCategory>()
+    var tmpIdHelpCategoryHideList = arrayListOf<Int>()
+        private set
 
     init {
         loadFilterList()
-        filterList.value?.toList()?.let { _tmpFilterList.addAll(it) }
     }
 
     override fun onCleared() {
@@ -37,23 +37,24 @@ class FilterViewModel(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { helpList ->
+                tmpIdHelpCategoryHideList.addAll(helpCategoryRepository.getIdHelpCategoriesHideList())
                 _filterList.value = helpList
             }
 
         compositeDisposable.add(disposable)
     }
 
-    fun changeValueItemFilter(idtItem: Int) {
-        val index = _tmpFilterList.indexOfFirst { it.id == idtItem }
-        if (index != -1) {
-            _tmpFilterList[index] =
-                _tmpFilterList[index].copy(isEnabled = !_tmpFilterList[index].isEnabled)
+    fun changeIdHelpCategoryHideList(idtItem: Int) {
+        if (tmpIdHelpCategoryHideList.contains(idtItem)) {
+            tmpIdHelpCategoryHideList.remove(idtItem)
+        } else {
+            tmpIdHelpCategoryHideList.add(idtItem)
         }
     }
 
     fun saveFilterList() {
         viewModelScope.launch {
-            _filterList.value = _tmpFilterList
+            helpCategoryRepository.setIdHelpCategoriesHideList(tmpIdHelpCategoryHideList)
         }
     }
 }

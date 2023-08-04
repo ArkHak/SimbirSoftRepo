@@ -13,24 +13,18 @@ class HelpCategoryRepositoryImpl(
     private val apiService: ApiService,
 ) : HelpCategoryRepository {
 
-    private var filterHelpCategoryIdList = arrayListOf<Int>()
+    private var idHelpCategoryHideList = arrayListOf<Int>()
 
     override fun getHelpCategories(): Observable<List<HelpCategory>> {
         return getCategoryFromWeb()
             .onErrorReturnItem(getCategoryFromAssets())
     }
 
-    override fun setFilterList(filterList: List<Int>) {
-        filterHelpCategoryIdList.clear()
-        filterHelpCategoryIdList.addAll(filterList)
+    override fun setIdHelpCategoriesHideList(idHelpCategoryHideList: ArrayList<Int>) {
+        this.idHelpCategoryHideList = idHelpCategoryHideList
     }
 
-    override fun getFilterList(): List<Int> = filterHelpCategoryIdList
-
-    fun setIdListFilter(idList: List<Int>) {
-        filterHelpCategoryIdList.clear()
-        filterHelpCategoryIdList.addAll(idList)
-    }
+    override fun getIdHelpCategoriesHideList(): List<Int> = idHelpCategoryHideList
 
     private fun getCategoryFromWeb(): Observable<List<HelpCategory>> {
         return apiService.getCategories()
@@ -39,12 +33,6 @@ class HelpCategoryRepositoryImpl(
     }
 
     private fun getCategoryFromAssets(): List<HelpCategory> {
-        val helpCategoryList = assetManager.getHelpCategoryListFromAsset("categories.json")
-        val correctList = helpCategoryList.map {
-            it.copy(
-                isEnabled = true
-            )
-        }
-        return correctList
+        return assetManager.getHelpCategoryListFromAsset("categories.json")
     }
 }

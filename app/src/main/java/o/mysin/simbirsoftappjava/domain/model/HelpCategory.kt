@@ -11,6 +11,4 @@ data class HelpCategory(
     val title: String,
     @SerializedName("image")
     val iconUrl: String,
-    @SerializedName("is_enabled")
-    val isEnabled: Boolean = true,
 )

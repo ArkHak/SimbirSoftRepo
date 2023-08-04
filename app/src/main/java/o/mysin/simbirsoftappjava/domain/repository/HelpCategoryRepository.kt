@@ -5,7 +5,6 @@ import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 
 interface HelpCategoryRepository {
     fun getHelpCategories(): Observable<List<HelpCategory>>
-
-    fun setFilterList(filterList: List<Int>)
-    fun getFilterList(): List<Int>
+    fun setIdHelpCategoriesHideList(idHelpCategoryHideList: ArrayList<Int>)
+    fun getIdHelpCategoriesHideList(): List<Int>
 }

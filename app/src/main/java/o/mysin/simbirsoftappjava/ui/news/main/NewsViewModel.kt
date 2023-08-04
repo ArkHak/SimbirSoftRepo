@@ -26,7 +26,7 @@ class NewsViewModel(
     private var listIdNewsViewed = arrayListOf<Int>()
 
     fun loadNews() {
-        val filterIdList = helpCategoryRepository.getFilterList()
+        val filterIdList = helpCategoryRepository.getIdHelpCategoriesHideList()
 
         viewModelScope.launch {
             newsRepository.getFlowableNews()
@@ -50,8 +50,8 @@ class NewsViewModel(
 
     private fun getNewsByFilter(newsList: List<News>, filter: List<Int>): List<News> {
         return newsList.filter { news ->
-            news.listHelpCategoryId.any() { category ->
-                category in filter
+            news.listHelpCategoryId.any { category ->
+                category !in filter
             }
         }
     }
