@@ -6,8 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
@@ -15,10 +14,9 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-@OptIn(FlowPreview::class)
 class SearchViewModel : ViewModel() {
 
-    private val searchQueryFlow = MutableSharedFlow<String>()
+    private val searchQueryFlow = MutableStateFlow("")
 
     private val _queryByEventScreen: MutableLiveData<String> = MutableLiveData()
     val queryByEventScreen: LiveData<String>
@@ -40,9 +38,7 @@ class SearchViewModel : ViewModel() {
     }
 
     fun setSearchQuery(query: String) {
-        viewModelScope.launch {
-            searchQueryFlow.emit(query)
-        }
+            searchQueryFlow.tryEmit(query)
     }
 
     companion object {

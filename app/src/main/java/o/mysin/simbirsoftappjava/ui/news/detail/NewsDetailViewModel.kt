@@ -19,7 +19,7 @@ class NewsDetailViewModel(private val newsRepository: NewsRepository) : ViewMode
     val news: LiveData<News>
         get() = _news
 
-    fun getNews(newsId: Int) {
+    fun loadNews(newsId: Int) {
         viewModelScope.launch {
             newsRepository.getFlowableNews()
                 .map { newsList ->

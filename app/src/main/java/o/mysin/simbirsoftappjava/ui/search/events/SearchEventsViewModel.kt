@@ -34,7 +34,7 @@ class SearchEventsViewModel(
                     Log.e("MOD_TAG", "searchEvents: $error")
                     emit(emptyList())
                 }
-                .flowOn(Dispatchers.IO)
+                .flowOn(Dispatchers.Main)
                 .collect { filterEvents ->
                     _eventsList.value = filterEvents
                 }

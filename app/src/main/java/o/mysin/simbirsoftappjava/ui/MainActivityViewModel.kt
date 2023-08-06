@@ -3,10 +3,8 @@ package o.mysin.simbirsoftappjava.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
     private val _hideBottomNavigation = MutableLiveData<Boolean>()
@@ -18,9 +16,7 @@ class MainActivityViewModel : ViewModel() {
     val badgeFlow: StateFlow<Int> = _badgeFlow
 
     fun setBadgeCount(count: Int) {
-        viewModelScope.launch {
-            _badgeFlow.emit(count)
-        }
+        _badgeFlow.tryEmit(count)
     }
 
     fun setHideBottomNavigation(hide: Boolean) {
