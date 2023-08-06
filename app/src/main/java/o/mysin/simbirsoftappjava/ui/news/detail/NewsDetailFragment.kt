@@ -33,15 +33,15 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
     private fun renderData(news: News) {
         with(binding) {
-            labelNewsDetailToolbar.text = news.title
-            labelNewsDetail.text = news.title
-            timeNewsDetail.text = correctDateTime(news.startDateTime, news.endDateTime)
-            titleOwnerNewsDetail.text = news.owner
-            ownerAddress.text = news.ownerAddress
-            ownerContacts.text = news.ownerContacts
-            firstImageNews.load(news.picturesUrl[0])
-            secondImageNews.load(news.picturesUrl[1])
-            thirdImageNews.load(news.picturesUrl[2])
+            labelNewsDetailToolbar.text = news.name
+            labelNewsDetail.text = news.name
+            timeNewsDetail.text = correctDateTime(news.startDate, news.endDate)
+            titleOwnerNewsDetail.text = news.organisation
+            ownerAddress.text = news.address
+            ownerContacts.text = news.phone
+            firstImageNews.load(news.photos[0])
+            secondImageNews.load(news.photos[1])
+            thirdImageNews.load(news.photos[2])
             newsDescription.text = news.fullDescription
         }
     }

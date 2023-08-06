@@ -1,8 +1,9 @@
 package o.mysin.simbirsoftappjava.domain.repository
 
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 import o.mysin.simbirsoftappjava.domain.model.News
 
 interface NewsRepository {
-    fun getFlowableNews(): Flow<List<News>>
+    fun getObservableNews(): Observable<List<News>>
+    fun getObservableNews(id: Int): Observable<News>
 }
