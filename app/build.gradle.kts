@@ -90,4 +90,6 @@ dependencies {
     implementation ("com.jakewharton.rxbinding4:rxbinding:4.0.0")
     implementation ("com.jakewharton.rxbinding4:rxbinding-material:4.0.0")
 
+    // Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 }

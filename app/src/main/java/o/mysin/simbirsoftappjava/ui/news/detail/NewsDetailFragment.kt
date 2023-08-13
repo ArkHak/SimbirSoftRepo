@@ -24,7 +24,7 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         newsDetailViewModel.news.observe(viewLifecycleOwner) { renderData(it) }
-        newsDetailViewModel.getNews(args.newsId)
+        newsDetailViewModel.loadNews(args.newsId)
 
         initActionButtons()
         binding.labelNewsDetail.text = args.newsId.toString()

@@ -19,7 +19,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private val binding: FragmentSearchBinding by viewBinding()
     private val commonViewModel: SearchFragmentsCommonViewModel by activityViewModels()
-    private val searchViewModel: SearchVewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
