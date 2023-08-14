@@ -1,12 +1,13 @@
 package o.mysin.simbirsoftappjava.ui.filter
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
@@ -14,7 +15,6 @@ import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 class FilterViewModel(
     private val helpCategoryRepository: HelpCategoryRepository,
 ) : ViewModel() {
-    private val compositeDisposable = CompositeDisposable()
 
     private val _filterList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
     val filterList: LiveData<List<HelpCategory>>
@@ -27,21 +27,18 @@ class FilterViewModel(
         loadFilterList()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
-    }
-
     private fun loadFilterList() {
-        val disposable = helpCategoryRepository.getHelpCategories()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { helpList ->
-                tmpIdHelpCategoryHideList.addAll(helpCategoryRepository.getIdHelpCategoriesHideList())
-                _filterList.value = helpList
-            }
-
-        compositeDisposable.add(disposable)
+        viewModelScope.launch {
+            helpCategoryRepository.getHelpCategories()
+                .flowOn(Dispatchers.IO)
+                .catch { error ->
+                    Log.e("MOD_TAG", "loadHelpCategory: $error")
+                }
+                .collect { helpList ->
+                    tmpIdHelpCategoryHideList.addAll(helpCategoryRepository.getIdHelpCategoriesHideList())
+                    _filterList.value = helpList
+                }
+        }
     }
 
     fun changeIdHelpCategoryHideList(idtItem: Int) {
