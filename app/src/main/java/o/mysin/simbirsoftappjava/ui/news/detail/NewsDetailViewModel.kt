@@ -22,7 +22,7 @@ class NewsDetailViewModel(private val newsRepository: NewsRepository) : ViewMode
         compositeDisposable.clear()
     }
 
-    fun getNews(newsId: Int) {
+    fun loadNews(newsId: Int) {
         val disposable = newsRepository.getObservableNews(newsId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
