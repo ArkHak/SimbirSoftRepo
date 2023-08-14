@@ -9,11 +9,11 @@ import org.koin.dsl.module
 val repositoryModule = module {
 
     single<HelpCategoryRepository> {
-        HelpCategoryRepositoryImpl(get())
+        HelpCategoryRepositoryImpl(get(), get())
     }
 
     single<NewsRepository> {
-        NewsRepositoryImpl(get())
+        NewsRepositoryImpl(get(), get())
     }
 
 }

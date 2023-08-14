@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -85,11 +86,21 @@ dependencies {
     implementation("io.insert-koin:koin-android:3.3.0")
 
     // RxJava
-    implementation ("io.reactivex.rxjava3:rxjava:3.1.3")
-    implementation ("io.reactivex.rxjava3:rxandroid:3.0.0")
-    implementation ("com.jakewharton.rxbinding4:rxbinding:4.0.0")
-    implementation ("com.jakewharton.rxbinding4:rxbinding-material:4.0.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.3")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    implementation("com.jakewharton.rxbinding4:rxbinding:4.0.0")
+    implementation("com.jakewharton.rxbinding4:rxbinding-material:4.0.0")
 
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    //Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
 }

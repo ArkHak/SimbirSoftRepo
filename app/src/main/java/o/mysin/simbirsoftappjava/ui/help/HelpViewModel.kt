@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
@@ -32,20 +31,13 @@ class HelpViewModel(
     }
 
     private fun loadHelpCategoryFromRx() {
-        val disposableHelpList = Observable.fromCallable {
-            Thread.sleep(TIMEOUT)
-            helpCategoryRepository.getHelpCategories()
-        }
+        val disposable = helpCategoryRepository.getHelpCategories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { list ->
-                _helpCategoryList.postValue(list)
+            .subscribe { helpList ->
+                _helpCategoryList.value = helpList
             }
-        compositeDisposable.add(disposableHelpList)
-    }
 
-    companion object {
-        private const val TIMEOUT = 1000L
+        compositeDisposable.add(disposable)
     }
-
 }

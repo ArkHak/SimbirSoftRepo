@@ -4,6 +4,7 @@ import android.app.Application
 import o.mysin.simbirsoftappjava.di.assetManagerModule
 import o.mysin.simbirsoftappjava.di.repositoryModule
 import o.mysin.simbirsoftappjava.di.gsonModule
+import o.mysin.simbirsoftappjava.di.retrofitModule
 import o.mysin.simbirsoftappjava.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,7 +22,8 @@ class WantHelpApp : Application() {
                 repositoryModule,
                 viewModelModule,
                 gsonModule,
-                assetManagerModule
+                assetManagerModule,
+                retrofitModule
             )
         }
     }

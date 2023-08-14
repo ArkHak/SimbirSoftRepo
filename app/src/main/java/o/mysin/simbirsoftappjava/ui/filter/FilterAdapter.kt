@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.ItemFilterBinding
 
-class FilterAdapter(private val onItemClicked: (idItem: Int) -> Unit) :
+class FilterAdapter(
+    private val idHelpCategoryHideList: List<Int>,
+    private val onItemClicked: (idItem: Int) -> Unit,
+) :
     RecyclerView.Adapter<FilterViewHolder>() {
 
     private var _filterList: List<HelpCategory> = emptyList()
@@ -18,7 +21,7 @@ class FilterAdapter(private val onItemClicked: (idItem: Int) -> Unit) :
             parent,
             false,
         )
-        return FilterViewHolder(binding) {
+        return FilterViewHolder(idHelpCategoryHideList,binding) {
             onItemClicked(_filterList[it].id)
         }
     }

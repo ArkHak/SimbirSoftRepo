@@ -31,8 +31,8 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     }
 
     private fun initAdapter() {
-        adapter = FilterAdapter { idItem ->
-            filterViewModel.changeValueItemFilter(idItem)
+        adapter = FilterAdapter(filterViewModel.tmpIdHelpCategoryHideList) { idItem ->
+            filterViewModel.changeIdHelpCategoryHideList(idItem)
         }
     }
 

@@ -18,13 +18,13 @@ class NewsViewHolder(val binding: ItemNewsBinding, private val onItemClicked: (I
 
     fun bind(news: News) {
         with(binding) {
-            pictureNews.load(news.picturesUrl.first()) {
+            pictureNews.load(news.photos.first()) {
                 crossfade(true)
                 scale(Scale.FILL)
             }
-            titleNews.text = news.title
+            titleNews.text = news.name
             descriptionNews.text = news.description
-            timeText.text = correctDateTime(news.startDateTime, news.endDateTime)
+            timeText.text = correctDateTime(news.startDate, news.endDate)
         }
     }
 }
