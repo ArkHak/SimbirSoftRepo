@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.domain.model.Event
+import o.mysin.simbirsoftappjava.domain.model.SearchEvent
 import o.mysin.simbirsoftappjava.databinding.ItemSearchResultBinding
 
 class SearchNKOAdapter : RecyclerView.Adapter<SearchNKOViewHolder>() {
 
-    private var _eventList: List<Event> = emptyList()
+    private var _eventList: List<SearchEvent> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchNKOViewHolder {
         val binding = ItemSearchResultBinding.inflate(
@@ -29,7 +29,7 @@ class SearchNKOAdapter : RecyclerView.Adapter<SearchNKOViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateEventList(eventCategoryList: List<Event>) {
+    fun updateEventList(eventCategoryList: List<SearchEvent>) {
         _eventList = eventCategoryList
         notifyDataSetChanged()
     }

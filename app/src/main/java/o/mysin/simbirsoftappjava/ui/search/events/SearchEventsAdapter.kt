@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import o.mysin.simbirsoftappjava.databinding.ItemSearchResultBinding
-import o.mysin.simbirsoftappjava.domain.model.Event
+import o.mysin.simbirsoftappjava.domain.model.SearchEvent
 
 class SearchEventsAdapter : RecyclerView.Adapter<SearchEventsViewHolder>() {
 
-    private var _eventList: List<Event> = emptyList()
+    private var _eventList: List<SearchEvent> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchEventsViewHolder {
         val binding = ItemSearchResultBinding.inflate(
@@ -29,7 +29,7 @@ class SearchEventsAdapter : RecyclerView.Adapter<SearchEventsViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateEventList(eventList: List<Event>) {
+    fun updateEventList(eventList: List<SearchEvent>) {
         _eventList = eventList
         notifyDataSetChanged()
     }

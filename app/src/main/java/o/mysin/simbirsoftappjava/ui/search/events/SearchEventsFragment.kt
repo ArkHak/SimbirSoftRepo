@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.domain.model.Event
+import o.mysin.simbirsoftappjava.domain.model.SearchEvent
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByEventsBinding
 import o.mysin.simbirsoftappjava.ui.search.SearchFragmentsCommonViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,7 +53,7 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
         }
     }
 
-    private fun renderData(eventList: List<Event>) {
+    private fun renderData(eventList: List<SearchEvent>) {
         if (!emptySearch) {
             if (eventList.isNotEmpty()) {
                 dataScreenState()
