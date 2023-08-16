@@ -9,7 +9,7 @@ import o.mysin.simbirsoftappjava.data.db.entity.Event
 @Dao
 interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEvents(charityEvents: List<Event>)
+    suspend fun insertEvents(events: List<Event>)
 
     @Query("SELECT * FROM event")
     suspend fun getAllEvents(): List<Event>

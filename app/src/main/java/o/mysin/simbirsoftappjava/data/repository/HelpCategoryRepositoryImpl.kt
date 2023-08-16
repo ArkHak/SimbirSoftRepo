@@ -35,7 +35,7 @@ class HelpCategoryRepositoryImpl(
             }
         }
     }.catch {
-        assetManager.getHelpCategoryListFromAsset("categories.json").also {
+        getHelpCategoryFromAssets().also {
             putDatabase(it)
             emit(it)
         }
@@ -52,5 +52,8 @@ class HelpCategoryRepositoryImpl(
             mapper.toCategory(helpCategory)
         })
     }
+
+    private fun getHelpCategoryFromAssets(): List<HelpCategory> =
+        assetManager.getHelpCategoryListFromAsset("categories.json")
 
 }

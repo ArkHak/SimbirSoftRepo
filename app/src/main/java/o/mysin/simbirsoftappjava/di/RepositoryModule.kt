@@ -13,7 +13,7 @@ val repositoryModule = module {
     }
 
     single<NewsRepository> {
-        NewsRepositoryImpl(get(), get())
+        NewsRepositoryImpl(get(), get(), get(), get())
     }
 
 }
