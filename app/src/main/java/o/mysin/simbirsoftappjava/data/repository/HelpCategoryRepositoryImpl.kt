@@ -24,15 +24,21 @@ class HelpCategoryRepositoryImpl(
     override fun getHelpCategories(): Flow<List<HelpCategory>> = flow {
         categoryDao.getAllCategories().map { category ->
             mapper.fromCategory(category)
-        }.also { helpCategories ->
-            if (helpCategories.isEmpty()) {
-                emit(apiService.getCategories())
+        }.also { helpCategoriesFromBD ->
+            if (helpCategoriesFromBD.isEmpty()) {
+                apiService.getCategories().also {
+                    putDatabase(it)
+                    emit(it)
+                }
             } else {
-                emit(helpCategories)
+                emit(helpCategoriesFromBD)
             }
         }
     }.catch {
-        assetManager.getHelpCategoryListFromAsset("categories.json")
+        assetManager.getHelpCategoryListFromAsset("categories.json").also {
+            putDatabase(it)
+            emit(it)
+        }
     }.flowOn(Dispatchers.IO)
 
     override fun setIdHelpCategoriesHideList(idHelpCategoryHideList: ArrayList<Int>) {
@@ -40,6 +46,7 @@ class HelpCategoryRepositoryImpl(
     }
 
     override fun getIdHelpCategoriesHideList(): List<Int> = idHelpCategoryHideList
+
     override suspend fun putDatabase(listCategories: List<HelpCategory>) {
         categoryDao.insertCategories(listCategories.map { helpCategory ->
             mapper.toCategory(helpCategory)
