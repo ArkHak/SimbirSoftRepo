@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.model.Event
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
-import java.util.Locale
 
 class SearchEventsViewModel(
     private val newsRepository: NewsRepository,
@@ -31,8 +30,10 @@ class SearchEventsViewModel(
                 .flowOn(Dispatchers.IO)
                 .map { newsList ->
                     newsList.filter { item ->
-                        searchEvents.lowercase(Locale.ROOT) in item.name.lowercase(Locale.ROOT)
-                    }.map { Event(it.name) }
+                        item.name.contains(searchEvents, ignoreCase = true)
+                    }.map {
+                        Event(it.name)
+                    }
                 }
                 .catch { error ->
                     Log.e("MOD_TAG", "loadNews: $error")

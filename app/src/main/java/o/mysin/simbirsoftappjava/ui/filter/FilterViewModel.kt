@@ -50,7 +50,7 @@ class FilterViewModel(
     }
 
     fun saveFilterList() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             helpCategoryRepository.setIdHelpCategoriesHideList(tmpIdHelpCategoryHideList)
         }
     }
