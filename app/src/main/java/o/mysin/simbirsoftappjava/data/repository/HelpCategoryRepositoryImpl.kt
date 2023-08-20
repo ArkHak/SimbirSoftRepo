@@ -23,7 +23,7 @@ class HelpCategoryRepositoryImpl(
 
     override fun getHelpCategories(): Flow<List<HelpCategory>> = flow {
         categoryDao.getAllCategories().map { category ->
-            mapper.fromCategory(category)
+            mapper.toDomain(category)
         }.also { helpCategoriesFromBD ->
             if (helpCategoriesFromBD.isEmpty()) {
                 apiService.getCategories().also {
@@ -49,7 +49,7 @@ class HelpCategoryRepositoryImpl(
 
     override suspend fun putDatabase(listCategories: List<HelpCategory>) {
         categoryDao.insertCategories(listCategories.map { helpCategory ->
-            mapper.toCategory(helpCategory)
+            mapper.toData(helpCategory)
         })
     }
 

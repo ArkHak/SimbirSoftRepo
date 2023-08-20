@@ -5,14 +5,14 @@ import o.mysin.simbirsoftappjava.domain.mapper.CategoryMapper
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 
 class CategoryMapperImpl : CategoryMapper {
-    override fun toCategory(helpCategory: HelpCategory): Category =
+    override fun toData(helpCategory: HelpCategory): Category =
         Category(
             id = helpCategory.id,
             title = helpCategory.title,
             iconUrl = helpCategory.iconUrl
         )
 
-    override fun fromCategory(category: Category): HelpCategory =
+    override fun toDomain(category: Category): HelpCategory =
         HelpCategory(
             id = category.id,
             title = category.title,

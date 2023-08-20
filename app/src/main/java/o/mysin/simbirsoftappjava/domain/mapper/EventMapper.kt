@@ -4,6 +4,6 @@ import o.mysin.simbirsoftappjava.data.db.entity.Event
 import o.mysin.simbirsoftappjava.domain.model.News
 
 interface EventMapper {
-    fun toEvent(news: News): Event
-    fun fromEvent(event: Event): News
+    fun toData(news: News): Event
+    fun toDomain(event: Event): News
 }

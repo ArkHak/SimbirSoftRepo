@@ -21,7 +21,7 @@ class NewsRepositoryImpl(
 
     override fun getNews(): Flow<List<News>> = flow {
         eventDao.getAllEvents().map { event ->
-            mapper.fromEvent(event)
+            mapper.toDomain(event)
         }.also { newsFromBD ->
             if (newsFromBD.isEmpty()) {
                 (apiService.getEvents() + apiService.getEventsFake()).also {
@@ -41,7 +41,7 @@ class NewsRepositoryImpl(
 
     override fun getNews(id: Int): Flow<News> = flow {
         eventDao.getEvent(id).also { event ->
-            emit(mapper.fromEvent(event))
+            emit(mapper.toDomain(event))
         }
     }.catch {
         getNewsFromAsset(id)
@@ -49,7 +49,7 @@ class NewsRepositoryImpl(
 
     override suspend fun putDatabase(listNews: List<News>) {
         eventDao.insertEvents(listNews.map { news ->
-            mapper.toEvent(news)
+            mapper.toData(news)
         })
     }
 

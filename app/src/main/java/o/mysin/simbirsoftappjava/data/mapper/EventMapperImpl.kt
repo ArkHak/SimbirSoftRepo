@@ -6,7 +6,7 @@ import o.mysin.simbirsoftappjava.domain.model.News
 
 class EventMapperImpl : EventMapper {
 
-    override fun toEvent(news: News): Event =
+    override fun toData(news: News): Event =
         Event(
             id = news.id,
             organisation = news.organisation,
@@ -21,7 +21,7 @@ class EventMapperImpl : EventMapper {
             categories = news.categories
         )
 
-    override fun fromEvent(event: Event): News =
+    override fun toDomain(event: Event): News =
         News(
             id = event.id,
             organisation = event.organisation,
