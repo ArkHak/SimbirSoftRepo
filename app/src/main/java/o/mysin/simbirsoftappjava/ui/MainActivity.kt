@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.databinding.ActivityMainBinding
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBadgeNews() {
         val badgeNews = bottomNavigationPanel.getOrCreateBadge(R.id.fragment_news)
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             mainViewModel.badgeFlow.collect { count ->
                 badgeNews.number = count
                 badgeNews.isVisible = count > 0
