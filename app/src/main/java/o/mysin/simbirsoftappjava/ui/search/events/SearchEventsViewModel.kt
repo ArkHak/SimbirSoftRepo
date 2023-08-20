@@ -32,7 +32,7 @@ class SearchEventsViewModel(
                     newsList.filter { item ->
                         item.name.contains(searchEvents, ignoreCase = true)
                     }.map {
-                        Event(it.name)
+                        SearchEvent(it.name)
                     }
                 }
                 .catch { error ->
