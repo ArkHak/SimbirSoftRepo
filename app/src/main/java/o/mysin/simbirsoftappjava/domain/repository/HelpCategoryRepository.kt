@@ -7,4 +7,5 @@ interface HelpCategoryRepository {
     fun getHelpCategories(): Flow<List<HelpCategory>>
     fun setIdHelpCategoriesHideList(idHelpCategoryHideList: ArrayList<Int>)
     fun getIdHelpCategoriesHideList(): List<Int>
+    suspend fun putDatabase(listCategories: List<HelpCategory>)
 }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.domain.model.Event
+import o.mysin.simbirsoftappjava.domain.model.SearchEvent
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
 
 class SearchEventsViewModel(
@@ -18,8 +18,8 @@ class SearchEventsViewModel(
 ) : ViewModel() {
 
 
-    private val _eventsList: MutableLiveData<List<Event>> = MutableLiveData()
-    val eventsList: LiveData<List<Event>>
+    private val _eventsList: MutableLiveData<List<SearchEvent>> = MutableLiveData()
+    val eventsList: LiveData<List<SearchEvent>>
         get() = _eventsList
 
 
