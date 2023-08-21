@@ -10,19 +10,19 @@ import org.koin.dsl.module
 
 val databaseModule = module {
 
-    single {
+    factory {
         AppDatabase.getDatabase(androidApplication()).categoryDao()
     }
 
-    single {
+    factory {
         AppDatabase.getDatabase(androidApplication()).eventDao()
     }
 
-    single<CategoryMapper> {
+    factory<CategoryMapper> {
         CategoryMapperImpl()
     }
 
-    single<EventMapper> {
+    factory<EventMapper> {
         EventMapperImpl()
     }
 

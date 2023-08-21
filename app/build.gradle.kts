@@ -4,7 +4,8 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
     id("kotlinx-serialization")
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
+//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -13,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "o.mysin.simbirsoftappjava"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -44,9 +45,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    kotlin {
-        jvmToolchain(8)
-    }
+//    kotlin {
+//        jvmToolchain(8)
+//    }
 }
 
 dependencies {
@@ -111,5 +112,6 @@ dependencies {
     //Room
     implementation("androidx.room:room-runtime:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
+//    ksp("androidx.room:room-compiler:2.5.0")
 }
