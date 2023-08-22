@@ -5,7 +5,6 @@ plugins {
     id("kotlin-parcelize")
     id("kotlinx-serialization")
     id("kotlin-kapt")
-//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -45,9 +44,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-//    kotlin {
-//        jvmToolchain(8)
-//    }
 }
 
 dependencies {
@@ -87,9 +83,6 @@ dependencies {
     //Gson
     implementation("com.google.code.gson:gson:2.10")
 
-    // Koin
-    implementation("io.insert-koin:koin-android:3.3.0")
-
     // RxJava
     implementation("io.reactivex.rxjava3:rxjava:3.1.3")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
@@ -113,5 +106,9 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
     kapt("androidx.room:room-compiler:2.5.2")
-//    ksp("androidx.room:room-compiler:2.5.0")
+
+    //Dagger
+    implementation("com.google.dagger:dagger:2.47")
+    implementation("com.google.dagger:dagger:2.47")
+    kapt("com.google.dagger:dagger-compiler:2.47")
 }

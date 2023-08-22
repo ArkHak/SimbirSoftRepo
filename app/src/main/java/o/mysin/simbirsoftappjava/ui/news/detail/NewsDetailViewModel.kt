@@ -12,7 +12,9 @@ import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
 import o.mysin.simbirsoftappjava.domain.model.News
 
-class NewsDetailViewModel(private val newsRepository: NewsRepository) : ViewModel() {
+class NewsDetailViewModel(
+    private val newsRepository: NewsRepository,
+) : ViewModel() {
 
     private val _news: MutableLiveData<News> = MutableLiveData()
     val news: LiveData<News>

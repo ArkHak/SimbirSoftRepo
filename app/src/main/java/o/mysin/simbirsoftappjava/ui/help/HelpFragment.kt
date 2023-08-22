@@ -1,25 +1,34 @@
 package o.mysin.simbirsoftappjava.ui.help
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
+import o.mysin.simbirsoftappjava.appComponent
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentHelpBinding
 import o.mysin.simbirsoftappjava.ui.MainActivityViewModel
 import o.mysin.simbirsoftappjava.utils.MarginDecoration
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class HelpFragment : Fragment(R.layout.fragment_help) {
 
     private val binding: FragmentHelpBinding by viewBinding()
-    private val helpViewModel: HelpViewModel by viewModel()
+
+    @Inject
+    lateinit var helpViewModel: HelpViewModel
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private val adapter: HelpAdapter by lazy { HelpAdapter() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onAttach(context: Context) {
+        context.appComponent.inject(this)
+        super.onAttach(context)
+    }
+
+      override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         mainViewModel.setHideBottomNavigation(false)

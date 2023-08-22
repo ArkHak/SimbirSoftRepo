@@ -1,5 +1,6 @@
 package o.mysin.simbirsoftappjava.ui.news.detail
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,17 +9,24 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import o.mysin.simbirsoftappjava.R
+import o.mysin.simbirsoftappjava.appComponent
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsDetailBinding
 import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.utils.correctDateTime
-import org.koin.androidx.viewmodel.ext.android.viewModel
-
+import javax.inject.Inject
 
 class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
     private val binding: FragmentNewsDetailBinding by viewBinding()
-    private val newsDetailViewModel: NewsDetailViewModel by viewModel()
+
+    @Inject
+    lateinit var newsDetailViewModel: NewsDetailViewModel
     private val args by navArgs<NewsDetailFragmentArgs>()
+
+    override fun onAttach(context: Context) {
+        context.appComponent.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

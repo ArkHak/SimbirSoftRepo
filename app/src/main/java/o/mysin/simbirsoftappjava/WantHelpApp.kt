@@ -1,32 +1,26 @@
 package o.mysin.simbirsoftappjava
 
 import android.app.Application
-import o.mysin.simbirsoftappjava.di.assetManagerModule
-import o.mysin.simbirsoftappjava.di.databaseModule
-import o.mysin.simbirsoftappjava.di.repositoryModule
-import o.mysin.simbirsoftappjava.di.gsonModule
-import o.mysin.simbirsoftappjava.di.retrofitModule
-import o.mysin.simbirsoftappjava.di.viewModelModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
+import android.content.Context
+import o.mysin.simbirsoftappjava.di.AppComponent
+import o.mysin.simbirsoftappjava.di.DaggerAppComponent
+import o.mysin.simbirsoftappjava.di.module.AppModule
 
 class WantHelpApp : Application() {
 
+    lateinit var appComponent: AppComponent
+
     override fun onCreate() {
         super.onCreate()
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
 
-        startKoin {
-            androidLogger()
-            androidContext(this@WantHelpApp)
-            modules(
-                repositoryModule,
-                viewModelModule,
-                gsonModule,
-                assetManagerModule,
-                retrofitModule,
-                databaseModule
-            )
-        }
     }
 }
+
+val Context.appComponent: AppComponent
+    get() = when (this) {
+        is WantHelpApp -> appComponent
+        else -> applicationContext.appComponent
+    }

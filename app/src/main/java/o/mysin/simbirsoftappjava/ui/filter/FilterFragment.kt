@@ -1,5 +1,6 @@
 package o.mysin.simbirsoftappjava.ui.filter
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,16 +10,24 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
+import o.mysin.simbirsoftappjava.appComponent
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentFilterBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 
 class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     private val binding: FragmentFilterBinding by viewBinding()
-    private val filterViewModel: FilterViewModel by viewModel()
+
+    @Inject
+    lateinit var filterViewModel: FilterViewModel
     private lateinit var adapter: FilterAdapter
+
+    override fun onAttach(context: Context) {
+        context.appComponent.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
