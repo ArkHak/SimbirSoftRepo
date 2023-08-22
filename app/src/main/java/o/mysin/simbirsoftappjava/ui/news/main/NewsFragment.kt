@@ -3,6 +3,7 @@ package o.mysin.simbirsoftappjava.ui.news.main
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -37,6 +38,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         initRecycler()
         initActionButtons()
         newsViewModel.newsList.observe(viewLifecycleOwner) { renderData(it) }
+        newsViewModel.errorMessage.observe(viewLifecycleOwner) { renderMessage(it.message) }
         updateData()
     }
 
@@ -77,6 +79,12 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private fun setBadgeCount(newsList: List<News>) {
         val currentCountNewsNotViewed = newsViewModel.getCountNewsNotViewed(newsList)
         mainViewModel.setBadgeCount(currentCountNewsNotViewed)
+    }
+
+    private fun renderMessage(message: String) {
+        if (message.isNotBlank()) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun updateData() {

@@ -12,9 +12,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.model.SearchEvent
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
+import o.mysin.simbirsoftappjava.domain.usecase.GetSearchEventsByQueryUseCase
+import o.mysin.simbirsoftappjava.utils.ErrorMessage
 
 class SearchEventsViewModel(
     private val newsRepository: NewsRepository,
+    private val searchEventsByQuery: GetSearchEventsByQueryUseCase,
 ) : ViewModel() {
 
 
@@ -22,21 +25,21 @@ class SearchEventsViewModel(
     val eventsList: LiveData<List<SearchEvent>>
         get() = _eventsList
 
+    private val _errorMessage: MutableLiveData<ErrorMessage> = MutableLiveData()
+    val errorMessage: LiveData<ErrorMessage>
+        get() = _errorMessage
 
-    fun searchEvents(searchEvents: String) {
+    fun searchEvents(searchQuery: String) {
 
         viewModelScope.launch {
             newsRepository.getNews()
                 .flowOn(Dispatchers.IO)
                 .map { newsList ->
-                    newsList.filter { item ->
-                        item.name.contains(searchEvents, ignoreCase = true)
-                    }.map {
-                        SearchEvent(it.name)
-                    }
+                    searchEventsByQuery.invoke(newsList, searchQuery)
                 }
                 .catch { error ->
                     Log.e("MOD_TAG", "loadNews: $error")
+                    _errorMessage.value = ErrorMessage("loadNews: $error")
                     emit(emptyList())
                 }
                 .collect { filterEvents ->

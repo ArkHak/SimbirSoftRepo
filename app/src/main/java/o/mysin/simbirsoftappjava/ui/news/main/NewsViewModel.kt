@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
 import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
+import o.mysin.simbirsoftappjava.utils.ErrorMessage
 
 class NewsViewModel(
     private val newsRepository: NewsRepository,
@@ -23,6 +24,10 @@ class NewsViewModel(
     private val _newsList: MutableLiveData<List<News>> = MutableLiveData()
     val newsList: LiveData<List<News>>
         get() = _newsList
+
+    private val _errorMessage: MutableLiveData<ErrorMessage> = MutableLiveData()
+    val errorMessage: LiveData<ErrorMessage>
+        get() = _errorMessage
 
     private var listIdNewsViewed = arrayListOf<Int>()
 
@@ -38,6 +43,7 @@ class NewsViewModel(
                 }
                 .catch { error ->
                     Log.e("MOD_TAG", "loadNews: $error")
+                    _errorMessage.value = ErrorMessage("loadNews: $error")
                     emit(emptyList())
                 }
                 .collect { newsList ->

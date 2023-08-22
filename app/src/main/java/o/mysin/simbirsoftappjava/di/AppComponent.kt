@@ -8,6 +8,7 @@ import o.mysin.simbirsoftappjava.di.module.DatabaseModule
 import o.mysin.simbirsoftappjava.di.module.GsonModule
 import o.mysin.simbirsoftappjava.di.module.MapperModule
 import o.mysin.simbirsoftappjava.di.module.RepositoryModule
+import o.mysin.simbirsoftappjava.di.module.UseCaseModule
 import o.mysin.simbirsoftappjava.di.module.ViewModelModule
 import o.mysin.simbirsoftappjava.ui.filter.FilterFragment
 import o.mysin.simbirsoftappjava.ui.help.HelpFragment
@@ -27,6 +28,7 @@ import javax.inject.Singleton
         MapperModule::class,
         RepositoryModule::class,
         ViewModelModule::class,
+        UseCaseModule::class
     ]
 )
 interface AppComponent {

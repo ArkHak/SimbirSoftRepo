@@ -14,17 +14,25 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideCategoryDao(
-        context: Context,
+        appDatabase: AppDatabase
     ): CategoryDao {
-        return AppDatabase.getDatabase(context).categoryDao()
+        return appDatabase.categoryDao()
     }
 
     @Provides
     @Singleton
     fun provideEventDao(
-        context: Context,
+        appDatabase: AppDatabase
     ): EventDao {
-        return AppDatabase.getDatabase(context).eventDao()
+        return appDatabase.eventDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(
+        context: Context,
+    ): AppDatabase {
+        return AppDatabase.getDatabase(context)
     }
 
 }

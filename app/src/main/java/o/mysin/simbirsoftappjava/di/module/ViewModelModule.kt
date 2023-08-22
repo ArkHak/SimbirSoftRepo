@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
+import o.mysin.simbirsoftappjava.domain.usecase.GetSearchEventsByQueryUseCase
 import o.mysin.simbirsoftappjava.ui.filter.FilterViewModel
 import o.mysin.simbirsoftappjava.ui.help.HelpViewModel
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailViewModel
@@ -45,8 +46,9 @@ class ViewModelModule {
     @Provides
     fun provideSearchEventsViewModel(
         repository: NewsRepository,
+        useCase: GetSearchEventsByQueryUseCase,
     ): SearchEventsViewModel {
-        return SearchEventsViewModel(repository)
+        return SearchEventsViewModel(repository, useCase)
     }
 
 }

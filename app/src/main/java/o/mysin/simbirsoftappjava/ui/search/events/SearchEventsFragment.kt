@@ -3,6 +3,7 @@ package o.mysin.simbirsoftappjava.ui.search.events
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -40,6 +41,8 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
         commonViewModel.queryEvents
             .observe(viewLifecycleOwner) { renderView(it) }
 
+        searchViewModel.errorMessage
+            .observe(viewLifecycleOwner) { renderMessage(it.message) }
 
         initRecycler()
         emptyScreenState()
@@ -71,6 +74,12 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
             }
         }
         adapter.updateEventList(eventList)
+    }
+
+    private fun renderMessage(message: String) {
+        if (message.isNotBlank()) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initRecycler() {

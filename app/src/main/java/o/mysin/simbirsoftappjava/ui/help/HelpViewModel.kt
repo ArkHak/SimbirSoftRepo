@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
+import o.mysin.simbirsoftappjava.utils.ErrorMessage
 
 class HelpViewModel(
     private val helpCategoryRepository: HelpCategoryRepository,
@@ -20,6 +21,10 @@ class HelpViewModel(
     private val _helpCategoryList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
     val helpCategoryList: LiveData<List<HelpCategory>>
         get() = _helpCategoryList
+
+    private val _errorMessage: MutableLiveData<ErrorMessage> = MutableLiveData()
+    val errorMessage: LiveData<ErrorMessage>
+        get() = _errorMessage
 
     fun updateData() {
         if (_helpCategoryList.value.isNullOrEmpty()) {
@@ -33,6 +38,7 @@ class HelpViewModel(
                 .flowOn(Dispatchers.IO)
                 .catch { error ->
                     Log.e("MOD_TAG", "loadHelpCategory: $error")
+                    _errorMessage.value = ErrorMessage("loadHelpCategory: $error")
                 }
                 .collect { helpList ->
                     _helpCategoryList.value = helpList
