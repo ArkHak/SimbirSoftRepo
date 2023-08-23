@@ -5,18 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.domain.model.SearchEvent
-import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
 import o.mysin.simbirsoftappjava.domain.usecase.GetSearchEventsByQueryUseCase
 import o.mysin.simbirsoftappjava.utils.ErrorMessage
 
 class SearchEventsViewModel(
-    private val newsRepository: NewsRepository,
     private val searchEventsByQuery: GetSearchEventsByQueryUseCase,
 ) : ViewModel() {
 
@@ -32,19 +26,13 @@ class SearchEventsViewModel(
     fun searchEvents(searchQuery: String) {
 
         viewModelScope.launch {
-            newsRepository.getNews()
-                .flowOn(Dispatchers.IO)
-                .map { newsList ->
-                    searchEventsByQuery.invoke(newsList, searchQuery)
-                }
-                .catch { error ->
-                    Log.e("MOD_TAG", "loadNews: $error")
-                    _errorMessage.value = ErrorMessage("loadNews: $error")
-                    emit(emptyList())
-                }
-                .collect { filterEvents ->
-                    _eventsList.value = filterEvents
-                }
+            try {
+                _eventsList.value = searchEventsByQuery.invoke(searchQuery)
+            } catch (error: Exception) {
+                Log.e("MOD_TAG", "loadNews: $error")
+                _errorMessage.value = ErrorMessage("loadNews: $error")
+                _eventsList.value = emptyList()
+            }
         }
     }
 

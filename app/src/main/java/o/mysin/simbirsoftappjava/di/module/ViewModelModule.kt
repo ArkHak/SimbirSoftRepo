@@ -45,10 +45,9 @@ class ViewModelModule {
 
     @Provides
     fun provideSearchEventsViewModel(
-        repository: NewsRepository,
         useCase: GetSearchEventsByQueryUseCase,
     ): SearchEventsViewModel {
-        return SearchEventsViewModel(repository, useCase)
+        return SearchEventsViewModel(useCase)
     }
 
 }
