@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/authorization_fragment">
+    app:startDestination="@id/authorization_graph">
 
     <fragment
         android:id="@+id/fragment_help"
@@ -52,15 +52,8 @@
             app:argType="integer" />
     </fragment>
 
-    <fragment
-        android:id="@+id/authorization_fragment"
-        android:name="o.mysin.simbirsoftappjava.ui.authorization.AuthorizationFragment"
-        android:label="AuthorizationFragment"
-        tools:layout="@layout/fragment_authorization">
-        <action
-            android:id="@+id/action_authorization_fragment_to_fragment_help"
-            app:destination="@id/fragment_help" />
-    </fragment>
-
     <include app:graph="@navigation/history_graph" />
+
+    <include app:graph="@navigation/authorization_graph"/>
+
 </navigation>

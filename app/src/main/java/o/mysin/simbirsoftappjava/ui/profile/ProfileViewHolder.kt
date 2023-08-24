@@ -4,9 +4,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.size.Scale
-import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.domain.model.Friend
 import o.mysin.simbirsoftappjava.databinding.ItemFriendsBinding
+import ru.mys_ya.core.R.*
 
 class ProfileViewHolder(private val binding: ItemFriendsBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -16,8 +16,8 @@ class ProfileViewHolder(private val binding: ItemFriendsBinding) :
             crossfade(true)
             scale(Scale.FILL)
             memoryCachePolicy(CachePolicy.DISABLED)
-            placeholder(R.drawable.image_load)
-            error(R.drawable.no_photo)
+            placeholder( drawable.image_load)
+            error( drawable.no_photo)
         }
     }
 }

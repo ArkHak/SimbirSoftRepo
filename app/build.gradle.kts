@@ -114,4 +114,6 @@ dependencies {
 
     //Module
     implementation(project(":feature_history"))
+    implementation(project(":feature_authorization"))
+    implementation(project(":core"))
 }

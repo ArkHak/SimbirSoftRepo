@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.databinding.ActivityMainBinding
+import ru.mys_ya.core.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 

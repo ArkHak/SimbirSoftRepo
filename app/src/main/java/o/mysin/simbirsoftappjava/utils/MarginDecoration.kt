@@ -9,7 +9,7 @@ import o.mysin.simbirsoftappjava.R
 
 class MarginDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
-    private val margin = context.resources.getDimensionPixelSize(R.dimen.item_helps_margin)
+    private val margin = context.resources.getDimensionPixelSize( ru.mys_ya.core.R.dimen.item_helps_margin)
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -29,7 +29,7 @@ class MarginDecoration(context: Context) : RecyclerView.ItemDecoration() {
 }
 
 class NewsItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
-    private val margin = context.resources.getDimensionPixelSize(R.dimen.margin_bottom_last_item)
+    private val margin = context.resources.getDimensionPixelSize( ru.mys_ya.core.R.dimen.margin_bottom_last_item)
 
     override fun getItemOffsets(
         outRect: Rect,

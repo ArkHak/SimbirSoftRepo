@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authorization_graph"
+    app:startDestination="@id/authorization_fragment">
+    <fragment
+        android:id="@+id/authorization_fragment"
+        android:name="ru.mys_ya.feature_authorization.ui.AuthorizationFragment"
+        android:label="AuthorizationFragment"
+        tools:layout="@layout/fragment_authorization">
+        <action
+            android:id="@+id/action_authorization_fragment_to_fragment_help"
+            app:destination="@id/fragment_help" />
+    </fragment>
+</navigation>

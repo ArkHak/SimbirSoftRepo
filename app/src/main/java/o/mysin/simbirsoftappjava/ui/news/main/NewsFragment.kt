@@ -12,8 +12,8 @@ import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.appComponent
 import o.mysin.simbirsoftappjava.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsBinding
-import o.mysin.simbirsoftappjava.ui.MainActivityViewModel
 import o.mysin.simbirsoftappjava.utils.NewsItemDecoration
+import ru.mys_ya.core.MainActivityViewModel
 import javax.inject.Inject
 
 class NewsFragment : Fragment(R.layout.fragment_news) {

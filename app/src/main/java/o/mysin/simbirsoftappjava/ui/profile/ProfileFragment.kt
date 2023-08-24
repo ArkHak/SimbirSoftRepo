@@ -11,12 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
-import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.domain.model.User
 import o.mysin.simbirsoftappjava.databinding.FragmentProfileBinding
 import o.mysin.simbirsoftappjava.utils.convertDateTimeProfile
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(o.mysin.simbirsoftappjava.R.layout.fragment_profile) {
 
     private val binding: FragmentProfileBinding by viewBinding()
     private val profileViewModel: ProfileViewModel by viewModels()
@@ -72,7 +71,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     crossfade(true)
                 }
             } ?: run {
-                profileAvatar.load(R.drawable.no_photo)
+                profileAvatar.load( ru.mys_ya.core.R.drawable.no_photo)
             }
         }
         adapter.updateFriendsList(user.friendsList)
@@ -118,7 +117,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun showWarningPictureToast() {
         Toast.makeText(
             requireContext(),
-            resources.getText(R.string.warning_permission_create_photo),
+            resources.getText(o.mysin.simbirsoftappjava.R.string.warning_permission_create_photo),
             Toast.LENGTH_SHORT,
         ).show()
     }

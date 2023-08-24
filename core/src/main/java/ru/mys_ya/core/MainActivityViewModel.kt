@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui
+package ru.mys_ya.core
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

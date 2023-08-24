@@ -9,14 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.appComponent
 import o.mysin.simbirsoftappjava.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentFilterBinding
 import javax.inject.Inject
 
 
-class FilterFragment : Fragment(R.layout.fragment_filter) {
+class FilterFragment : Fragment(o.mysin.simbirsoftappjava.R.layout.fragment_filter) {
 
     private val binding: FragmentFilterBinding by viewBinding()
 
@@ -48,7 +47,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     private fun initRecycler() {
         binding.filterItemRecyclerView.adapter = adapter
 
-        val divider = ContextCompat.getDrawable(requireContext(), R.drawable.divider)
+        val divider = ContextCompat.getDrawable(requireContext(),  ru.mys_ya.core.R.drawable.divider)
 
         binding.filterItemRecyclerView.addItemDecoration(
             androidx.recyclerview.widget.DividerItemDecoration(
@@ -66,7 +65,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
             filterViewModel.saveFilterList()
             Toast.makeText(
                 context,
-                requireContext().getText(R.string.filter_change_apply),
+                requireContext().getText(o.mysin.simbirsoftappjava.R.string.filter_change_apply),
                 Toast.LENGTH_SHORT
             ).show()
         }

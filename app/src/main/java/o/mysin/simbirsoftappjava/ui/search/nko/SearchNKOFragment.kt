@@ -44,7 +44,7 @@ class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {
 
     private fun initRecycler() {
         val itemDecorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
-        val divider = ContextCompat.getDrawable(requireContext(), R.drawable.divider)
+        val divider = ContextCompat.getDrawable(requireContext(),  ru.mys_ya.core.R.drawable.divider)
         divider?.let { itemDecorator.setDrawable(it) }
 
         binding.searchNkoItemRecyclerView.adapter = adapter

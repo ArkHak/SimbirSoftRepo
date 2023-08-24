@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.authorization
+package ru.mys_ya.feature_authorization.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -16,9 +16,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.databinding.FragmentAuthorizationBinding
-import o.mysin.simbirsoftappjava.ui.MainActivityViewModel
+import ru.mys_ya.core.MainActivityViewModel
+import ru.mys_ya.feature_authorization.R
+import ru.mys_ya.feature_authorization.databinding.FragmentAuthorizationBinding
 
 class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
