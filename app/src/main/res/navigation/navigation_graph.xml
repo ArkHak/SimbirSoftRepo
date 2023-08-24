@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_help" />
 
     <fragment
-        android:id="@+id/fragment_history"
-        android:name="o.mysin.simbirsoftappjava.ui.history.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
-
-    <fragment
         android:id="@+id/fragment_news"
         android:name="o.mysin.simbirsoftappjava.ui.news.main.NewsFragment"
         android:label="fragment_news"
@@ -68,4 +62,5 @@
             app:destination="@id/fragment_help" />
     </fragment>
 
+    <include app:graph="@navigation/history_graph" />
 </navigation>
