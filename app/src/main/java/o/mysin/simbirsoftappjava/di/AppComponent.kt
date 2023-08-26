@@ -1,14 +1,14 @@
 package o.mysin.simbirsoftappjava.di
 
 import dagger.Component
-import o.mysin.simbirsoftappjava.di.module.ApiServiceModule
-import o.mysin.simbirsoftappjava.di.module.AppModule
-import o.mysin.simbirsoftappjava.di.module.AssetManagerModule
-import o.mysin.simbirsoftappjava.di.module.DatabaseModule
-import o.mysin.simbirsoftappjava.di.module.GsonModule
-import o.mysin.simbirsoftappjava.di.module.MapperModule
-import o.mysin.simbirsoftappjava.di.module.RepositoryModule
-import o.mysin.simbirsoftappjava.di.module.UseCaseModule
+import ru.mys_ya.core.di.module.ApiServiceModule
+import ru.mys_ya.core.di.module.AppModule
+import ru.mys_ya.core.di.module.AssetManagerModule
+import ru.mys_ya.core.di.module.DatabaseModule
+import ru.mys_ya.core.di.module.GsonModule
+import ru.mys_ya.core.di.module.MapperModule
+import ru.mys_ya.core.di.module.RepositoryModule
+import ru.mys_ya.core.di.module.UseCaseModule
 import o.mysin.simbirsoftappjava.di.module.ViewModelModule
 import o.mysin.simbirsoftappjava.ui.filter.FilterFragment
 import o.mysin.simbirsoftappjava.ui.help.HelpFragment

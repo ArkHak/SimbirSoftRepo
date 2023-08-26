@@ -15,6 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "SimbirSoftAppJava"
 include(":app")
+include(":core")
 include(":feature_history")
 include(":feature_authorization")
-include(":core")
+include(":feature_profile")

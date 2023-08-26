@@ -9,9 +9,9 @@ import androidx.fragment.app.activityViewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.appComponent
-import o.mysin.simbirsoftappjava.domain.model.HelpCategory
+import ru.mys_ya.core.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentHelpBinding
-import o.mysin.simbirsoftappjava.utils.MarginDecoration
+import ru.mys_ya.core.utils.MarginDecoration
 import ru.mys_ya.core.MainActivityViewModel
 import javax.inject.Inject
 

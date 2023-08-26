@@ -2,14 +2,14 @@ package o.mysin.simbirsoftappjava.di.module
 
 import dagger.Module
 import dagger.Provides
-import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
-import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
-import o.mysin.simbirsoftappjava.domain.usecase.GetSearchEventsByQueryUseCase
 import o.mysin.simbirsoftappjava.ui.filter.FilterViewModel
 import o.mysin.simbirsoftappjava.ui.help.HelpViewModel
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailViewModel
 import o.mysin.simbirsoftappjava.ui.news.main.NewsViewModel
 import o.mysin.simbirsoftappjava.ui.search.events.SearchEventsViewModel
+import ru.mys_ya.core.domain.repository.HelpCategoryRepository
+import ru.mys_ya.core.domain.repository.NewsRepository
+import ru.mys_ya.core.domain.usecase.GetSearchEventsByQueryUseCase
 
 @Module
 class ViewModelModule {

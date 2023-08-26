@@ -9,9 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.domain.repository.HelpCategoryRepository
-import o.mysin.simbirsoftappjava.domain.model.HelpCategory
-import o.mysin.simbirsoftappjava.utils.ErrorMessage
+import ru.mys_ya.core.domain.repository.HelpCategoryRepository
+import ru.mys_ya.core.domain.model.HelpCategory
+import ru.mys_ya.core.utils.ErrorMessage
 
 class HelpViewModel(
     private val helpCategoryRepository: HelpCategoryRepository,

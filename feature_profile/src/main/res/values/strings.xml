@@ -1,0 +1,15 @@
+<resources>
+
+     <string name="title_profile">Профиль</string>
+
+    <string name="date_of_birth_title">Дата рождения</string>
+    <string name="working_title">Сфера деятельности</string>
+    <string name="push_notifications">Получать push-уведомления</string>
+    <string name="list_friends_title">Ваши друзья</string>
+    <string name="logout_button_text">Выйти из аккаунта</string>
+    <string name="select_photo">Выбрать фото</string>
+    <string name="create_photo">Сделать снимок</string>
+    <string name="removed_photo">Удалить</string>
+    <string name="warning_permission_create_photo">Для добавления фотографии необходимо предоставить доступ в настройках приложения</string>
+
+</resources>

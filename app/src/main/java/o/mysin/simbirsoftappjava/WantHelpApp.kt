@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import o.mysin.simbirsoftappjava.di.AppComponent
 import o.mysin.simbirsoftappjava.di.DaggerAppComponent
-import o.mysin.simbirsoftappjava.di.module.AppModule
+import ru.mys_ya.core.di.module.AppModule
 
 class WantHelpApp : Application() {
 

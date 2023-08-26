@@ -3,9 +3,9 @@ package o.mysin.simbirsoftappjava.ui.news.main
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import o.mysin.simbirsoftappjava.domain.model.News
+import ru.mys_ya.core.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.ItemNewsBinding
-import o.mysin.simbirsoftappjava.utils.correctDateTime
+import ru.mys_ya.core.utils.correctDateTime
 
 class NewsViewHolder(val binding: ItemNewsBinding, private val onItemClicked: (Int) -> Unit) :
     RecyclerView.ViewHolder(binding.root) {

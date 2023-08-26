@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.domain.model.SearchEvent
+import ru.mys_ya.core.domain.model.SearchEvent
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchByNkoBinding
 import o.mysin.simbirsoftappjava.ui.search.SearchFragmentsCommonViewModel
 

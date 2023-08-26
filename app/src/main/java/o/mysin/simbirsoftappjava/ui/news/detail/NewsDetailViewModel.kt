@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.domain.repository.NewsRepository
-import o.mysin.simbirsoftappjava.domain.model.News
+import ru.mys_ya.core.domain.repository.NewsRepository
+import ru.mys_ya.core.domain.model.News
 
 class NewsDetailViewModel(
     private val newsRepository: NewsRepository,

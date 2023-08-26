@@ -11,8 +11,8 @@ import coil.load
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.appComponent
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsDetailBinding
-import o.mysin.simbirsoftappjava.domain.model.News
-import o.mysin.simbirsoftappjava.utils.correctDateTime
+import ru.mys_ya.core.domain.model.News
+import ru.mys_ya.core.utils.correctDateTime
 import javax.inject.Inject
 
 class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {

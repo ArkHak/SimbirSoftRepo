@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import o.mysin.simbirsoftappjava.domain.model.SearchEvent
-import o.mysin.simbirsoftappjava.domain.usecase.GetSearchEventsByQueryUseCase
-import o.mysin.simbirsoftappjava.utils.ErrorMessage
+import ru.mys_ya.core.domain.model.SearchEvent
+import ru.mys_ya.core.domain.usecase.GetSearchEventsByQueryUseCase
+import ru.mys_ya.core.utils.ErrorMessage
 
 class SearchEventsViewModel(
     private val searchEventsByQuery: GetSearchEventsByQueryUseCase,

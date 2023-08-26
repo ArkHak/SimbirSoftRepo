@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import o.mysin.simbirsoftappjava.databinding.ItemSearchResultBinding
-import o.mysin.simbirsoftappjava.domain.model.SearchEvent
+import ru.mys_ya.core.domain.model.SearchEvent
 
 class SearchEventsAdapter : RecyclerView.Adapter<SearchEventsViewHolder>() {
 

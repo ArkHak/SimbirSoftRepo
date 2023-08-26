@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.databinding.FragmentSearchBinding
 import o.mysin.simbirsoftappjava.ui.search.SearchFragmentsCommonViewModel
-import o.mysin.simbirsoftappjava.utils.ZoomOutPageTransformer
+import ru.mys_ya.core.utils.ZoomOutPageTransformer
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
 

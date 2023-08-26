@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.domain.model.News
+import ru.mys_ya.core.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.ItemNewsBinding
 
 class NewsAdapter(private val onItemClicked: (idItem: Int) -> Unit) :

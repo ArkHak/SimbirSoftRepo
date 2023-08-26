@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.appComponent
-import o.mysin.simbirsoftappjava.domain.model.HelpCategory
+import ru.mys_ya.core.domain.model.HelpCategory
 import o.mysin.simbirsoftappjava.databinding.FragmentFilterBinding
 import javax.inject.Inject
 

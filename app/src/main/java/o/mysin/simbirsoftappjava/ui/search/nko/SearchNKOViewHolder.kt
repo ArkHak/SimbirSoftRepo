@@ -1,7 +1,7 @@
 package o.mysin.simbirsoftappjava.ui.search.nko
 
 import androidx.recyclerview.widget.RecyclerView
-import o.mysin.simbirsoftappjava.domain.model.SearchEvent
+import ru.mys_ya.core.domain.model.SearchEvent
 import o.mysin.simbirsoftappjava.databinding.ItemSearchResultBinding
 
 class SearchNKOViewHolder(private val binding: ItemSearchResultBinding) :

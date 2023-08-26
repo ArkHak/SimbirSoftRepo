@@ -10,9 +10,9 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import o.mysin.simbirsoftappjava.R
 import o.mysin.simbirsoftappjava.appComponent
-import o.mysin.simbirsoftappjava.domain.model.News
+import ru.mys_ya.core.domain.model.News
 import o.mysin.simbirsoftappjava.databinding.FragmentNewsBinding
-import o.mysin.simbirsoftappjava.utils.NewsItemDecoration
+import ru.mys_ya.core.utils.NewsItemDecoration
 import ru.mys_ya.core.MainActivityViewModel
 import javax.inject.Inject
 

@@ -25,12 +25,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_profile"
-        android:name="o.mysin.simbirsoftappjava.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-
-    <fragment
         android:id="@+id/fragment_search"
         android:name="o.mysin.simbirsoftappjava.ui.search.main.SearchFragment"
         android:label="fragment_search"
@@ -55,5 +49,9 @@
     <include app:graph="@navigation/history_graph" />
 
     <include app:graph="@navigation/authorization_graph"/>
+
+    <include app:graph="@navigation/profile_graph"/>
+
+
 
 </navigation>

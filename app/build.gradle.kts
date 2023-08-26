@@ -77,9 +77,6 @@ dependencies {
     // ViewPager2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
-    // Kotlinx datetime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
-
     //Gson
     implementation("com.google.code.gson:gson:2.10")
 
@@ -115,5 +112,6 @@ dependencies {
     //Module
     implementation(project(":feature_history"))
     implementation(project(":feature_authorization"))
+    implementation(project(":feature_profile"))
     implementation(project(":core"))
 }
