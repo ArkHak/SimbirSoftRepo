@@ -49,8 +49,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // Android Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 

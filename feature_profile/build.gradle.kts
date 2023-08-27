@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
 }
 
 android {
@@ -64,10 +63,6 @@ dependencies {
 
     // ViewBindingPropertyDelegate
     implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
-
-    //Dagger
-    implementation("com.google.dagger:dagger:2.47")
-    kapt("com.google.dagger:dagger-compiler:2.47")
 
     //Module
     implementation(project(":core"))

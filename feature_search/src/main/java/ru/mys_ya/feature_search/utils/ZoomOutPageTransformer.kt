@@ -1,4 +1,4 @@
-package ru.mys_ya.core.utils
+package ru.mys_ya.feature_search.utils
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
