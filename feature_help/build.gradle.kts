@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.mys_ya.feature_profile"
+    namespace = "ru.mys_ya.feature_help"
     compileSdk = 33
 
     defaultConfig {
@@ -48,27 +48,25 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    // ViewBindingPropertyDelegate
+    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
+
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+
     // Lifecycle components
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
-    // Fragment
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-
-    // Coil
-    implementation("io.coil-kt:coil:1.4.0")
-
-    // ViewBindingPropertyDelegate
-    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
-
     //Dagger
     implementation("com.google.dagger:dagger:2.47")
     kapt("com.google.dagger:dagger-compiler:2.47")
 
-    //Module
+    // Coil
+    implementation("io.coil-kt:coil:1.4.0")
+
+    // Module
     implementation(project(":core"))
+
 }

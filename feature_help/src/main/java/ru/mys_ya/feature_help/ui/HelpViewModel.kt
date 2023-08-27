@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.help
+package ru.mys_ya.feature_help.ui
 
 import android.util.Log
 import androidx.lifecycle.LiveData

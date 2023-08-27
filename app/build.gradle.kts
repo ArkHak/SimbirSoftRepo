@@ -106,12 +106,12 @@ dependencies {
 
     //Dagger
     implementation("com.google.dagger:dagger:2.47")
-    implementation("com.google.dagger:dagger:2.47")
     kapt("com.google.dagger:dagger-compiler:2.47")
 
     //Module
     implementation(project(":feature_history"))
     implementation(project(":feature_authorization"))
     implementation(project(":feature_profile"))
+    implementation(project(":feature_help"))
     implementation(project(":core"))
 }

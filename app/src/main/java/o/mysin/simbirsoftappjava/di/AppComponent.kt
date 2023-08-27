@@ -11,10 +11,12 @@ import ru.mys_ya.core.di.module.RepositoryModule
 import ru.mys_ya.core.di.module.UseCaseModule
 import o.mysin.simbirsoftappjava.di.module.ViewModelModule
 import o.mysin.simbirsoftappjava.ui.filter.FilterFragment
-import o.mysin.simbirsoftappjava.ui.help.HelpFragment
+import ru.mys_ya.feature_help.ui.HelpFragment
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailFragment
 import o.mysin.simbirsoftappjava.ui.news.main.NewsFragment
 import o.mysin.simbirsoftappjava.ui.search.events.SearchEventsFragment
+import ru.mys_ya.feature_help.component.HelpComponent
+import ru.mys_ya.feature_help.di.HelpModule
 import javax.inject.Singleton
 
 @Singleton
@@ -28,11 +30,12 @@ import javax.inject.Singleton
         MapperModule::class,
         RepositoryModule::class,
         ViewModelModule::class,
-        UseCaseModule::class
+        UseCaseModule::class,
+        HelpModule::class
     ]
 )
-interface AppComponent {
-    fun inject(fragment: HelpFragment)
+interface AppComponent : HelpComponent {
+    override fun injectHelpFragment(helpFragment: HelpFragment)
     fun inject(fragment: FilterFragment)
     fun inject(fragment: NewsFragment)
     fun inject(fragment: NewsDetailFragment)

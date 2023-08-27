@@ -13,7 +13,7 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/fragment_help"
+        android:id="@+id/help_graph"
         android:icon="@drawable/ic_help"
         android:title="@string/title_help" />
 

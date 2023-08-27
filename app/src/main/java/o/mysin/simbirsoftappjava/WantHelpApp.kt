@@ -5,8 +5,10 @@ import android.content.Context
 import o.mysin.simbirsoftappjava.di.AppComponent
 import o.mysin.simbirsoftappjava.di.DaggerAppComponent
 import ru.mys_ya.core.di.module.AppModule
+import ru.mys_ya.feature_help.component.HelpComponent
+import ru.mys_ya.feature_help.component.HelpComponentProvider
 
-class WantHelpApp : Application() {
+class WantHelpApp : Application(), HelpComponentProvider {
 
     lateinit var appComponent: AppComponent
 
@@ -17,6 +19,11 @@ class WantHelpApp : Application() {
             .build()
 
     }
+
+    override fun getHelpComponent(): HelpComponent {
+        return appComponent
+    }
+
 }
 
 val Context.appComponent: AppComponent

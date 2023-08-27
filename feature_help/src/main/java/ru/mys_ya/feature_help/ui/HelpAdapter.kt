@@ -1,11 +1,11 @@
-package o.mysin.simbirsoftappjava.ui.help
+package ru.mys_ya.feature_help.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.mys_ya.core.domain.model.HelpCategory
-import o.mysin.simbirsoftappjava.databinding.ItemHelpsBinding
+import ru.mys_ya.feature_help.databinding.ItemHelpsBinding
 
 class HelpAdapter :
     RecyclerView.Adapter<HelpViewHolder>() {

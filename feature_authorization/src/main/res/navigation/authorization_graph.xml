@@ -11,6 +11,6 @@
         tools:layout="@layout/fragment_authorization">
         <action
             android:id="@+id/action_authorization_fragment_to_fragment_help"
-            app:destination="@id/fragment_help" />
+            app:destination="@id/help_graph" />
     </fragment>
 </navigation>

@@ -6,12 +6,6 @@
     app:startDestination="@id/authorization_graph">
 
     <fragment
-        android:id="@+id/fragment_help"
-        android:name="o.mysin.simbirsoftappjava.ui.help.HelpFragment"
-        android:label="fragment_help"
-        tools:layout="@layout/fragment_help" />
-
-    <fragment
         android:id="@+id/fragment_news"
         android:name="o.mysin.simbirsoftappjava.ui.news.main.NewsFragment"
         android:label="fragment_news"
@@ -48,10 +42,10 @@
 
     <include app:graph="@navigation/history_graph" />
 
-    <include app:graph="@navigation/authorization_graph"/>
+    <include app:graph="@navigation/authorization_graph" />
 
-    <include app:graph="@navigation/profile_graph"/>
+    <include app:graph="@navigation/profile_graph" />
 
-
+    <include app:graph="@navigation/help_graph" />
 
 </navigation>

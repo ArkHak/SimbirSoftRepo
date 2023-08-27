@@ -1,10 +1,10 @@
-package o.mysin.simbirsoftappjava.ui.help
+package ru.mys_ya.feature_help.ui
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
 import ru.mys_ya.core.domain.model.HelpCategory
-import o.mysin.simbirsoftappjava.databinding.ItemHelpsBinding
+import ru.mys_ya.feature_help.databinding.ItemHelpsBinding
 
 class HelpViewHolder(private val binding: ItemHelpsBinding) :
     RecyclerView.ViewHolder(binding.root) {

@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui.help
+package ru.mys_ya.feature_help.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -7,12 +7,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
-import o.mysin.simbirsoftappjava.R
-import o.mysin.simbirsoftappjava.appComponent
 import ru.mys_ya.core.domain.model.HelpCategory
-import o.mysin.simbirsoftappjava.databinding.FragmentHelpBinding
 import ru.mys_ya.core.utils.MarginDecoration
 import ru.mys_ya.core.MainActivityViewModel
+import ru.mys_ya.feature_help.R
+import ru.mys_ya.feature_help.databinding.FragmentHelpBinding
+import ru.mys_ya.feature_help.component.HelpComponentProvider
 import javax.inject.Inject
 
 class HelpFragment : Fragment(R.layout.fragment_help) {
@@ -25,8 +25,11 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
     private val adapter: HelpAdapter by lazy { HelpAdapter() }
 
     override fun onAttach(context: Context) {
-        context.appComponent.inject(this)
         super.onAttach(context)
+        (context.applicationContext as HelpComponentProvider)
+            .getHelpComponent()
+            .injectHelpFragment(this)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
