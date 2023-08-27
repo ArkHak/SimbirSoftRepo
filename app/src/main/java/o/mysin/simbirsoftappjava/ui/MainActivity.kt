@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBadgeNews() {
-        val badgeNews = bottomNavigationPanel.getOrCreateBadge(R.id.fragment_news)
+        val badgeNews = bottomNavigationPanel.getOrCreateBadge(R.id.news_graph)
         lifecycleScope.launch(Dispatchers.IO) {
             mainViewModel.badgeFlow.collect { count ->
                 badgeNews.number = count

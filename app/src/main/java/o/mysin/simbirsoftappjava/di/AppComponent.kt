@@ -9,14 +9,18 @@ import ru.mys_ya.core.di.module.GsonModule
 import ru.mys_ya.core.di.module.MapperModule
 import ru.mys_ya.core.di.module.RepositoryModule
 import ru.mys_ya.core.di.module.UseCaseModule
-import o.mysin.simbirsoftappjava.di.module.ViewModelModule
-import o.mysin.simbirsoftappjava.ui.filter.FilterFragment
+import ru.mys_ya.feature_news.ui.filter.FilterFragment
 import ru.mys_ya.feature_help.ui.HelpFragment
-import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailFragment
-import o.mysin.simbirsoftappjava.ui.news.main.NewsFragment
+import ru.mys_ya.feature_news.ui.news.detail.NewsDetailFragment
+import ru.mys_ya.feature_news.ui.news.main.NewsFragment
 import ru.mys_ya.feature_search.ui.events.SearchEventsFragment
 import ru.mys_ya.feature_help.component.HelpComponent
 import ru.mys_ya.feature_help.di.HelpModule
+import ru.mys_ya.feature_news.component.detail.NewsDetailComponent
+import ru.mys_ya.feature_news.component.filter.FilterComponent
+import ru.mys_ya.feature_news.component.news.NewsComponent
+import ru.mys_ya.feature_news.di.FilterModule
+import ru.mys_ya.feature_news.di.NewsModule
 import ru.mys_ya.feature_search.component.SearchEventComponent
 import ru.mys_ya.feature_search.di.SearchModule
 import javax.inject.Singleton
@@ -31,16 +35,22 @@ import javax.inject.Singleton
         GsonModule::class,
         MapperModule::class,
         RepositoryModule::class,
-        ViewModelModule::class,
         UseCaseModule::class,
         HelpModule::class,
         SearchModule::class,
+        NewsModule::class,
+        FilterModule::class
     ]
 )
-interface AppComponent : HelpComponent, SearchEventComponent {
+interface AppComponent :
+    HelpComponent,
+    SearchEventComponent,
+    FilterComponent,
+    NewsComponent,
+    NewsDetailComponent {
     override fun injectHelpFragment(helpFragment: HelpFragment)
     override fun injectSearchEventFragment(searchEventFragment: SearchEventsFragment)
-    fun inject(fragment: FilterFragment)
-    fun inject(fragment: NewsFragment)
-    fun inject(fragment: NewsDetailFragment)
+    override fun injectFilterFragment(filterFragment: FilterFragment)
+    override fun injectNewsFragment(newsFragment: NewsFragment)
+    override fun injectNewsDetailFragment(newsDetailFragment: NewsDetailFragment)
 }
