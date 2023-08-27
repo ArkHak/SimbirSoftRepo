@@ -27,7 +27,8 @@ class SearchEventsViewModel(
 
         viewModelScope.launch {
             try {
-                _eventsList.value = searchEventsByQuery.invoke(searchQuery)
+                val searchEvents = searchEventsByQuery(searchQuery)
+                _eventsList.value = searchEvents
             } catch (error: Exception) {
                 Log.e("MOD_TAG", "loadNews: $error")
                 _errorMessage.value = ErrorMessage("loadNews: $error")

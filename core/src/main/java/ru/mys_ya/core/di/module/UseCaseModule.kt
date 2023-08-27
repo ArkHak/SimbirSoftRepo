@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import ru.mys_ya.core.domain.repository.NewsRepository
 import ru.mys_ya.core.domain.usecase.GetSearchEventsByQueryUseCase
+import ru.mys_ya.core.domain.usecase.GetSearchEventsByQueryUseCaseImpl
 
 @Module
 class UseCaseModule {
@@ -12,6 +13,6 @@ class UseCaseModule {
     fun provideSearchEventsByQueryUseCase(
         repository: NewsRepository,
     ): GetSearchEventsByQueryUseCase {
-        return GetSearchEventsByQueryUseCase(repository)
+        return GetSearchEventsByQueryUseCaseImpl(repository)
     }
 }
