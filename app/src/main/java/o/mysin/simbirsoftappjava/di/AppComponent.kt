@@ -14,9 +14,11 @@ import o.mysin.simbirsoftappjava.ui.filter.FilterFragment
 import ru.mys_ya.feature_help.ui.HelpFragment
 import o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailFragment
 import o.mysin.simbirsoftappjava.ui.news.main.NewsFragment
-import o.mysin.simbirsoftappjava.ui.search.events.SearchEventsFragment
+import ru.mys_ya.feature_search.ui.events.SearchEventsFragment
 import ru.mys_ya.feature_help.component.HelpComponent
 import ru.mys_ya.feature_help.di.HelpModule
+import ru.mys_ya.feature_search.component.SearchEventComponent
+import ru.mys_ya.feature_search.di.SearchModule
 import javax.inject.Singleton
 
 @Singleton
@@ -31,13 +33,14 @@ import javax.inject.Singleton
         RepositoryModule::class,
         ViewModelModule::class,
         UseCaseModule::class,
-        HelpModule::class
+        HelpModule::class,
+        SearchModule::class,
     ]
 )
-interface AppComponent : HelpComponent {
+interface AppComponent : HelpComponent, SearchEventComponent {
     override fun injectHelpFragment(helpFragment: HelpFragment)
+    override fun injectSearchEventFragment(searchEventFragment: SearchEventsFragment)
     fun inject(fragment: FilterFragment)
     fun inject(fragment: NewsFragment)
     fun inject(fragment: NewsDetailFragment)
-    fun inject(fragment: SearchEventsFragment)
 }

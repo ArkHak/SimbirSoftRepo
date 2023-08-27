@@ -7,8 +7,10 @@ import o.mysin.simbirsoftappjava.di.DaggerAppComponent
 import ru.mys_ya.core.di.module.AppModule
 import ru.mys_ya.feature_help.component.HelpComponent
 import ru.mys_ya.feature_help.component.HelpComponentProvider
+import ru.mys_ya.feature_search.component.SearchEventComponent
+import ru.mys_ya.feature_search.component.SearchEventComponentProvider
 
-class WantHelpApp : Application(), HelpComponentProvider {
+class WantHelpApp : Application(), HelpComponentProvider, SearchEventComponentProvider {
 
     lateinit var appComponent: AppComponent
 
@@ -21,6 +23,10 @@ class WantHelpApp : Application(), HelpComponentProvider {
     }
 
     override fun getHelpComponent(): HelpComponent {
+        return appComponent
+    }
+
+    override fun getSearchEventFragment(): SearchEventComponent {
         return appComponent
     }
 

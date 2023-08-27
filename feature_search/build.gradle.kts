@@ -1,24 +1,18 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-parcelize")
-    id("kotlinx-serialization")
     id("kotlin-kapt")
 }
 
 android {
-    namespace = "o.mysin.simbirsoftappjava"
+    namespace = "ru.mys_ya.feature_search"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "o.mysin.simbirsoftappjava"
         minSdk = 26
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -26,23 +20,20 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
+                "proguard-rules.pro"
             )
         }
     }
-
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildFeatures {
         viewBinding = true
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 
@@ -57,12 +48,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    // Android Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-
     // ViewBindingPropertyDelegate
     implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
 
@@ -70,9 +55,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-
-    // Coil
-    implementation("io.coil-kt:coil:1.4.0")
 
     // ViewPager2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -92,6 +74,9 @@ dependencies {
     //Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+
     // Retrofit
     implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -108,11 +93,5 @@ dependencies {
     implementation("com.google.dagger:dagger:2.47")
     kapt("com.google.dagger:dagger-compiler:2.47")
 
-    //Module
-    implementation(project(":feature_history"))
-    implementation(project(":feature_authorization"))
-    implementation(project(":feature_profile"))
-    implementation(project(":feature_help"))
-    implementation(project(":feature_search"))
     implementation(project(":core"))
 }

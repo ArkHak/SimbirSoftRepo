@@ -29,7 +29,6 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
         (context.applicationContext as HelpComponentProvider)
             .getHelpComponent()
             .injectHelpFragment(this)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="title_search">Поиск</string>
+
+    <!-- SearchFragment -->
+    <string name="tab_name_search_by_events">По мероприятиям</string>
+    <string name="tab_name_search_by_nko">По НКО</string>
+    <string name="hint_input_name_organization">Введите название организации</string>
+    <string name="hint_input_title_event">Введите название мероприятия</string>
+
+    <!-- SearchFragmentNKO-->
+    <string name="tmp_key_words">Ключевые слова: мастер-класс, помощь</string>
+    <string name="tmp_result_search">Результаты поиска: 109 мероприятий</string>
+
+    <!-- SearchFragmentEvents -->
+    <string name="init_help_search_text">Напишите в строке поиска название\nмероприятия или ключевые слова.</string>
+    <string name="exemple">Например,</string>
+    <string name="example_items"><u>мастер-класс, помощь</u></string>
+
+    <string name="events_not_found">События по заданному критерию не найдены</string>
+
+
+</resources>

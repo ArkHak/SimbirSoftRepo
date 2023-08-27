@@ -8,7 +8,7 @@
     </item>
 
     <item
-        android:id="@+id/fragment_search"
+        android:id="@+id/search_graph"
         android:icon="@drawable/ic_search"
         android:title="@string/title_search" />
 

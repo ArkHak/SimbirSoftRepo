@@ -19,12 +19,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_search"
-        android:name="o.mysin.simbirsoftappjava.ui.search.main.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
-
-    <fragment
         android:id="@+id/filters_fragment"
         android:name="o.mysin.simbirsoftappjava.ui.filter.FilterFragment"
         android:label="fragment_filters"
@@ -47,5 +41,7 @@
     <include app:graph="@navigation/profile_graph" />
 
     <include app:graph="@navigation/help_graph" />
+
+    <include app:graph="@navigation/search_graph" />
 
 </navigation>
