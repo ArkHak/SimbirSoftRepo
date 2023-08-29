@@ -14,14 +14,14 @@ import ru.mys_ya.feature_help.ui.HelpFragment
 import ru.mys_ya.feature_news.ui.news.detail.NewsDetailFragment
 import ru.mys_ya.feature_news.ui.news.main.NewsFragment
 import ru.mys_ya.feature_search.ui.events.SearchEventsFragment
-import ru.mys_ya.feature_help.component.HelpComponent
+import ru.mys_ya.feature_help.di.component.HelpComponent
 import ru.mys_ya.feature_help.di.HelpModule
-import ru.mys_ya.feature_news.component.detail.NewsDetailComponent
-import ru.mys_ya.feature_news.component.filter.FilterComponent
-import ru.mys_ya.feature_news.component.news.NewsComponent
+import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
+import ru.mys_ya.feature_news.di.component.filter.FilterComponent
+import ru.mys_ya.feature_news.di.component.news.NewsComponent
 import ru.mys_ya.feature_news.di.FilterModule
 import ru.mys_ya.feature_news.di.NewsModule
-import ru.mys_ya.feature_search.component.SearchEventComponent
+import ru.mys_ya.feature_search.di.component.SearchEventComponent
 import ru.mys_ya.feature_search.di.SearchModule
 import javax.inject.Singleton
 

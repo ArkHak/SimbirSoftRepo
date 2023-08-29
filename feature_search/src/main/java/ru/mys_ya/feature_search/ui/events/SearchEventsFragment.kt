@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mys_ya.core.domain.model.SearchEvent
 import ru.mys_ya.feature_search.R
-import ru.mys_ya.feature_search.component.SearchEventComponentProvider
+import ru.mys_ya.feature_search.di.component.SearchEventComponentProvider
 import ru.mys_ya.feature_search.databinding.FragmentSearchByEventsBinding
 import ru.mys_ya.feature_search.ui.SearchFragmentsCommonViewModel
 import javax.inject.Inject

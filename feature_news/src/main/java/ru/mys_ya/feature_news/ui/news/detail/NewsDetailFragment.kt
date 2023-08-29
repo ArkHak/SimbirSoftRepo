@@ -11,7 +11,7 @@ import coil.load
 import ru.mys_ya.core.domain.model.News
 import ru.mys_ya.core.utils.correctDateTime
 import ru.mys_ya.feature_news.R
-import ru.mys_ya.feature_news.component.detail.NewsDetailComponentProvider
+import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
 import ru.mys_ya.feature_news.databinding.FragmentNewsDetailBinding
 import javax.inject.Inject
 

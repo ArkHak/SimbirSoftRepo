@@ -4,16 +4,16 @@ import android.app.Application
 import o.mysin.simbirsoftappjava.di.AppComponent
 import o.mysin.simbirsoftappjava.di.DaggerAppComponent
 import ru.mys_ya.core.di.module.AppModule
-import ru.mys_ya.feature_help.component.HelpComponent
-import ru.mys_ya.feature_help.component.HelpComponentProvider
-import ru.mys_ya.feature_news.component.detail.NewsDetailComponent
-import ru.mys_ya.feature_news.component.detail.NewsDetailComponentProvider
-import ru.mys_ya.feature_news.component.filter.FilterComponent
-import ru.mys_ya.feature_news.component.filter.FilterComponentProvider
-import ru.mys_ya.feature_news.component.news.NewsComponent
-import ru.mys_ya.feature_news.component.news.NewsComponentProvider
-import ru.mys_ya.feature_search.component.SearchEventComponent
-import ru.mys_ya.feature_search.component.SearchEventComponentProvider
+import ru.mys_ya.feature_help.di.component.HelpComponent
+import ru.mys_ya.feature_help.di.component.HelpComponentProvider
+import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
+import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
+import ru.mys_ya.feature_news.di.component.filter.FilterComponent
+import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
+import ru.mys_ya.feature_news.di.component.news.NewsComponent
+import ru.mys_ya.feature_news.di.component.news.NewsComponentProvider
+import ru.mys_ya.feature_search.di.component.SearchEventComponent
+import ru.mys_ya.feature_search.di.component.SearchEventComponentProvider
 
 class WantHelpApp : Application(),
     HelpComponentProvider,

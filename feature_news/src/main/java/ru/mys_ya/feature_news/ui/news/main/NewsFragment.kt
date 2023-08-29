@@ -12,7 +12,7 @@ import ru.mys_ya.core.domain.model.News
 import ru.mys_ya.core.utils.NewsItemDecoration
 import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.feature_news.R
-import ru.mys_ya.feature_news.component.news.NewsComponentProvider
+import ru.mys_ya.feature_news.di.component.news.NewsComponentProvider
 import ru.mys_ya.feature_news.databinding.FragmentNewsBinding
 import javax.inject.Inject
 

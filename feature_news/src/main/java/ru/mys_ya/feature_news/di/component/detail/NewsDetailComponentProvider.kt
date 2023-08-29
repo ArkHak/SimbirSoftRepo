@@ -1,4 +1,4 @@
-package ru.mys_ya.feature_news.component.detail
+package ru.mys_ya.feature_news.di.component.detail
 
 fun interface NewsDetailComponentProvider {
         fun getNewsDetailComponent(): NewsDetailComponent

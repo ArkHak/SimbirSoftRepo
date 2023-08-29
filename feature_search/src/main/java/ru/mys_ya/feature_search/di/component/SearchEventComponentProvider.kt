@@ -1,4 +1,4 @@
-package ru.mys_ya.feature_search.component
+package ru.mys_ya.feature_search.di.component
 
 
 fun interface SearchEventComponentProvider {

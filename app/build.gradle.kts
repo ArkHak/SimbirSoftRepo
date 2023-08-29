@@ -44,36 +44,36 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring(Libs.desugarJdk)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Deps.coreKtx)
+    implementation(Deps.appCompat)
+    implementation(Deps.material)
+    implementation(Deps.constraintlayout)
+    testImplementation(Testing.jUnit)
+    androidTestImplementation(Testing.extJInit)
+    androidTestImplementation(Testing.espressoCore)
 
     // Android Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(Navigation.navigationFragmentKtx)
+    implementation(Navigation.navigationUIKtx)
+    implementation(Navigation.navigationDynamicFeaturesFragment)
+    implementation(Deps.legacySupportV4)
 
     // ViewBindingPropertyDelegate
-    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
+    implementation(ViewBindingDelegate.viewBindingPropertyDelegate)
 
     // Lifecycle components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation(Lifecycle.lifecycleExtensions)
+    implementation(Lifecycle.lifecycleViewModel)
+    implementation(Lifecycle.lifecycleLiveData)
 
     //Gson
-    implementation("com.google.code.gson:gson:2.10")
+    implementation(Gson.gson)
 
     //Dagger
-    implementation("com.google.dagger:dagger:2.47")
-    kapt("com.google.dagger:dagger-compiler:2.47")
+    implementation(Dagger.dagger)
+    kapt(Dagger.daggerCompiler)
 
     //Module
     implementation(project(":feature_history"))

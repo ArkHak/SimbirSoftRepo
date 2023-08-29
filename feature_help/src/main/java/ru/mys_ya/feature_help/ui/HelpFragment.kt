@@ -12,7 +12,7 @@ import ru.mys_ya.core.utils.MarginDecoration
 import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.feature_help.R
 import ru.mys_ya.feature_help.databinding.FragmentHelpBinding
-import ru.mys_ya.feature_help.component.HelpComponentProvider
+import ru.mys_ya.feature_help.di.component.HelpComponentProvider
 import javax.inject.Inject
 
 class HelpFragment : Fragment(R.layout.fragment_help) {

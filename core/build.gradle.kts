@@ -36,38 +36,37 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring(Libs.desugarJdk)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Deps.coreKtx)
+    implementation(Deps.appCompat)
+    implementation(Deps.material)
+    implementation(Deps.constraintlayout)
+    testImplementation(Testing.jUnit)
+    androidTestImplementation(Testing.extJInit)
+    androidTestImplementation(Testing.espressoCore)
 
-    // Retrofit
-    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    //Network
+    implementation(Network.Retrofit.core)
+    implementation(Network.Retrofit.adapterRxJava)
+    implementation(Network.Retrofit.converterGson)
+    implementation(Network.OkHttp.loggingInterceptor)
 
     //Room
-    implementation("androidx.room:room-runtime:2.5.2")
-    implementation("androidx.room:room-ktx:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
+    implementation(Database.roomRuntime)
+    implementation(Database.roomKtx)
+    kapt(Database.roomCompiler)
 
     //Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation(Serialization.kotlinxSerializationJson)
 
     // Kotlinx datetime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    implementation(Datetime.datetimeKotlinx)
 
     //Gson
-    implementation("com.google.code.gson:gson:2.10")
+    implementation(Gson.gson)
 
     //Dagger
-    implementation("com.google.dagger:dagger:2.47")
-    kapt("com.google.dagger:dagger-compiler:2.47")
+    implementation(Dagger.dagger)
+    kapt(Dagger.daggerCompiler)
 }

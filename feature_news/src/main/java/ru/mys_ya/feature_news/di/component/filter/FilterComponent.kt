@@ -1,4 +1,4 @@
-package ru.mys_ya.feature_news.component.filter
+package ru.mys_ya.feature_news.di.component.filter
 
 import ru.mys_ya.feature_news.ui.filter.FilterFragment
 
