@@ -6,14 +6,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.mys_ya.core.MainActivityViewModel
+import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.core.domain.model.News
 import ru.mys_ya.core.utils.NewsItemDecoration
-import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.feature_news.R
-import ru.mys_ya.feature_news.di.component.news.NewsComponentProvider
 import ru.mys_ya.feature_news.databinding.FragmentNewsBinding
+import ru.mys_ya.feature_news.di.component.news.NewsComponentProvider
 import javax.inject.Inject
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
@@ -21,7 +23,12 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private val binding: FragmentNewsBinding by viewBinding()
 
     @Inject
-    lateinit var newsViewModel: NewsViewModel
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val newsViewModel by viewModels<NewsViewModel> {
+        viewModelFactory
+    }
+
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var adapter: NewsAdapter
 
@@ -114,5 +121,4 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private fun hideLoadingData() {
         binding.loadingProgressBar.visibility = View.GONE
     }
-
 }

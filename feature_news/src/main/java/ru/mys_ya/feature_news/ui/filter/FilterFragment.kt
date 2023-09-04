@@ -6,22 +6,28 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.core.domain.model.HelpCategory
 import ru.mys_ya.feature_news.R
-import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
 import ru.mys_ya.feature_news.databinding.FragmentFilterBinding
+import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
 import javax.inject.Inject
-
 
 class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     private val binding: FragmentFilterBinding by viewBinding()
 
     @Inject
-    lateinit var filterViewModel: FilterViewModel
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val filterViewModel by viewModels<FilterViewModel> {
+        viewModelFactory
+    }
+
     private lateinit var adapter: FilterAdapter
 
     override fun onAttach(context: Context) {
@@ -55,8 +61,8 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
         binding.filterItemRecyclerView.addItemDecoration(
             androidx.recyclerview.widget.DividerItemDecoration(
                 requireContext(),
-                LinearLayoutManager.VERTICAL
-            ).apply { divider?.let { setDrawable(it) } }
+                LinearLayoutManager.VERTICAL,
+            ).apply { divider?.let { setDrawable(it) } },
         )
     }
 
@@ -69,7 +75,7 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
             Toast.makeText(
                 context,
                 requireContext().getText(R.string.filter_change_apply),
-                Toast.LENGTH_SHORT
+                Toast.LENGTH_SHORT,
             ).show()
         }
     }
@@ -77,5 +83,4 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
     private fun renderData(filterList: List<HelpCategory>) {
         adapter.updateFilterList(filterList)
     }
-
 }

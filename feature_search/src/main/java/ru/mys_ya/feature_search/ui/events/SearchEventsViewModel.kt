@@ -9,11 +9,11 @@ import kotlinx.coroutines.launch
 import ru.mys_ya.core.domain.model.SearchEvent
 import ru.mys_ya.core.domain.usecase.GetSearchEventsByQueryUseCase
 import ru.mys_ya.core.utils.ErrorMessage
+import javax.inject.Inject
 
-class SearchEventsViewModel(
+class SearchEventsViewModel @Inject constructor(
     private val searchEventsByQuery: GetSearchEventsByQueryUseCase,
 ) : ViewModel() {
-
 
     private val _eventsList: MutableLiveData<List<SearchEvent>> = MutableLiveData()
     val eventsList: LiveData<List<SearchEvent>>
@@ -24,7 +24,6 @@ class SearchEventsViewModel(
         get() = _errorMessage
 
     fun searchEvents(searchQuery: String) {
-
         viewModelScope.launch {
             try {
                 val searchEvents = searchEventsByQuery(searchQuery)

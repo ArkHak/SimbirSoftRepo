@@ -1,18 +1,15 @@
 package ru.mys_ya.feature_help.di
 
+import androidx.lifecycle.ViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.mys_ya.core.domain.repository.HelpCategoryRepository
+import dagger.multibindings.IntoMap
+import ru.mys_ya.core.di.viewmodule.ViewModelKey
 import ru.mys_ya.feature_help.ui.HelpViewModel
 
 @Module
-class HelpModule {
-
-    @Provides
-    fun provideHelpViewModel(
-        repository: HelpCategoryRepository,
-    ): HelpViewModel {
-        return HelpViewModel(repository)
-    }
-
+fun interface HelpModule {
+    @Binds
+    @[IntoMap ViewModelKey(HelpViewModel::class)]
+    fun bindHelpViewModel(viewModel: HelpViewModel): ViewModel
 }

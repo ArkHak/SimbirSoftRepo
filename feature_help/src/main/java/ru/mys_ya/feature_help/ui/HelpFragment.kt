@@ -6,13 +6,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.mys_ya.core.MainActivityViewModel
+import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.core.domain.model.HelpCategory
 import ru.mys_ya.core.utils.MarginDecoration
-import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.feature_help.R
 import ru.mys_ya.feature_help.databinding.FragmentHelpBinding
-import ru.mys_ya.feature_help.di.component.HelpComponentProvider
+import ru.mys_ya.feature_help.di.HelpComponentProvider
 import javax.inject.Inject
 
 class HelpFragment : Fragment(R.layout.fragment_help) {
@@ -20,7 +22,12 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
     private val binding: FragmentHelpBinding by viewBinding()
 
     @Inject
-    lateinit var helpViewModel: HelpViewModel
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val helpViewModel by viewModels<HelpViewModel> {
+        viewModelFactory
+    }
+
     private val mainViewModel: MainActivityViewModel by activityViewModels()
     private val adapter: HelpAdapter by lazy { HelpAdapter() }
 
@@ -39,7 +46,6 @@ class HelpFragment : Fragment(R.layout.fragment_help) {
         helpViewModel.helpCategoryList
             .observe(viewLifecycleOwner) { renderData(it) }
         helpViewModel.errorMessage.observe(viewLifecycleOwner) { renderMessage(it.message) }
-
 
         initRecycler()
     }

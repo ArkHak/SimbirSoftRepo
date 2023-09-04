@@ -7,13 +7,15 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.core.domain.model.SearchEvent
 import ru.mys_ya.feature_search.R
-import ru.mys_ya.feature_search.di.component.SearchEventComponentProvider
 import ru.mys_ya.feature_search.databinding.FragmentSearchByEventsBinding
+import ru.mys_ya.feature_search.di.component.SearchEventComponentProvider
 import ru.mys_ya.feature_search.ui.SearchFragmentsCommonViewModel
 import javax.inject.Inject
 
@@ -23,7 +25,12 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
     private val commonViewModel: SearchFragmentsCommonViewModel by activityViewModels()
 
     @Inject
-    lateinit var searchViewModel: SearchEventsViewModel
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val searchViewModel by viewModels<SearchEventsViewModel> {
+        viewModelFactory
+    }
+
     private val adapter: SearchEventsAdapter by lazy { SearchEventsAdapter() }
     private var emptySearch = true
 
@@ -86,7 +93,7 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
 
     private fun initRecycler() {
         val itemDecorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
-        val divider = ContextCompat.getDrawable(requireContext(),  ru.mys_ya.core.R.drawable.divider)
+        val divider = ContextCompat.getDrawable(requireContext(), ru.mys_ya.core.R.drawable.divider)
         divider?.let { itemDecorator.setDrawable(it) }
 
         binding.searchEventsItemRecyclerView.adapter = adapter
@@ -110,5 +117,4 @@ class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {
         binding.recyclerViewLayout.visibility = View.GONE
         binding.eventsNotFoundTextView.visibility = View.VISIBLE
     }
-
 }

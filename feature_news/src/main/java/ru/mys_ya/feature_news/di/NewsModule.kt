@@ -1,26 +1,21 @@
 package ru.mys_ya.feature_news.di
 
+import androidx.lifecycle.ViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.mys_ya.core.domain.repository.HelpCategoryRepository
-import ru.mys_ya.core.domain.repository.NewsRepository
+import dagger.multibindings.IntoMap
+import ru.mys_ya.core.di.viewmodule.ViewModelKey
 import ru.mys_ya.feature_news.ui.news.detail.NewsDetailViewModel
 import ru.mys_ya.feature_news.ui.news.main.NewsViewModel
 
 @Module
-class NewsModule {
-    @Provides
-    fun provideNewsViewModel(
-        newsRepository: NewsRepository,
-        helpCategoryRepository: HelpCategoryRepository,
-    ): NewsViewModel {
-        return NewsViewModel(newsRepository, helpCategoryRepository)
-    }
+interface NewsModule {
 
-    @Provides
-    fun provideNewsDetailViewModel(
-        repository: NewsRepository,
-    ): NewsDetailViewModel {
-        return NewsDetailViewModel(repository)
-    }
+    @Binds
+    @[IntoMap ViewModelKey(NewsViewModel::class)]
+    fun bindNewsViewModel(viewModel: NewsViewModel): ViewModel
+
+    @Binds
+    @[IntoMap ViewModelKey(NewsDetailViewModel::class)]
+    fun bindNewsDetailViewModel(viewModel: NewsDetailViewModel): ViewModel
 }

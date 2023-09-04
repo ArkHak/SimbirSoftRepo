@@ -10,16 +10,16 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import ru.mys_ya.core.domain.repository.NewsRepository
 import ru.mys_ya.core.domain.model.News
 import ru.mys_ya.core.domain.repository.HelpCategoryRepository
+import ru.mys_ya.core.domain.repository.NewsRepository
 import ru.mys_ya.core.utils.ErrorMessage
+import javax.inject.Inject
 
-class NewsViewModel(
+class NewsViewModel @Inject constructor(
     private val newsRepository: NewsRepository,
     private val helpCategoryRepository: HelpCategoryRepository,
 ) : ViewModel() {
-
 
     private val _newsList: MutableLiveData<List<News>> = MutableLiveData()
     val newsList: LiveData<List<News>>
@@ -30,7 +30,6 @@ class NewsViewModel(
         get() = _errorMessage
 
     private var listIdNewsViewed = arrayListOf<Int>()
-
 
     fun loadNews() {
         val filterIdList = helpCategoryRepository.getIdHelpCategoriesHideList()

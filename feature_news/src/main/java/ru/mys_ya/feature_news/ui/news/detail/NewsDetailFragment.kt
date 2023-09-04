@@ -4,15 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
+import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.core.domain.model.News
 import ru.mys_ya.core.utils.correctDateTime
 import ru.mys_ya.feature_news.R
-import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
 import ru.mys_ya.feature_news.databinding.FragmentNewsDetailBinding
+import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
 import javax.inject.Inject
 
 class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
@@ -20,7 +22,12 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
     private val binding: FragmentNewsDetailBinding by viewBinding()
 
     @Inject
-    lateinit var newsDetailViewModel: NewsDetailViewModel
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    private val newsDetailViewModel by viewModels<NewsDetailViewModel> {
+        viewModelFactory
+    }
+
     private val args by navArgs<NewsDetailFragmentArgs>()
 
      override fun onAttach(context: Context) {
@@ -38,7 +45,6 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
         initActionButtons()
         binding.labelNewsDetail.text = args.newsId.toString()
-
     }
 
     private fun renderData(news: News) {
@@ -55,7 +61,6 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
             newsDescription.text = news.fullDescription
         }
     }
-
 
     private fun initActionButtons() {
         binding.newsDetailToolbar.setNavigationOnClickListener {

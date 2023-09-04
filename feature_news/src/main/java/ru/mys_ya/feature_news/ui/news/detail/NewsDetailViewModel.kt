@@ -9,10 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import ru.mys_ya.core.domain.repository.NewsRepository
 import ru.mys_ya.core.domain.model.News
+import ru.mys_ya.core.domain.repository.NewsRepository
+import javax.inject.Inject
 
-class NewsDetailViewModel(
+class NewsDetailViewModel @Inject constructor(
     private val newsRepository: NewsRepository,
 ) : ViewModel() {
 

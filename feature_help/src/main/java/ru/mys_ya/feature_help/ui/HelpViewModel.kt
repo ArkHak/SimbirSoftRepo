@@ -9,14 +9,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import ru.mys_ya.core.domain.repository.HelpCategoryRepository
 import ru.mys_ya.core.domain.model.HelpCategory
+import ru.mys_ya.core.domain.repository.HelpCategoryRepository
 import ru.mys_ya.core.utils.ErrorMessage
+import javax.inject.Inject
 
-class HelpViewModel(
+class HelpViewModel @Inject constructor(
     private val helpCategoryRepository: HelpCategoryRepository,
 ) : ViewModel() {
-
 
     private val _helpCategoryList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
     val helpCategoryList: LiveData<List<HelpCategory>>

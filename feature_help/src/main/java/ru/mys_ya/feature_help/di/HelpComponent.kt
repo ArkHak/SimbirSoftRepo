@@ -1,4 +1,4 @@
-package ru.mys_ya.feature_help.di.component
+package ru.mys_ya.feature_help.di
 
 import ru.mys_ya.feature_help.ui.HelpFragment
 
