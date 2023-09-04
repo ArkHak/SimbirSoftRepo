@@ -1,16 +1,22 @@
 package ru.mys_ya.feature_news.di
 
+import androidx.lifecycle.ViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.mys_ya.core.domain.repository.HelpCategoryRepository
+import dagger.multibindings.IntoMap
+import ru.mys_ya.core.di.viewModel.ViewModelKey
 import ru.mys_ya.feature_news.ui.filter.FilterViewModel
 
 @Module
-class FilterModule {
-    @Provides
-    fun provideFilterViewModel(
-        repository: HelpCategoryRepository,
-    ): FilterViewModel {
-        return FilterViewModel(repository)
-    }
+interface BindFilterModule {
+
+    @Binds
+    /** (2)
+     * Говорим даггеру, чтобы он создал внутри себя мапу, где ключом будет
+     * KClass<out ViewModel>, а значением объект (Provider), который умеет создавать ViewModel.
+     * +
+     * Кладем в эту мапу объект, умеющий создавать FilterViewModel по ключу FilterViewModel::class
+     */
+    @[IntoMap ViewModelKey(FilterViewModel::class)]
+    fun bindFilterViewModel(viewModel: FilterViewModel): ViewModel
 }

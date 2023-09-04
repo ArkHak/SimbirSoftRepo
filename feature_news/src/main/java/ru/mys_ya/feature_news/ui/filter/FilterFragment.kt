@@ -6,13 +6,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.mys_ya.core.di.viewModel.MultiViewModelFactory
 import ru.mys_ya.core.domain.model.HelpCategory
 import ru.mys_ya.feature_news.R
-import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
 import ru.mys_ya.feature_news.databinding.FragmentFilterBinding
+import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
 import javax.inject.Inject
 
 
@@ -20,12 +23,27 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     private val binding: FragmentFilterBinding by viewBinding()
 
+    /** (5)
+     * Просим даггер позаботиться о том, чтобы в фрагмент можно было заинжектить фабрику вьюмоделй
+     */
     @Inject
-    lateinit var filterViewModel: FilterViewModel
+    lateinit var viewModelFactory: MultiViewModelFactory
+
+    /** (7)
+     * Просим у системы получить вьюмодель (by viewModels), передавая ей кастомную фабирку. Система
+     * сама решает когда ей нужно ее создавать и делает это при помощи фабрики.
+     */
+    private val filterViewModel by viewModels<FilterViewModel> {
+        viewModelFactory
+    }
+
     private lateinit var adapter: FilterAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        /** (6)
+         * Достаем из AppComponent все, что нам нужно для фрагмента
+         */
         (context.applicationContext as FilterComponentProvider)
             .getFilterComponent()
             .injectFilterFragment(this)

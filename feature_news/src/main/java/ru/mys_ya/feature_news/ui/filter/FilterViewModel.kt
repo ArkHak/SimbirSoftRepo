@@ -11,8 +11,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import ru.mys_ya.core.domain.repository.HelpCategoryRepository
 import ru.mys_ya.core.domain.model.HelpCategory
+import javax.inject.Inject
 
-class FilterViewModel(
+/** (1)
+ * Учим даггер создавать FilterViewModel используя конструктор с параметрами
+ */
+class FilterViewModel @Inject constructor(
     private val helpCategoryRepository: HelpCategoryRepository,
 ) : ViewModel() {
 
@@ -25,6 +29,12 @@ class FilterViewModel(
 
     init {
         loadFilterList()
+        /** (8)
+         * В результате вызов этого лога должен происходить только во время чистого открытия экрана.
+         * При перевороте экрана, лог вызываться не должен, так как создание вьюмодели в этот момент
+         * происходить не должно
+         */
+        Log.e("FILTER", "viewmodel created")
     }
 
     private fun loadFilterList() {
