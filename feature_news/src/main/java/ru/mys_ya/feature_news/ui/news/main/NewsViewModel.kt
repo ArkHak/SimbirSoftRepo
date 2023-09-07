@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import ru.mys_ya.core.domain.model.News
-import ru.mys_ya.core.domain.repository.HelpCategoryRepository
-import ru.mys_ya.core.domain.repository.NewsRepository
+import ru.mys_ya.feature_news_api.repository.NewsRepository
 import ru.mys_ya.core.utils.ErrorMessage
+import ru.mys_ya.feature_help_api.repository.HelpCategoryRepository
+import ru.mys_ya.feature_news_api.data.News
 import javax.inject.Inject
 
 class NewsViewModel @Inject constructor(

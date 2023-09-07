@@ -2,19 +2,20 @@ package o.mysin.simbirsoftappjava.di
 
 import dagger.Component
 import o.mysin.simbirsoftappjava.util.AppScope
-import ru.mys_ya.core.di.module.ApiServiceModule
+import o.mysin.simbirsoftappjava.di.module.ApiServiceModule
 import ru.mys_ya.core.di.module.AppModule
-import ru.mys_ya.core.di.module.AssetManagerModule
+import o.mysin.simbirsoftappjava.di.module.AssetManagerModule
 import ru.mys_ya.core.di.module.DatabaseModule
 import ru.mys_ya.core.di.module.GsonModule
-import ru.mys_ya.core.di.module.MapperModule
-import ru.mys_ya.core.di.module.RepositoryModule
-import ru.mys_ya.core.di.module.UseCaseModule
+import o.mysin.simbirsoftappjava.di.module.RepositoryModule
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.feature_help.di.HelpComponent
-import ru.mys_ya.feature_help.di.HelpModule
+import ru.mys_ya.feature_help.di.HelpMapperModule
+import ru.mys_ya.feature_help.di.HelpViewModelModule
 import ru.mys_ya.feature_news.di.FilterModule
-import ru.mys_ya.feature_news.di.NewsModule
+import ru.mys_ya.feature_news.di.NewsMapperModule
+import ru.mys_ya.feature_news.di.NewsUseCaseModule
+import ru.mys_ya.feature_news.di.NewsViewModelModule
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
 import ru.mys_ya.feature_news.di.component.filter.FilterComponent
 import ru.mys_ya.feature_news.di.component.news.NewsComponent
@@ -30,13 +31,14 @@ import javax.inject.Singleton
         AssetManagerModule::class,
         DatabaseModule::class,
         GsonModule::class,
-        MapperModule::class,
         RepositoryModule::class,
-        UseCaseModule::class,
         SearchModule::class,
-        NewsModule::class,
+        NewsViewModelModule::class,
+        NewsUseCaseModule::class,
+        NewsMapperModule::class,
         FilterModule::class,
-        HelpModule::class,
+        HelpViewModelModule::class,
+        HelpMapperModule::class
     ],
 )
 @AppScope

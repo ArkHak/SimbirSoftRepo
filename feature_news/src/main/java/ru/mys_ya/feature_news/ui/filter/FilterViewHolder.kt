@@ -1,7 +1,7 @@
 package ru.mys_ya.feature_news.ui.filter
 
 import androidx.recyclerview.widget.RecyclerView
-import ru.mys_ya.core.domain.model.HelpCategory
+import ru.mys_ya.feature_help_api.model.HelpCategory
 import ru.mys_ya.feature_news.databinding.ItemFilterBinding
 
 class FilterViewHolder(

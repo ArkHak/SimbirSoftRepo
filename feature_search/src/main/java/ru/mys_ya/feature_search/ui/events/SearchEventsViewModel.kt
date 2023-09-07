@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.mys_ya.core.domain.model.SearchEvent
-import ru.mys_ya.core.domain.usecase.GetSearchEventsByQueryUseCase
 import ru.mys_ya.core.utils.ErrorMessage
+import ru.mys_ya.feature_news_api.usecase.GetSearchEventsByQueryUseCase
 import javax.inject.Inject
 
 class SearchEventsViewModel @Inject constructor(

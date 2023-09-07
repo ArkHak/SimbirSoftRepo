@@ -66,7 +66,11 @@ dependencies {
     //Coil
     implementation(Coil.core)
 
+    //Gson
+    implementation(Gson.gson)
+
     //Module
     implementation(project(":core"))
-
+    implementation(project(":feature_help_api"))
+    implementation(project(":network"))
 }

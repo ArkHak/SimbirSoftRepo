@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import ru.mys_ya.core.domain.model.HelpCategory
-import ru.mys_ya.core.domain.repository.HelpCategoryRepository
+import ru.mys_ya.feature_help_api.model.HelpCategory
+import ru.mys_ya.feature_help_api.repository.HelpCategoryRepository
 import javax.inject.Inject
 
 class FilterViewModel @Inject constructor(

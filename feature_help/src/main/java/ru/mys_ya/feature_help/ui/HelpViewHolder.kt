@@ -3,7 +3,7 @@ package ru.mys_ya.feature_help.ui
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import ru.mys_ya.core.domain.model.HelpCategory
+import ru.mys_ya.feature_help_api.model.HelpCategory
 import ru.mys_ya.feature_help.databinding.ItemHelpsBinding
 
 class HelpViewHolder(private val binding: ItemHelpsBinding) :

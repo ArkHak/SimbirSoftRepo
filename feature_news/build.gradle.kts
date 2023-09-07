@@ -72,8 +72,14 @@ dependencies {
     implementation(Dagger.dagger)
     kapt(Dagger.daggerCompiler)
 
+    //Gson
+    implementation(Gson.gson)
+
     //Fragment
     implementation(Fragment.fragmentKtx)
 
     implementation(project(":core"))
+    implementation(project(":network"))
+    implementation(project(":feature_news_api"))
+    implementation(project(":feature_help_api"))
 }

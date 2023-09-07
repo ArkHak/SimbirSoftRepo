@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
-import ru.mys_ya.core.domain.model.News
+import ru.mys_ya.feature_news_api.data.News
 import ru.mys_ya.core.utils.NewsItemDecoration
 import ru.mys_ya.feature_news.R
 import ru.mys_ya.feature_news.databinding.FragmentNewsBinding

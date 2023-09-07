@@ -3,9 +3,9 @@ package ru.mys_ya.feature_news.ui.news.main
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import ru.mys_ya.core.domain.model.News
 import ru.mys_ya.core.utils.correctDateTime
 import ru.mys_ya.feature_news.databinding.ItemNewsBinding
+import ru.mys_ya.feature_news_api.data.News
 
 class NewsViewHolder(val binding: ItemNewsBinding, private val onItemClicked: (Int) -> Unit) :
     RecyclerView.ViewHolder(binding.root) {

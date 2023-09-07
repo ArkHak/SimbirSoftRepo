@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
-import ru.mys_ya.core.domain.model.HelpCategory
+import ru.mys_ya.feature_help_api.model.HelpCategory
 import ru.mys_ya.feature_news.R
 import ru.mys_ya.feature_news.databinding.FragmentFilterBinding
 import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider

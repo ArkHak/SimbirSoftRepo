@@ -46,12 +46,6 @@ dependencies {
     androidTestImplementation(Testing.extJInit)
     androidTestImplementation(Testing.espressoCore)
 
-    //Network
-    implementation(Network.Retrofit.core)
-    implementation(Network.Retrofit.adapterRxJava)
-    implementation(Network.Retrofit.converterGson)
-    implementation(Network.OkHttp.loggingInterceptor)
-
     //Room
     implementation(Database.roomRuntime)
     implementation(Database.roomKtx)

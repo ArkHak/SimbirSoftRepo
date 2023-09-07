@@ -73,4 +73,5 @@ dependencies {
     kapt(Dagger.daggerCompiler)
 
     implementation(project(":core"))
+    implementation(project(":feature_news_api"))
 }

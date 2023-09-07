@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
-import ru.mys_ya.core.domain.model.HelpCategory
+import ru.mys_ya.feature_help_api.model.HelpCategory
 import ru.mys_ya.core.utils.MarginDecoration
 import ru.mys_ya.feature_help.R
 import ru.mys_ya.feature_help.databinding.FragmentHelpBinding
