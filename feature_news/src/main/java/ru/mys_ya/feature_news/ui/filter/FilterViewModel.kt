@@ -6,15 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import ru.mys_ya.feature_help_api.model.HelpCategory
-import ru.mys_ya.feature_help_api.repository.HelpCategoryRepository
+import ru.mys_ya.feature_help_api.usecase.GetHelpCategoriesUseCase
+import ru.mys_ya.feature_help_api.usecase.GetIdHelpCategoriesHideUseCase
+import ru.mys_ya.feature_help_api.usecase.SetIdHelpCategoriesHideUseCase
 import javax.inject.Inject
 
 class FilterViewModel @Inject constructor(
-    private val helpCategoryRepository: HelpCategoryRepository,
+    private val helpCategoriesUseCase: GetHelpCategoriesUseCase,
+    private val getHelpCategoriesIdHideUseCase: GetIdHelpCategoriesHideUseCase,
+    private val setCategoriesIdHideUseCase: SetIdHelpCategoriesHideUseCase,
 ) : ViewModel() {
 
     private val _filterList: MutableLiveData<List<HelpCategory>> = MutableLiveData()
@@ -30,15 +32,13 @@ class FilterViewModel @Inject constructor(
 
     private fun loadFilterList() {
         viewModelScope.launch {
-            helpCategoryRepository.getHelpCategories()
-                .flowOn(Dispatchers.IO)
-                .catch { error ->
-                    Log.e("MOD_TAG", "loadHelpCategory: $error")
-                }
-                .collect { helpList ->
-                    tmpIdHelpCategoryHideList.addAll(helpCategoryRepository.getIdHelpCategoriesHideList())
-                    _filterList.value = helpList
-                }
+            try {
+                _filterList.value = helpCategoriesUseCase.invoke()
+                tmpIdHelpCategoryHideList.addAll(getHelpCategoriesIdHideUseCase())
+            } catch (error: Exception) {
+                Log.e("MOD_TAG", "loadHelpCategory: $error")
+                _filterList.value = emptyList()
+            }
         }
     }
 
@@ -52,7 +52,7 @@ class FilterViewModel @Inject constructor(
 
     fun saveFilterList() {
         viewModelScope.launch(Dispatchers.IO) {
-            helpCategoryRepository.setIdHelpCategoriesHideList(tmpIdHelpCategoryHideList)
+            setCategoriesIdHideUseCase(tmpIdHelpCategoryHideList)
         }
     }
 }

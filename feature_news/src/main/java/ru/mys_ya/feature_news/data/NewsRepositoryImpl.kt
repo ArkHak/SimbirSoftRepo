@@ -5,10 +5,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import ru.mys_ya.core.data.db.dao.EventDao
+import ru.mys_ya.core.database.dao.EventDao
 import ru.mys_ya.feature_news_api.data.AssetManagerNews
-import ru.mys_ya.feature_news_api.data.News
+import ru.mys_ya.feature_news_api.domain.News
 import ru.mys_ya.feature_news_api.mapper.EventMapper
+import ru.mys_ya.feature_news_api.repository.NewsRepository
 import ru.mys_ya.network.ApiService
 
 class NewsRepositoryImpl(
@@ -16,7 +17,7 @@ class NewsRepositoryImpl(
     private val apiService: ApiService,
     private val eventDao: EventDao,
     private val mapper: EventMapper,
-) : ru.mys_ya.feature_news_api.repository.NewsRepository {
+) : NewsRepository {
 
     override fun getNews(): Flow<List<News>> = flow {
         eventDao.getAllEvents().map { event ->

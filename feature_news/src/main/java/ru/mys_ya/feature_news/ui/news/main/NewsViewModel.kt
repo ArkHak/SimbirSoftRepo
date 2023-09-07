@@ -5,20 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import ru.mys_ya.feature_news_api.repository.NewsRepository
 import ru.mys_ya.core.utils.ErrorMessage
-import ru.mys_ya.feature_help_api.repository.HelpCategoryRepository
-import ru.mys_ya.feature_news_api.data.News
+import ru.mys_ya.feature_news_api.domain.News
+import ru.mys_ya.feature_news_api.usecase.GetNewsListUseCase
 import javax.inject.Inject
 
 class NewsViewModel @Inject constructor(
-    private val newsRepository: NewsRepository,
-    private val helpCategoryRepository: HelpCategoryRepository,
+    private val newsListUseCase: GetNewsListUseCase,
 ) : ViewModel() {
 
     private val _newsList: MutableLiveData<List<News>> = MutableLiveData()
@@ -32,22 +26,15 @@ class NewsViewModel @Inject constructor(
     private var listIdNewsViewed = arrayListOf<Int>()
 
     fun loadNews() {
-        val filterIdList = helpCategoryRepository.getIdHelpCategoriesHideList()
-
         viewModelScope.launch {
-            newsRepository.getNews()
-                .flowOn(Dispatchers.IO)
-                .map { newsList ->
-                    getNewsByFilter(newsList, filterIdList)
-                }
-                .catch { error ->
-                    Log.e("MOD_TAG", "loadNews: $error")
-                    _errorMessage.value = ErrorMessage("loadNews: $error")
-                    emit(emptyList())
-                }
-                .collect { newsList ->
-                    _newsList.value = newsList
-                }
+            try {
+                val newsList = newsListUseCase()
+                _newsList.value = newsList
+            } catch (error: Exception) {
+                Log.e("MOD_TAG", "loadNews: $error")
+                _errorMessage.value = ErrorMessage("loadNews: $error")
+                _newsList.value = emptyList()
+            }
         }
     }
 
@@ -55,13 +42,6 @@ class NewsViewModel @Inject constructor(
         listIdNewsViewed.add(idNews)
     }
 
-    private fun getNewsByFilter(newsList: List<News>, filter: List<Int>): List<News> {
-        return newsList.filter { news ->
-            news.categories.any { category ->
-                category !in filter
-            }
-        }
-    }
 
     fun getCountNewsNotViewed(newsList: List<News>): Int {
         val currentListNewsSize = newsList.size

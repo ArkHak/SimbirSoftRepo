@@ -5,17 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import ru.mys_ya.feature_help_api.model.HelpCategory
-import ru.mys_ya.feature_help_api.repository.HelpCategoryRepository
 import ru.mys_ya.core.utils.ErrorMessage
+import ru.mys_ya.feature_help_api.usecase.GetHelpCategoriesUseCase
 import javax.inject.Inject
 
 class HelpViewModel @Inject constructor(
-    private val helpCategoryRepository: HelpCategoryRepository,
+    private val helpCategoriesUseCase: GetHelpCategoriesUseCase,
 ) : ViewModel() {
 
     private val _helpCategoryList: MutableLiveData<List<HelpCategory>> =
@@ -35,15 +32,14 @@ class HelpViewModel @Inject constructor(
 
     private fun loadHelpCategory() {
         viewModelScope.launch {
-            helpCategoryRepository.getHelpCategories()
-                .flowOn(Dispatchers.IO)
-                .catch { error ->
-                    Log.e("MOD_TAG", "loadHelpCategory: $error")
-                    _errorMessage.value = ErrorMessage("loadHelpCategory: $error")
-                }
-                .collect { helpList ->
-                    _helpCategoryList.value = helpList
-                }
+            try {
+                val helpCategoriesList = helpCategoriesUseCase()
+                _helpCategoryList.value = helpCategoriesList
+            } catch (error: Exception) {
+                Log.e("MOD_TAG", "loadHelpCategory: $error")
+                _errorMessage.value = ErrorMessage("loadHelpCategory: $error")
+                _helpCategoryList.value = emptyList()
+            }
         }
     }
 }

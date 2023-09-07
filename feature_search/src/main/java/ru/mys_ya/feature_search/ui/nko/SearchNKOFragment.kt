@@ -9,10 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import ru.mys_ya.core.domain.model.SearchEvent
 import ru.mys_ya.feature_search.R
 import ru.mys_ya.feature_search.databinding.FragmentSearchByNkoBinding
 import ru.mys_ya.feature_search.ui.SearchFragmentsCommonViewModel
+import ru.mys_ya.feature_search_api.model.SearchEvent
 
 
 class SearchNKOFragment : Fragment(R.layout.fragment_search_by_nko) {

@@ -66,4 +66,5 @@ dependencies {
 
     //Module
     implementation(project(":core"))
+    implementation(project(":feature_profile_api"))
 }

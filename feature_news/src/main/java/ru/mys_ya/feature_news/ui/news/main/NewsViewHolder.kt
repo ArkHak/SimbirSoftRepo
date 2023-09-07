@@ -5,7 +5,7 @@ import coil.load
 import coil.size.Scale
 import ru.mys_ya.core.utils.correctDateTime
 import ru.mys_ya.feature_news.databinding.ItemNewsBinding
-import ru.mys_ya.feature_news_api.data.News
+import ru.mys_ya.feature_news_api.domain.News
 
 class NewsViewHolder(val binding: ItemNewsBinding, private val onItemClicked: (Int) -> Unit) :
     RecyclerView.ViewHolder(binding.root) {

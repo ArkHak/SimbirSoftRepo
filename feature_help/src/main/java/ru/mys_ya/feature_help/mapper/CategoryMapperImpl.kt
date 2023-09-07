@@ -1,6 +1,6 @@
 package ru.mys_ya.feature_help.mapper
 
-import ru.mys_ya.core.data.db.entity.Category
+import ru.mys_ya.core.database.entity.Category
 import ru.mys_ya.feature_help_api.mapper.CategoryMapper
 import ru.mys_ya.feature_help_api.model.HelpCategory
 

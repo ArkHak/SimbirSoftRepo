@@ -3,9 +3,9 @@ package ru.mys_ya.core.di.module
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import ru.mys_ya.core.data.db.dao.CategoryDao
-import ru.mys_ya.core.data.db.dao.EventDao
-import ru.mys_ya.core.data.db.database.AppDatabase
+import ru.mys_ya.core.database.dao.CategoryDao
+import ru.mys_ya.core.database.dao.EventDao
+import ru.mys_ya.core.database.database.AppDatabase
 import javax.inject.Singleton
 
 @Module

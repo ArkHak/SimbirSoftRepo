@@ -74,4 +74,5 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":feature_news_api"))
+    implementation(project(":feature_search_api"))
 }

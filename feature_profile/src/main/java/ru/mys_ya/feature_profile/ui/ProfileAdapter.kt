@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.mys_ya.core.domain.model.Friend
+import ru.mys_ya.feature_profile_api.model.Friend
 import ru.mys_ya.feature_profile.databinding.ItemFriendsBinding
 
 class ProfileAdapter :

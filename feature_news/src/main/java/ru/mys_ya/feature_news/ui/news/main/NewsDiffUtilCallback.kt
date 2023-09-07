@@ -1,7 +1,7 @@
 package ru.mys_ya.feature_news.ui.news.main
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.mys_ya.feature_news_api.data.News
+import ru.mys_ya.feature_news_api.domain.News
 
 class NewsDiffUtilCallback(private val oldList: List<News>, private val newList: List<News>) :
     DiffUtil.Callback() {

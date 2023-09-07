@@ -6,7 +6,7 @@ import ru.mys_ya.feature_help.mapper.CategoryMapperImpl
 import ru.mys_ya.feature_help_api.mapper.CategoryMapper
 
 @Module
-object HelpMapperModule {
+class HelpMapperModule {
     @Provides
     fun provideCategoryMapper(): CategoryMapper {
         return CategoryMapperImpl()

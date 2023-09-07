@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import ru.mys_ya.core.data.db.dao.CategoryDao
+import ru.mys_ya.core.database.dao.CategoryDao
 import ru.mys_ya.feature_help_api.data.local.AssetManagerHelp
 import ru.mys_ya.feature_help_api.mapper.CategoryMapper
 import ru.mys_ya.feature_help_api.model.HelpCategory

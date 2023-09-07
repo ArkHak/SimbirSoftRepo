@@ -4,7 +4,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 import ru.mys_ya.feature_help_api.model.HelpCategory
-import ru.mys_ya.feature_news_api.data.News
+import ru.mys_ya.feature_news_api.domain.News
 
 interface ApiService {
 

@@ -5,16 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import ru.mys_ya.feature_news_api.data.News
-import ru.mys_ya.feature_news_api.repository.NewsRepository
+import ru.mys_ya.feature_news_api.domain.News
+import ru.mys_ya.feature_news_api.usecase.GetNewsDetailUseCase
 import javax.inject.Inject
 
 class NewsDetailViewModel @Inject constructor(
-    private val newsRepository: NewsRepository,
+    private val newsDetailUseCase: GetNewsDetailUseCase,
 ) : ViewModel() {
 
     private val _news: MutableLiveData<News> = MutableLiveData()
@@ -23,14 +20,11 @@ class NewsDetailViewModel @Inject constructor(
 
     fun loadNews(newsId: Int) {
         viewModelScope.launch {
-            newsRepository.getNews(newsId)
-                .flowOn(Dispatchers.IO)
-                .catch { error ->
-                    Log.e("MOD_TAG", "loadNews: $error")
-                }
-                .collect { news ->
-                    _news.value = news
-                }
+            try {
+                _news.value = newsDetailUseCase.invoke(newsId)
+            } catch (error: Exception) {
+                Log.e("MOD_TAG", "loadNews: $error")
+            }
         }
     }
 }

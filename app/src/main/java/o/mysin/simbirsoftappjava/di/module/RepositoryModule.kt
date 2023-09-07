@@ -2,8 +2,8 @@ package o.mysin.simbirsoftappjava.di.module
 
 import dagger.Module
 import dagger.Provides
-import ru.mys_ya.core.data.db.dao.CategoryDao
-import ru.mys_ya.core.data.db.dao.EventDao
+import ru.mys_ya.core.database.dao.CategoryDao
+import ru.mys_ya.core.database.dao.EventDao
 import ru.mys_ya.network.ApiService
 import ru.mys_ya.feature_news.data.NewsRepositoryImpl
 import ru.mys_ya.feature_help_api.mapper.CategoryMapper

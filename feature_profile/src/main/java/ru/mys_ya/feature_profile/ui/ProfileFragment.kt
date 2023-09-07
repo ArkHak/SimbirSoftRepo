@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
-import ru.mys_ya.core.domain.model.User
+import ru.mys_ya.feature_profile_api.model.User
 import ru.mys_ya.core.utils.convertDateTimeProfile
 import ru.mys_ya.feature_profile.R
 import ru.mys_ya.feature_profile.databinding.FragmentProfileBinding

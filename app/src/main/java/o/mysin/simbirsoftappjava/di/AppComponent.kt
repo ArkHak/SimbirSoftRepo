@@ -9,12 +9,14 @@ import ru.mys_ya.core.di.module.DatabaseModule
 import ru.mys_ya.core.di.module.GsonModule
 import o.mysin.simbirsoftappjava.di.module.RepositoryModule
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
-import ru.mys_ya.feature_help.di.HelpComponent
+import ru.mys_ya.feature_help.di.HelpCategoriesUseCaseModule
+import ru.mys_ya.feature_help.di.component.HelpComponent
 import ru.mys_ya.feature_help.di.HelpMapperModule
 import ru.mys_ya.feature_help.di.HelpViewModelModule
 import ru.mys_ya.feature_news.di.FilterModule
-import ru.mys_ya.feature_news.di.NewsMapperModule
 import ru.mys_ya.feature_news.di.NewsUseCaseModule
+import ru.mys_ya.feature_news.di.NewsMapperModule
+import ru.mys_ya.feature_search.di.SearchUseCaseModule
 import ru.mys_ya.feature_news.di.NewsViewModelModule
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
 import ru.mys_ya.feature_news.di.component.filter.FilterComponent
@@ -34,11 +36,13 @@ import javax.inject.Singleton
         RepositoryModule::class,
         SearchModule::class,
         NewsViewModelModule::class,
-        NewsUseCaseModule::class,
         NewsMapperModule::class,
         FilterModule::class,
         HelpViewModelModule::class,
-        HelpMapperModule::class
+        HelpMapperModule::class,
+        SearchUseCaseModule::class,
+        NewsUseCaseModule::class,
+        HelpCategoriesUseCaseModule::class,
     ],
 )
 @AppScope

@@ -3,8 +3,8 @@ package ru.mys_ya.feature_profile.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.mys_ya.core.domain.model.Friend
-import ru.mys_ya.core.domain.model.User
+import ru.mys_ya.feature_profile_api.model.Friend
+import ru.mys_ya.feature_profile_api.model.User
 
 class ProfileViewModel : ViewModel() {
 

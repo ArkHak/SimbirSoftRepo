@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
-import ru.mys_ya.core.domain.model.SearchEvent
 import ru.mys_ya.feature_search.R
 import ru.mys_ya.feature_search.databinding.FragmentSearchByEventsBinding
 import ru.mys_ya.feature_search.di.component.SearchEventComponentProvider
 import ru.mys_ya.feature_search.ui.SearchFragmentsCommonViewModel
+import ru.mys_ya.feature_search_api.model.SearchEvent
 import javax.inject.Inject
 
 class SearchEventsFragment : Fragment(R.layout.fragment_search_by_events) {

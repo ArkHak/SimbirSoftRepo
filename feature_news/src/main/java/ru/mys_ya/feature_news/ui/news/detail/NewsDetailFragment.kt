@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
-import ru.mys_ya.feature_news_api.data.News
+import ru.mys_ya.feature_news_api.domain.News
 import ru.mys_ya.core.utils.correctDateTime
 import ru.mys_ya.feature_news.R
 import ru.mys_ya.feature_news.databinding.FragmentNewsDetailBinding
