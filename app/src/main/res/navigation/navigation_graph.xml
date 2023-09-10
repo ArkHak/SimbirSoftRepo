@@ -1,71 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/authorization_fragment">
+    app:startDestination="@id/authorization_graph">
 
-    <fragment
-        android:id="@+id/fragment_help"
-        android:name="o.mysin.simbirsoftappjava.ui.help.HelpFragment"
-        android:label="fragment_help"
-        tools:layout="@layout/fragment_help" />
+    <include app:graph="@navigation/history_graph" />
 
-    <fragment
-        android:id="@+id/fragment_history"
-        android:name="o.mysin.simbirsoftappjava.ui.history.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+    <include app:graph="@navigation/authorization_graph" />
 
-    <fragment
-        android:id="@+id/fragment_news"
-        android:name="o.mysin.simbirsoftappjava.ui.news.main.NewsFragment"
-        android:label="fragment_news"
-        tools:layout="@layout/fragment_news">
-        <action
-            android:id="@+id/action_fragment_news_to_filtersFragment"
-            app:destination="@id/filters_fragment" />
-        <action
-            android:id="@+id/action_fragment_news_to_newsDetailFragment"
-            app:destination="@id/news_detail_fragment" />
-    </fragment>
+    <include app:graph="@navigation/profile_graph" />
 
-    <fragment
-        android:id="@+id/fragment_profile"
-        android:name="o.mysin.simbirsoftappjava.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+    <include app:graph="@navigation/help_graph" />
 
-    <fragment
-        android:id="@+id/fragment_search"
-        android:name="o.mysin.simbirsoftappjava.ui.search.main.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+    <include app:graph="@navigation/search_graph" />
 
-    <fragment
-        android:id="@+id/filters_fragment"
-        android:name="o.mysin.simbirsoftappjava.ui.filter.FilterFragment"
-        android:label="fragment_filters"
-        tools:layout="@layout/fragment_filter" />
-
-    <fragment
-        android:id="@+id/news_detail_fragment"
-        android:name="o.mysin.simbirsoftappjava.ui.news.detail.NewsDetailFragment"
-        android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail">
-        <argument
-            android:name="newsId"
-            app:argType="integer" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/authorization_fragment"
-        android:name="o.mysin.simbirsoftappjava.ui.authorization.AuthorizationFragment"
-        android:label="AuthorizationFragment"
-        tools:layout="@layout/fragment_authorization">
-        <action
-            android:id="@+id/action_authorization_fragment_to_fragment_help"
-            app:destination="@id/fragment_help" />
-    </fragment>
+    <include app:graph="@navigation/news_graph" />
 
 </navigation>

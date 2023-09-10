@@ -15,3 +15,15 @@ dependencyResolutionManagement {
 
 rootProject.name = "SimbirSoftAppJava"
 include(":app")
+include(":core")
+include(":feature_history")
+include(":feature_authorization")
+include(":feature_profile")
+include(":feature_help")
+include(":feature_search")
+include(":feature_news")
+include(":feature_help_api")
+include(":network")
+include(":feature_news_api")
+include(":feature_profile_api")
+include(":feature_search_api")

@@ -1,10 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-parcelize")
-    id("kotlinx-serialization")
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -13,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "o.mysin.simbirsoftappjava"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -44,72 +41,50 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    kotlin {
-        jvmToolchain(8)
-    }
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring(Libs.desugarJdk)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Deps.coreKtx)
+    implementation(Deps.appCompat)
+    implementation(Deps.material)
+    implementation(Deps.constraintlayout)
+    testImplementation(Testing.jUnit)
+    androidTestImplementation(Testing.extJInit)
+    androidTestImplementation(Testing.espressoCore)
 
     // Android Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.6.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(Navigation.navigationFragmentKtx)
+    implementation(Navigation.navigationUIKtx)
+    implementation(Navigation.navigationDynamicFeaturesFragment)
+    implementation(Deps.legacySupportV4)
 
     // ViewBindingPropertyDelegate
-    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.3")
+    implementation(ViewBindingDelegate.viewBindingPropertyDelegate)
 
     // Lifecycle components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-
-    // Coil
-    implementation("io.coil-kt:coil:1.4.0")
-
-    // ViewPager2
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-
-    // Kotlinx datetime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    implementation(Lifecycle.lifecycleExtensions)
+    implementation(Lifecycle.lifecycleViewModel)
+    implementation(Lifecycle.lifecycleLiveData)
 
     //Gson
-    implementation("com.google.code.gson:gson:2.10")
+    implementation(Gson.gson)
 
-    // Koin
-    implementation("io.insert-koin:koin-android:3.3.0")
+    //Dagger
+    implementation(Dagger.dagger)
+    kapt(Dagger.daggerCompiler)
 
-    // RxJava
-    implementation("io.reactivex.rxjava3:rxjava:3.1.3")
-    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
-    implementation("com.jakewharton.rxbinding4:rxbinding:4.0.0")
-    implementation("com.jakewharton.rxbinding4:rxbinding-material:4.0.0")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-
-    //Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-
-    // Retrofit
-    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
-
-    //Room
-    implementation("androidx.room:room-runtime:2.5.2")
-    implementation("androidx.room:room-ktx:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
+    //Module
+    implementation(project(":feature_history"))
+    implementation(project(":feature_authorization"))
+    implementation(project(":feature_profile"))
+    implementation(project(":feature_help"))
+    implementation(project(":feature_help_api"))
+    implementation(project(":feature_search"))
+    implementation(project(":feature_search_api"))
+    implementation(project(":feature_news"))
+    implementation(project(":feature_news_api"))
+    implementation(project(":core"))
+    implementation(project(":network"))
 }
