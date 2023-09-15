@@ -35,6 +35,7 @@ fun EmailTextField(
             imeAction = ImeAction.Next
         ),
         onValueChange = { changeEmail(it) },
+        singleLine = true,
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = colorResource(id = ru.mys_ya.core.R.color.white),
             focusedIndicatorColor = colorResource(id = ru.mys_ya.core.R.color.black_12),

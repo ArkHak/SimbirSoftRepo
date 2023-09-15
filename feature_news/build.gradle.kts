@@ -35,10 +35,27 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.6"
+    }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
     coreLibraryDesugaring(Libs.desugarJdk)
+
+    //Compose
+    implementation(platform(Compose.composeBom))
+    implementation(Compose.composeUi)
+    implementation(Compose.composeMaterial)
+    implementation(Compose.composeMaterialIcons)
+    implementation(Compose.composeUiTooling)
+    implementation(Compose.composeUiToolingPreview)
+    implementation(Compose.composeLiveData)
 
     implementation(Deps.coreKtx)
     implementation(Deps.appCompat)

@@ -56,7 +56,6 @@ dependencies {
     implementation(Compose.composeUiTooling)
     implementation(Compose.composeUiToolingPreview)
 
-
     implementation(Deps.coreKtx)
     implementation(Deps.appCompat)
     implementation(Deps.material)
