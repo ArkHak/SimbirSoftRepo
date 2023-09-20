@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -9,7 +10,6 @@ android {
 
     defaultConfig {
         minSdk = 26
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -32,6 +32,14 @@ android {
     }
 
     buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.6"
+    }
+
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -39,6 +47,15 @@ android {
 dependencies {
 
     coreLibraryDesugaring(Libs.desugarJdk)
+
+    //Compose
+    implementation(platform(Compose.composeBom))
+    implementation(Compose.composeUi)
+    implementation(Compose.composeMaterial)
+    implementation(Compose.composeMaterialIcons)
+    implementation(Compose.composeUiTooling)
+    implementation(Compose.composeUiToolingPreview)
+    implementation(Compose.composeFoundation)
 
     implementation(Deps.coreKtx)
     implementation(Deps.appCompat)

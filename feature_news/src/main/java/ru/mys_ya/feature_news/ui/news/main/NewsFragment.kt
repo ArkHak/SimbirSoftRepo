@@ -59,8 +59,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         adapter = NewsAdapter { idItem ->
             newsViewModel.setIsViewedNews(idItem)
             mainViewModel.setHideBottomNavigation(true)
-            val action = NewsFragmentDirections.actionFragmentNewsToNewsDetailFragment(idItem)
-            findNavController().navigate(action)
         }
     }
 

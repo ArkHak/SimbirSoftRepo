@@ -42,7 +42,6 @@ class NewsViewModel @Inject constructor(
         listIdNewsViewed.add(idNews)
     }
 
-
     fun getCountNewsNotViewed(newsList: List<News>): Int {
         val currentListNewsSize = newsList.size
         val currentCountNewsViewed =

@@ -70,6 +70,10 @@ internal object Version {
 
     //Coil
     const val coilCore = "1.4.0"
+
+    //Compose
+    const val composeBom = "2023.04.00"
+
 }
 
 object Libs {
@@ -181,3 +185,17 @@ object Datetime {
 object Coil{
     const val core = "io.coil-kt:coil:${Version.coilCore}"
 }
+
+//Compouse
+object Compose{
+    const val composeBom = "androidx.compose:compose-bom:${Version.composeBom}"
+    const val composeUi = "androidx.compose.ui:ui"
+    const val composeMaterial = "androidx.compose.material:material"
+    const val composeMaterialIcons = "androidx.compose.material:material-icons-extended"
+    const val composeFoundation = "androidx.compose.foundation:foundation"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling"
+    const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
+    const val composeLiveData = "androidx.compose.runtime:runtime-livedata"
+}
+
+
