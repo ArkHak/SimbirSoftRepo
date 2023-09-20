@@ -52,8 +52,7 @@ fun PasswordTextField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
             IconButton(onClick = { passwordHidden = !passwordHidden }) {
-                val visibilityIcon =
-                    if (passwordHidden) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                val visibilityIcon = if (passwordHidden) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                 val description = if (passwordHidden) "Show password" else "Hide password"
                 Icon(imageVector = visibilityIcon, contentDescription = description)
             }

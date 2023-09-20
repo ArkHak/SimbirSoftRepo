@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
@@ -46,13 +48,16 @@ fun AuthorizationScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(modifier, backPressed = {
-                closeApp.invoke()
-            })
+            TopAppBar(
+                modifier = modifier.fillMaxWidth(),
+                backPressed = {
+                    closeApp.invoke()
+                })
         },
     ) { innerPadding ->
         Column(
             modifier = modifier
+                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
                 .fillMaxSize()
                 .padding(innerPadding)
@@ -102,7 +107,8 @@ fun AuthorizationScreen(
             Spacer(modifier = modifier.height(2.dp))
 
             EmailTextField(
-                email,
+                email = email,
+                modifier = modifier.fillMaxWidth(),
                 changeEmail = {
                     authorizationViewModel.updateEmailText(it)
                     email = it

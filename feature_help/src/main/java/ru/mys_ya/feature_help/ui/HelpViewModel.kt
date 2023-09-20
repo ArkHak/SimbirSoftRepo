@@ -25,9 +25,7 @@ class HelpViewModel @Inject constructor(
         get() = _errorMessage
 
     fun updateData() {
-        if (_helpCategoryList.value.isNullOrEmpty()) {
             loadHelpCategory()
-        }
     }
 
     private fun loadHelpCategory() {

@@ -192,6 +192,7 @@ object Compose{
     const val composeUi = "androidx.compose.ui:ui"
     const val composeMaterial = "androidx.compose.material:material"
     const val composeMaterialIcons = "androidx.compose.material:material-icons-extended"
+    const val composeFoundation = "androidx.compose.foundation:foundation"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
     const val composeLiveData = "androidx.compose.runtime:runtime-livedata"

@@ -1,7 +1,6 @@
 package ru.mys_ya.feature_authorization.ui.composeunit
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -43,7 +42,6 @@ fun TopAppBar(
         )
         Text(
             modifier = modifier
-                .fillMaxWidth()
                 .align(Alignment.Center),
             text = stringResource(R.string.title_authorization),
             color = Color.White,
