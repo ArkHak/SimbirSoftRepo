@@ -15,6 +15,7 @@ import ru.mys_ya.core.utils.correctDateTime
 import ru.mys_ya.feature_news.R
 import ru.mys_ya.feature_news.databinding.FragmentNewsDetailBinding
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
+import ru.mys_ya.feature_news.ui.news.detail.dialog.HelpMoneyDialogFragment
 import javax.inject.Inject
 
 class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
@@ -30,12 +31,12 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
     private val args by navArgs<NewsDetailFragmentArgs>()
 
-     override fun onAttach(context: Context) {
-            super.onAttach(context)
-            (context.applicationContext as NewsDetailComponentProvider)
-                .getNewsDetailComponent()
-                .injectNewsDetailFragment(this)
-        }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context.applicationContext as NewsDetailComponentProvider)
+            .getNewsDetailComponent()
+            .injectNewsDetailFragment(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,6 +46,10 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
         initActionButtons()
         binding.labelNewsDetail.text = args.newsId.toString()
+
+        binding.btnHelpMoney.setOnClickListener {
+            HelpMoneyDialogFragment().show(childFragmentManager, HelpMoneyDialogFragment.TAG)
+        }
     }
 
     private fun renderData(news: News) {

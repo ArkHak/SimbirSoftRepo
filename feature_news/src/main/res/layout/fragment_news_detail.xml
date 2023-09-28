@@ -522,6 +522,7 @@
             android:src="@drawable/separator_bottom_detail_news" />
 
         <LinearLayout
+            android:id="@+id/btn_help_money"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
