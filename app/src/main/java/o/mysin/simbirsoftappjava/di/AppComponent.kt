@@ -8,6 +8,7 @@ import o.mysin.simbirsoftappjava.di.module.AssetManagerModule
 import ru.mys_ya.core.di.module.DatabaseModule
 import ru.mys_ya.core.di.module.GsonModule
 import o.mysin.simbirsoftappjava.di.module.RepositoryModule
+import o.mysin.simbirsoftappjava.di.module.WorkManagerModule
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.feature_help.di.HelpCategoriesUseCaseModule
 import ru.mys_ya.feature_help.di.component.HelpComponent
@@ -43,6 +44,7 @@ import javax.inject.Singleton
         SearchUseCaseModule::class,
         NewsUseCaseModule::class,
         HelpCategoriesUseCaseModule::class,
+        WorkManagerModule::class
     ],
 )
 @AppScope

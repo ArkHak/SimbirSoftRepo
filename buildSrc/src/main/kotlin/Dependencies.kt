@@ -46,6 +46,9 @@ internal object Version {
     //Coroutines
     const val coroutinesAndroid = "1.6.4"
 
+    //WorkManager
+    const val workManager = "2.8.1"
+
     //RxJava3
     const val rxJavaCore = "3.1.3"
     const val rxAndroid = "3.0.0"
@@ -142,7 +145,8 @@ object ViewPager {
 
 //Coroutines
 object Coroutines {
-    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesAndroid}"
+    const val coroutinesAndroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesAndroid}"
 }
 
 //RXJava
@@ -150,7 +154,8 @@ object RxJava {
     const val core = "io.reactivex.rxjava3:rxjava:${Version.rxJavaCore}"
     const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Version.rxAndroid}"
     const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Version.rxBinding}"
-    const val rxBindingMaterial = "com.jakewharton.rxbinding4:rxbinding-material:${Version.rxBindingMaterial}"
+    const val rxBindingMaterial =
+        "com.jakewharton.rxbinding4:rxbinding-material:${Version.rxBindingMaterial}"
 }
 
 //Database
@@ -166,13 +171,16 @@ object Network {
     //Retrofit2
     object Retrofit {
         const val core = "com.squareup.retrofit2:retrofit:${Version.retrofitCore}"
-        const val adapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Version.retrofitAdapterRxJava}"
-        const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitConverterGson}"
+        const val adapterRxJava =
+            "com.squareup.retrofit2:adapter-rxjava3:${Version.retrofitAdapterRxJava}"
+        const val converterGson =
+            "com.squareup.retrofit2:converter-gson:${Version.retrofitConverterGson}"
     }
 
     //OkHttp
-    object OkHttp{
-        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Version.okhttpLoggingInterceptor}"
+    object OkHttp {
+        const val loggingInterceptor =
+            "com.squareup.okhttp3:logging-interceptor:${Version.okhttpLoggingInterceptor}"
     }
 }
 
@@ -182,12 +190,12 @@ object Datetime {
 }
 
 //ImageLoader
-object Coil{
+object Coil {
     const val core = "io.coil-kt:coil:${Version.coilCore}"
 }
 
 //Compouse
-object Compose{
+object Compose {
     const val composeBom = "androidx.compose:compose-bom:${Version.composeBom}"
     const val composeUi = "androidx.compose.ui:ui"
     const val composeMaterial = "androidx.compose.material:material"
@@ -196,6 +204,11 @@ object Compose{
     const val composeUiTooling = "androidx.compose.ui:ui-tooling"
     const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
     const val composeLiveData = "androidx.compose.runtime:runtime-livedata"
+}
+
+//WorkManager
+object WorkManager {
+    const val workManager = "androidx.work:work-runtime-ktx:${Version.workManager}"
 }
 
 

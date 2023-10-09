@@ -5,8 +5,9 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.jakewharton.rxbinding4.widget.textChanges
@@ -14,6 +15,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.mys_ya.feature_news.R
 import ru.mys_ya.feature_news.databinding.DialogFragmentHelpMoneyBinding
+import ru.mys_ya.feature_news.ui.news.detail.NewsDetailFragment.Companion.REQUEST_SEND_SUM_MONEY
+import ru.mys_ya.feature_news.ui.news.detail.NewsDetailFragment.Companion.SEND_SUM_MONEY
 
 class HelpMoneyDialogFragment : DialogFragment(R.layout.dialog_fragment_help_money) {
 
@@ -31,10 +34,10 @@ class HelpMoneyDialogFragment : DialogFragment(R.layout.dialog_fragment_help_mon
         initActionButtons()
         initObserversTextField()
 
-        binding.defaultMoneySum.addOnButtonCheckedListener { _, chackedId, isChecked ->
-            if (isChecked) {
+        binding.defaultMoneySum.addOnButtonCheckedListener { buttonGroup, checkedId, _ ->
+            if (buttonGroup.checkedButtonId != NO_TOGGLE_BUTTONS_GROUP_SELECTED) {
                 binding.moneySumEditText.text?.clear()
-                when (chackedId) {
+                when (checkedId) {
                     R.id.money_sum_100 ->
                         helpMoneyViewModel.updateCustomMoneySum(DefaultMoneySum.SUM100.moneySum)
 
@@ -77,8 +80,9 @@ class HelpMoneyDialogFragment : DialogFragment(R.layout.dialog_fragment_help_mon
             dismiss()
         }
         binding.buttonSend.setOnClickListener {
+            val currentMoneySum = helpMoneyViewModel.getMoneySum()
+            setFragmentResult(REQUEST_SEND_SUM_MONEY, bundleOf(SEND_SUM_MONEY to currentMoneySum))
             dismiss()
-            Toast.makeText(context, "Оплачено", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -94,8 +98,10 @@ class HelpMoneyDialogFragment : DialogFragment(R.layout.dialog_fragment_help_mon
         compositeDisposable.add(disposableMoneySum)
     }
 
+
     companion object {
         const val TAG = "HelpMoneyDialogFragment"
+        const val NO_TOGGLE_BUTTONS_GROUP_SELECTED = -1
     }
 
     enum class DefaultMoneySum(val moneySum: String) {
@@ -103,6 +109,5 @@ class HelpMoneyDialogFragment : DialogFragment(R.layout.dialog_fragment_help_mon
         SUM500("500"),
         SUM1000("1000"),
         SUM2000("2000")
-
     }
 }

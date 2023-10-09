@@ -12,18 +12,18 @@ class HelpMoneyViewModel : ViewModel() {
     val isValid: LiveData<Boolean>
         get() = _isValid
 
-    private val _customMoneySum = MutableLiveData<String>()
+    private val _moneySum = MutableLiveData<String>()
 
     init {
-        _customMoneySum.observeForever { _ ->
+        _moneySum.observeForever { _ ->
             checkIsValidValue()
         }
     }
 
     private fun checkIsValidValue() {
-        if (!_customMoneySum.value.isNullOrEmpty()) run { ->
+        if (!_moneySum.value.isNullOrEmpty()) run { ->
             this._isValid.value =
-                _customMoneySum.value?.toInt() in MIN_CUSTOM_MONEY..MAX_CUSTOM_MONEY
+                _moneySum.value?.toInt() in MIN_CUSTOM_MONEY..MAX_CUSTOM_MONEY
         } else {
             this._isValid.value = false
         }
@@ -31,13 +31,16 @@ class HelpMoneyViewModel : ViewModel() {
 
     fun updateCustomMoneySum(sum: String) {
         viewModelScope.launch {
-            _customMoneySum.value = sum
+            _moneySum.value = sum
         }
     }
 
     fun clearMoneySum() {
-        _customMoneySum.value = ""
+        _moneySum.value = ""
     }
+
+    fun getMoneySum(): Int = _moneySum.value?.toInt() ?: 0
+
 
     companion object {
         private const val MIN_CUSTOM_MONEY = 1

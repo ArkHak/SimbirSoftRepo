@@ -85,6 +85,9 @@ dependencies {
     //Coroutines
     implementation(Coroutines.coroutinesAndroid)
 
+    //WorkManager
+    implementation(WorkManager.workManager)
+
     //RxJava
     implementation(RxJava.core)
     implementation(RxJava.rxAndroid)
