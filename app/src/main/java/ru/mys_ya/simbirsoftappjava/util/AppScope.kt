@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.util
+package ru.mys_ya.simbirsoftappjava.util
 
 import javax.inject.Scope
 

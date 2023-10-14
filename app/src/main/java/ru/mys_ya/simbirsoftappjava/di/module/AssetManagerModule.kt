@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.di.module
+package ru.mys_ya.simbirsoftappjava.di.module
 
 import android.content.Context
 import com.google.gson.Gson

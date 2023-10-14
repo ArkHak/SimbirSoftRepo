@@ -31,5 +31,9 @@
         <argument
             android:name="newsId"
             app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink"
+            android:autoVerify="true"
+            app:uri="app://ss.com/newsDetail/{newsId}" />
     </fragment>
 </navigation>
