@@ -2,17 +2,30 @@ package ru.mys_ya.simbirsoftappjava.util
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import ru.mys_ya.core.R
+import ru.mys_ya.core.utils.TypeNotification
+import ru.mys_ya.feature_news.ui.news.detail.broadcast.ReminderBroadcastReceiver
+import ru.mys_ya.feature_news.ui.news.detail.worker.ReminderWorker.Companion.ACTION_REMIND_LATER
+import ru.mys_ya.feature_news.ui.news.detail.worker.SendWorker.Companion.EVENT_ID
+import ru.mys_ya.feature_news.ui.news.detail.worker.SendWorker.Companion.EVENT_NAME
 import ru.mys_ya.feature_news_api.util.NotificationComponent
+import ru.mys_ya.simbirsoftappjava.ui.MainActivity
 
-class NotificationComponentImpl(
-    private val context: Context,
-) : NotificationComponent {
-    override fun makeStatusNotification(eventId: Int, eventName: String, amount: Int) {
+class NotificationComponentImpl : NotificationComponent {
+
+    override fun makeStatusNotification(
+        context: Context,
+        eventId: Int,
+        eventName: String,
+        amount: Int,
+        typeNotification: TypeNotification,
+    ) {
         val name = VERBOSE_NOTIFICATION_CHANNEL_NAME
         val description = VERBOSE_NOTIFICATION_CHANNEL_DESCRIPTION
         val importance = NotificationManager.IMPORTANCE_HIGH
@@ -24,38 +37,69 @@ class NotificationComponentImpl(
 
         notificationManager.createNotificationChannel(channel)
 
-//        val intent = Intent(context, MainActivity::class.java)
-//        intent.putExtra(EVENT_ID, eventId)
-//        intent.apply {
-//            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//        }
-//        val pendingIntent = PendingIntent.getActivity(
-//            context, 0, intent,
-//            PendingIntent.FLAG_IMMUTABLE
-//        )
-
         val args = bundleOf("newsId" to eventId)
         val pendingIntent = NavDeepLinkBuilder(context)
             .setGraph(o.mysin.simbirsoftappjava.R.navigation.navigation_graph)
             .setDestination(ru.mys_ya.feature_news.R.id.news_detail_fragment)
             .setArguments(args)
+            .setComponentName(MainActivity::class.java)
             .createPendingIntent()
 
-        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle(eventName)
-            .setContentText("Спасибо, что пожертвовали $amount₽! ...")
-            .setStyle(
-                NotificationCompat.BigTextStyle()
-                    .bigText("Спасибо, что пожертвовали $amount₽! Будем очень признательны, если вы сможете пожертвовать еще больше.")
-            )
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setAutoCancel(true)
-            .setContentIntent(pendingIntent)
-            .setVibrate(LongArray(0))
-            .build()
+        when (typeNotification) {
+            TypeNotification.SEND_NOTIFICATION -> {
+                fun createRemindPendingIntent(): PendingIntent {
+                    val intent = Intent(context, ReminderBroadcastReceiver::class.java).apply {
+                        action = ACTION_REMIND_LATER
+                        putExtra(EVENT_ID, eventId)
+                        putExtra(EVENT_NAME, eventName)
+                    }
+                    return PendingIntent.getBroadcast(
+                        context,
+                        0,
+                        intent,
+                        PendingIntent.FLAG_IMMUTABLE
+                    )
+                }
 
-        notificationManager.notify(NOTIFICATION_ID, notification)
+                val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.icon_logo)
+                    .setContentTitle(eventName)
+                    .setContentText("Спасибо, что пожертвовали $amount₽! ...")
+                    .setStyle(
+                        NotificationCompat.BigTextStyle()
+                            .bigText("Спасибо, что пожертвовали $amount₽! Будем очень признательны, если вы сможете пожертвовать еще больше.")
+                    )
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+                    .addAction(
+                        R.drawable.ic_history,
+                        "Напомнить позже",
+                        createRemindPendingIntent()
+                    )
+                    .setVibrate(LongArray(0))
+                    .build()
+
+                notificationManager.notify(NOTIFICATION_ID, notification)
+            }
+
+            TypeNotification.REMINDER_NOTIFICATION -> {
+                val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.icon_logo)
+                    .setContentText("Напоминаем, что ...")
+                    .setStyle(
+                        NotificationCompat.BigTextStyle()
+                            .bigText("Напоминаем, что мы будем очень признательны, если вы сможете пожертвовать еще больше.")
+                    )
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+                    .setVibrate(LongArray(0))
+                    .build()
+
+                notificationManager.notify(NOTIFICATION_ID, notification)
+            }
+        }
     }
 
     companion object {

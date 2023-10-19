@@ -1,6 +1,5 @@
 package ru.mys_ya.simbirsoftappjava.di.module
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import ru.mys_ya.simbirsoftappjava.util.NotificationComponentImpl
@@ -11,10 +10,8 @@ import javax.inject.Singleton
 class NotificationModule {
     @Provides
     @Singleton
-    fun provideNotificationComponent(
-        context: Context,
-    ): NotificationComponent {
-        return NotificationComponentImpl(context)
+    fun provideNotificationComponent(): NotificationComponent {
+        return NotificationComponentImpl()
     }
 }
 

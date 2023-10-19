@@ -21,7 +21,7 @@ import ru.mys_ya.feature_news.di.NewsMapperModule
 import ru.mys_ya.feature_search.di.SearchUseCaseModule
 import ru.mys_ya.feature_news.di.NewsViewModelModule
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
-import ru.mys_ya.feature_news.di.component.worker.SendWorkerComponent
+import ru.mys_ya.feature_news.di.component.worker.WorkerComponent
 import ru.mys_ya.feature_news.di.component.filter.FilterComponent
 import ru.mys_ya.feature_news.di.component.news.NewsComponent
 import ru.mys_ya.feature_news_api.util.NotificationComponent
@@ -58,7 +58,7 @@ interface AppComponent :
     FilterComponent,
     NewsComponent,
     NewsDetailComponent,
-    SendWorkerComponent {
+    WorkerComponent {
 
     val multiViewModelFactory: MultiViewModelFactory
 

@@ -8,11 +8,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
+import ru.mys_ya.core.MainActivityViewModel
 import ru.mys_ya.core.di.viewmodule.MultiViewModelFactory
 import ru.mys_ya.feature_news_api.domain.News
 import ru.mys_ya.core.utils.correctDateTime
@@ -32,6 +34,8 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
     private val newsDetailViewModel by viewModels<NewsDetailViewModel> {
         viewModelFactory
     }
+
+    private val mainViewModel: MainActivityViewModel by activityViewModels()
 
     private val args by navArgs<NewsDetailFragmentArgs>()
 
@@ -84,6 +88,8 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mainViewModel.setHideBottomNavigation(true)
 
         newsDetailViewModel.news.observe(viewLifecycleOwner) { renderData(it) }
         newsDetailViewModel.loadNews(args.newsId)

@@ -7,8 +7,8 @@ import ru.mys_ya.feature_help.di.component.HelpComponent
 import ru.mys_ya.feature_help.di.component.HelpComponentProvider
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
-import ru.mys_ya.feature_news.di.component.worker.SendWorkerComponent
-import ru.mys_ya.feature_news.di.component.worker.SendWorkerComponentProvider
+import ru.mys_ya.feature_news.di.component.worker.WorkerComponent
+import ru.mys_ya.feature_news.di.component.worker.WorkerComponentProvider
 import ru.mys_ya.feature_news.di.component.filter.FilterComponent
 import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
 import ru.mys_ya.feature_news.di.component.news.NewsComponent
@@ -24,7 +24,7 @@ class WantHelpApp :
     FilterComponentProvider,
     NewsComponentProvider,
     NewsDetailComponentProvider,
-    SendWorkerComponentProvider {
+    WorkerComponentProvider {
 
     private lateinit var appComponent: AppComponent
 
@@ -44,6 +44,7 @@ class WantHelpApp :
     override fun getNewsComponent(): NewsComponent = appComponent
 
     override fun getNewsDetailComponent(): NewsDetailComponent = appComponent
-    override fun getSendWorkerComponent(): SendWorkerComponent = appComponent
+    override fun getSendWorkerComponent(): WorkerComponent = appComponent
+    override fun getReminderWorkerComponent(): WorkerComponent = appComponent
 
 }
