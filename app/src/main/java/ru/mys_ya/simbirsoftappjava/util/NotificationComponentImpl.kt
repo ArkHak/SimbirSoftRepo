@@ -45,23 +45,22 @@ class NotificationComponentImpl : NotificationComponent {
             .setComponentName(MainActivity::class.java)
             .createPendingIntent()
 
-        when (typeNotification) {
-            TypeNotification.SEND_NOTIFICATION -> {
-                fun createRemindPendingIntent(): PendingIntent {
-                    val intent = Intent(context, ReminderBroadcastReceiver::class.java).apply {
-                        action = ACTION_REMIND_LATER
-                        putExtra(EVENT_ID, eventId)
-                        putExtra(EVENT_NAME, eventName)
-                    }
-                    return PendingIntent.getBroadcast(
-                        context,
-                        0,
-                        intent,
-                        PendingIntent.FLAG_IMMUTABLE
-                    )
-                }
+        val reminderIntent = Intent(context, ReminderBroadcastReceiver::class.java).apply {
+            action = ACTION_REMIND_LATER
+            putExtra(EVENT_ID, eventId)
+            putExtra(EVENT_NAME, eventName)
+        }
 
-                val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+        val remindPendingIntent: PendingIntent = PendingIntent.getBroadcast(
+            context,
+            0,
+            reminderIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val notification = when (typeNotification) {
+            TypeNotification.SEND_NOTIFICATION ->
+                NotificationCompat.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_logo)
                     .setContentTitle(eventName)
                     .setContentText("Спасибо, что пожертвовали $amount₽! ...")
@@ -75,16 +74,13 @@ class NotificationComponentImpl : NotificationComponent {
                     .addAction(
                         R.drawable.ic_history,
                         "Напомнить позже",
-                        createRemindPendingIntent()
+                        remindPendingIntent
                     )
                     .setVibrate(LongArray(0))
                     .build()
 
-                notificationManager.notify(NOTIFICATION_ID, notification)
-            }
-
-            TypeNotification.REMINDER_NOTIFICATION -> {
-                val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+            TypeNotification.REMINDER_NOTIFICATION ->
+                NotificationCompat.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_logo)
                     .setContentText("Напоминаем, что ...")
                     .setStyle(
@@ -96,10 +92,10 @@ class NotificationComponentImpl : NotificationComponent {
                     .setContentIntent(pendingIntent)
                     .setVibrate(LongArray(0))
                     .build()
-
-                notificationManager.notify(NOTIFICATION_ID, notification)
-            }
         }
+
+        notificationManager.notify(NOTIFICATION_ID, notification)
+
     }
 
     companion object {

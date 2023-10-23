@@ -38,7 +38,7 @@ class ReminderBroadcastReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        const val DEFAULT_TIMEOUT = 1L
+        const val DEFAULT_TIMEOUT = 30L
     }
 
 }

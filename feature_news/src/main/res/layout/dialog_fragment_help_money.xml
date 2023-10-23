@@ -85,6 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:maxLength="9"
             android:hint="@string/input_custom_money"
             android:inputType="number"
             android:textColorHint="@color/black_38" />

@@ -23,7 +23,7 @@ class HelpMoneyViewModel : ViewModel() {
     private fun checkIsValidValue() {
         if (!_moneySum.value.isNullOrEmpty()) run { ->
             this._isValid.value =
-                _moneySum.value?.toInt() in MIN_CUSTOM_MONEY..MAX_CUSTOM_MONEY
+                _moneySum.value?.toLong() in MIN_CUSTOM_MONEY..MAX_CUSTOM_MONEY
         } else {
             this._isValid.value = false
         }
@@ -43,7 +43,7 @@ class HelpMoneyViewModel : ViewModel() {
 
 
     companion object {
-        private const val MIN_CUSTOM_MONEY = 1
-        private const val MAX_CUSTOM_MONEY = 9_999_999
+        private const val MIN_CUSTOM_MONEY = 1L
+        private const val MAX_CUSTOM_MONEY = 9_999_999L
     }
 }
