@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WantHelpApp</string>
+
+    <!-- SplashScreen -->
+    <string name="splash_screen_loading">Загрузка…</string>
+
+    <!-- MainActivity -->
+    <string name="title_news">Новости</string>
+    <string name="title_search">Поиск</string>
+    <string name="title_help">Помочь</string>
+    <string name="title_history">История</string>
+    <string name="title_profile">Профиль</string>
+
+</resources>

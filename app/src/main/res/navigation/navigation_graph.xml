@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/authorization_graph">
+
+    <include app:graph="@navigation/history_graph" />
+
+    <include app:graph="@navigation/authorization_graph" />
+
+    <include app:graph="@navigation/profile_graph" />
+
+    <include app:graph="@navigation/help_graph" />
+
+    <include app:graph="@navigation/search_graph" />
+
+    <include app:graph="@navigation/news_graph" />
+
+</navigation>
