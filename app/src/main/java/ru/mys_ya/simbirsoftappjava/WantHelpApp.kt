@@ -1,19 +1,21 @@
-package o.mysin.simbirsoftappjava
+package ru.mys_ya.simbirsoftappjava
 
 import android.app.Application
-import o.mysin.simbirsoftappjava.di.AppComponent
-import o.mysin.simbirsoftappjava.di.DaggerAppComponent
+import ru.mys_ya.simbirsoftappjava.di.AppComponent
 import ru.mys_ya.core.di.module.AppModule
 import ru.mys_ya.feature_help.di.component.HelpComponent
 import ru.mys_ya.feature_help.di.component.HelpComponentProvider
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponent
 import ru.mys_ya.feature_news.di.component.detail.NewsDetailComponentProvider
+import ru.mys_ya.feature_news.di.component.worker.WorkerComponent
+import ru.mys_ya.feature_news.di.component.worker.WorkerComponentProvider
 import ru.mys_ya.feature_news.di.component.filter.FilterComponent
 import ru.mys_ya.feature_news.di.component.filter.FilterComponentProvider
 import ru.mys_ya.feature_news.di.component.news.NewsComponent
 import ru.mys_ya.feature_news.di.component.news.NewsComponentProvider
 import ru.mys_ya.feature_search.di.component.SearchEventComponent
 import ru.mys_ya.feature_search.di.component.SearchEventComponentProvider
+import ru.mys_ya.simbirsoftappjava.di.DaggerAppComponent
 
 class WantHelpApp :
     Application(),
@@ -21,7 +23,8 @@ class WantHelpApp :
     SearchEventComponentProvider,
     FilterComponentProvider,
     NewsComponentProvider,
-    NewsDetailComponentProvider {
+    NewsDetailComponentProvider,
+    WorkerComponentProvider {
 
     private lateinit var appComponent: AppComponent
 
@@ -41,4 +44,7 @@ class WantHelpApp :
     override fun getNewsComponent(): NewsComponent = appComponent
 
     override fun getNewsDetailComponent(): NewsDetailComponent = appComponent
+    override fun getSendWorkerComponent(): WorkerComponent = appComponent
+    override fun getReminderWorkerComponent(): WorkerComponent = appComponent
+
 }

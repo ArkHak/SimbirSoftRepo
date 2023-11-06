@@ -4,7 +4,9 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
 
     <uses-permission
@@ -16,7 +18,7 @@
         android:maxSdkVersion="32" />
 
     <application
-        android:name=".WantHelpApp"
+        android:name="ru.mys_ya.simbirsoftappjava.WantHelpApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -27,7 +29,7 @@
         android:theme="@style/Theme.SimbirSoftAppJava"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="ru.mys_ya.simbirsoftappjava.ui.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.SimbirSoftAppJava">
             <intent-filter>
@@ -39,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".ui.SplashFragment"
+            android:name="ru.mys_ya.simbirsoftappjava.ui.SplashFragment"
             android:exported="true"
             android:theme="@style/Theme.SimbirSoftAppJava.SplashScreen">
             <intent-filter>
@@ -48,6 +50,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name="ru.mys_ya.feature_news.ui.news.detail.broadcast.ReminderBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.ACTION_REMIND_LATER" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 

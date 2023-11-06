@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui
+package ru.mys_ya.simbirsoftappjava.ui
 
 import android.os.Bundle
 import android.view.View
@@ -33,6 +33,16 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.hideBottomNavigation.observe(this) { hide ->
             binding.bottomNavigationPanel.visibility = if (hide) View.GONE else View.VISIBLE
         }
+
+//        if (intent.hasExtra(EVENT_ID)) {
+//            val eventId = intent.getIntExtra(EVENT_ID, 1)
+//            bottomNavigationPanelController.navigate("app://ss.com/newsDetail/$eventId")
+//            findNavController().navigate(
+//                ru.mys_ya.feature_news.R.id.news_detail_fragment, bundleOf(
+//                    "newsId" to eventId
+//                )
+//            )
+//        }
     }
 
     private fun initBadgeNews() {

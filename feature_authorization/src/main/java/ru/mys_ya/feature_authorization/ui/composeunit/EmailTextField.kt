@@ -1,5 +1,6 @@
 package ru.mys_ya.feature_authorization.ui.composeunit
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -19,7 +20,7 @@ fun EmailTextField(
     changeEmail: (String) -> Unit,
 ) {
     TextField(
-        modifier = modifier,
+        modifier = modifier.fillMaxWidth(),
         value = email,
         maxLines = 1,
         placeholder = {

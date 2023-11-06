@@ -68,6 +68,9 @@ dependencies {
     implementation(Lifecycle.lifecycleViewModel)
     implementation(Lifecycle.lifecycleLiveData)
 
+    //WorkManager
+    implementation(WorkManager.workManager)
+
     //Gson
     implementation(Gson.gson)
 

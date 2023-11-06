@@ -1,4 +1,4 @@
-package o.mysin.simbirsoftappjava.ui
+package ru.mys_ya.simbirsoftappjava.ui
 
 import android.content.Intent
 import android.os.Bundle
